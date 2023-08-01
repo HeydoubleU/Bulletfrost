@@ -23,7 +23,7 @@ removeFolder("bifrost_libs")
 removeFolder("builds")
 
 # run batch file
-os.system(f"{source_path}/repos/{lib_name}/build.bat")
+os.system(f"{source_path}/repos/HeydoubleU/{lib_name}/build.bat")
 
 # copy files
 for folder in os.listdir(f"{source_path}/bifrost_libs"):

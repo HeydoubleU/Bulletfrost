@@ -51,7 +51,7 @@ public:
 		shape = new btEmptyShape();
 	}
 
-    // Copy
+    // Copy, this is problem but I don't think it will get called.
     GenericCollisionShape(const GenericCollisionShape& input) {
         shape = input.shape;
         mesh = input.mesh;
@@ -124,6 +124,10 @@ public:
         shape = compound;
     }
 
+    ~GenericCollisionShape() {
+        delete shape;
+        delete mesh;
+    }
 
     //TODO: convert this to operator
     void setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation) {
@@ -133,22 +137,7 @@ public:
 		btCompoundShape* compound = (btCompoundShape*)shape;
 		compound->updateChildTransform(index, btTransform(convertQuat(orientation), convertV3(position)));
 	}
-
-    ~GenericCollisionShape() {
-        delete shape;
-        delete mesh;
-    }
 };
-
-
-btRigidBody* constructRigidBody(Bullet::rigidBody rb) {
-    btTransform xform(convertQuat(rb.rotation), convertV3(rb.position));
-    btVector3 inertia(0, 0, 0);
-    rb.collision_shape->shape->calculateLocalInertia(rb.mass, inertia);
-    btRigidBody* rigid_body = new btRigidBody(rb.mass, new btDefaultMotionState(xform), rb.collision_shape->shape, inertia);
-
-    return rigid_body;
-}
 
 
 class Bullet::BulletScene {
@@ -158,6 +147,7 @@ public:
     btCollisionDispatcher* dispatcher;
     btSequentialImpulseConstraintSolver* solver;
     btDiscreteDynamicsWorld* dynamicsWorld;
+    Amino::Array<Amino::Ptr<GenericCollisionShape>> collision_shapes;
     int* ref_count = new int(1);
 
     BulletScene() {
@@ -171,26 +161,27 @@ public:
     BulletScene(const BulletScene& input) {
         *(input.ref_count) += 1;
         ref_count = input.ref_count;
-
         broadphase = input.broadphase;
         collisionConfig = input.collisionConfig;
         dispatcher = input.dispatcher;
         solver = input.solver;
         dynamicsWorld = input.dynamicsWorld;
+        collision_shapes = input.collision_shapes;
     }
+
+
 
     ~BulletScene() {
         *ref_count -= 1;
         if (*ref_count <= 0) {
+            collision_shapes.clear();
+
             auto objArray = dynamicsWorld->getCollisionObjectArray();
             for (int i = 0; i < dynamicsWorld->getNumCollisionObjects(); i++) {
-				btCollisionObject* obj = objArray[i];
-				btRigidBody* body = btRigidBody::upcast(obj);
-                if (body) {
-					delete body->getMotionState();
-				}
-				dynamicsWorld->removeCollisionObject(obj);
-				delete obj;
+				btRigidBody* body = btRigidBody::upcast(objArray[i]);
+                dynamicsWorld->removeCollisionObject(body);
+                delete body->getMotionState();
+				delete body;
 			}
 
             delete dynamicsWorld;
@@ -198,6 +189,25 @@ public:
             delete collisionConfig;
             delete dispatcher;
             delete solver;
+        }
+    }
+
+    void addRigidBody(const Bullet::rigidBody& rigid_body) {
+        btVector3 inertia(0, 0, 0);
+        rigid_body.collision_shape->shape->calculateLocalInertia(rigid_body.mass, inertia);
+        btDefaultMotionState* motionState = new btDefaultMotionState(btTransform(convertQuat(rigid_body.rotation), convertV3(rigid_body.position)));
+        btRigidBody* btrb = new btRigidBody(rigid_body.mass, motionState, rigid_body.collision_shape->shape, inertia);
+        dynamicsWorld->addRigidBody(btrb);
+        collision_shapes.push_back(rigid_body.collision_shape);
+	}
+
+    void removeRigidBody(unsigned int id) {
+        if (id >= 0 && id < dynamicsWorld->getNumCollisionObjects()) {
+            btRigidBody* btrb = btRigidBody::upcast(dynamicsWorld->getCollisionObjectArray()[id]);
+            dynamicsWorld->removeRigidBody(btrb);
+            delete btrb->getMotionState();
+            delete btrb;
+            collision_shapes.erase(collision_shapes.begin() + id);
         }
     }
 };
@@ -264,11 +274,7 @@ void Bullet::add_rigid_bodies(
     const Amino::Array<rigidBody>& rigid_bodies
 ) {
     for (rigidBody rigid_body : rigid_bodies) {
-        btTransform xform(convertQuat(rigid_body.rotation), convertV3(rigid_body.position));
-        btVector3 inertia(0, 0, 0);
-        rigid_body.collision_shape->shape->calculateLocalInertia(rigid_body.mass, inertia);
-        btRigidBody* btrb = new btRigidBody(rigid_body.mass, new btDefaultMotionState(xform), rigid_body.collision_shape->shape, inertia);
-        bullet_scene.dynamicsWorld->addRigidBody(btrb);
+        bullet_scene.addRigidBody(rigid_body);
     }
 }
 
