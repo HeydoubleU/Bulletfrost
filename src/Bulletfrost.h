@@ -14,8 +14,17 @@
 
 namespace Bullet {
     class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL GenericCollisionShape;
-    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody;
     class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL BulletScene;
+
+    struct AMINO_ANNOTATE("Amino::Struct") rigidBody
+    {
+        Amino::Ptr<GenericCollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
+        Bifrost::Math::float3 position;
+        Bifrost::Math::float4 rotation;
+        float mass;
+        float friction;
+        float restitution;
+    };
     
 
     BULLETFROST_DECL
@@ -33,13 +42,6 @@ namespace Bullet {
         void step_simulation(
             BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
             const float delta_time AMINO_ANNOTATE("Amino::Port value=0.02f")
-        )
-        AMINO_ANNOTATE("Amino::Node");
-
-    BULLETFROST_DECL
-        void amongus(
-            const BulletScene& bullet_scene,
-            int& output
         )
         AMINO_ANNOTATE("Amino::Node");
 
@@ -89,40 +91,22 @@ namespace Bullet {
         )
         AMINO_ANNOTATE("Amino::Node");
 
-    BULLETFROST_DECL
-        void create_rigid_body(
-            const Amino::Ptr<GenericCollisionShape>& collision_shape,
-            const Bifrost::Math::float3& position,
-            const Bifrost::Math::float4& orientation AMINO_ANNOTATE("Amino::Port value={x:0.0f, y:0.0f, z:0.0f, w:1.0f}"),
-            const float mass AMINO_ANNOTATE("Amino::Port value=1.0f"),
-            const float friction AMINO_ANNOTATE("Amino::Port value=0.5f"),
-            const float restitution AMINO_ANNOTATE("Amino::Port value=0.5f"),
-            Amino::Ptr<RigidBody>& rigid_body
-        )
-        AMINO_ANNOTATE("Amino::Node");
 
     BULLETFROST_DECL
         void add_rigid_bodies(
             BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
-            const Amino::Array<Amino::Ptr<RigidBody>>& rigid_bodies AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true")
+            const Amino::Array<rigidBody>& rigid_bodies AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true")
         )
         AMINO_ANNOTATE("Amino::Node");
 
-    BULLETFROST_DECL
-        void get_rigid_body_transform(const RigidBody& rigid_body, Bifrost::Math::float3& position, Bifrost::Math::float4& orientation)
-        AMINO_ANNOTATE("Amino::Node");
 
     BULLETFROST_DECL
-        void get_rigid_bodies(
-            const BulletScene& bullet_scene,
-            Amino::Ptr<Amino::Array<Amino::Ptr<RigidBody>>>& rigid_bodies
-        )
+        void get_rigid_body_transform(const BulletScene& bullet_scene, const unsigned int id, Bifrost::Math::float3& position, Bifrost::Math::float4& orientation)
         AMINO_ANNOTATE("Amino::Node");
 
 } // namespace Bullet
 
 AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::GenericCollisionShape);
-AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::RigidBody);
 AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::BulletScene);
 
 #endif

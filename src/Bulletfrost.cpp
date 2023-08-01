@@ -6,7 +6,6 @@
 #include <vector>
 
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::GenericCollisionShape);
-AMINO_DEFINE_DEFAULT_CLASS(Bullet::RigidBody);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::BulletScene);
 
 
@@ -35,8 +34,6 @@ Bifrost::Math::float4 convertQuat(const btQuaternion vec) {
 	bifVec.w = vec.w();
 	return bifVec;
 }
-
-
 
 //Classes
 
@@ -143,48 +140,17 @@ public:
     }
 };
 
-class Bullet::RigidBody {
-public:
-    int* ref_count = new int(1);
-    btRigidBody* body;
-    btMotionState* motionState;
-    Amino::Ptr<GenericCollisionShape> shape;
 
-    RigidBody() : body(nullptr), motionState(nullptr) {}
+btRigidBody* constructRigidBody(Bullet::rigidBody rb) {
+    btTransform xform(convertQuat(rb.rotation), convertV3(rb.position));
+    btVector3 inertia(0, 0, 0);
+    rb.collision_shape->shape->calculateLocalInertia(rb.mass, inertia);
+    btRigidBody* rigid_body = new btRigidBody(rb.mass, new btDefaultMotionState(xform), rb.collision_shape->shape, inertia);
 
-    RigidBody(const RigidBody& input) {
-        *(input.ref_count) += 1;
-        ref_count = input.ref_count;
-		body = input.body;
-        motionState = input.motionState;
-	}
-
-    RigidBody(
-        Amino::Ptr<GenericCollisionShape> in_shape,
-        Bifrost::Math::float3 position,
-        Bifrost::Math::float4 orientation,
-        float mass, float friction, float restitution
-    ) {
-        shape = in_shape;
-        btVector3 inertia(0, 0, 0);
-        shape->shape->calculateLocalInertia(mass, inertia);
-        motionState = new btDefaultMotionState(btTransform(convertQuat(orientation), convertV3(position)));
-        body = new btRigidBody(btRigidBody::btRigidBodyConstructionInfo(mass, motionState, shape->shape, inertia));
-        body->setFriction(friction);
-        body->setRestitution(restitution);
-	}
-
-    ~RigidBody() {
-        *ref_count -= 1;
-        if (*ref_count <= 0) {
-			delete body;
-			delete motionState;
-		}
-	}
-};
+    return rigid_body;
+}
 
 
-// Classes
 class Bullet::BulletScene {
 public:
     btBroadphaseInterface* broadphase;
@@ -192,7 +158,6 @@ public:
     btCollisionDispatcher* dispatcher;
     btSequentialImpulseConstraintSolver* solver;
     btDiscreteDynamicsWorld* dynamicsWorld;
-    Amino::Array<Amino::Ptr<Bullet::RigidBody>> bodies;
     int* ref_count = new int(1);
 
     BulletScene() {
@@ -201,7 +166,6 @@ public:
         dispatcher = new btCollisionDispatcher(collisionConfig);
         solver = new btSequentialImpulseConstraintSolver();
         dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfig);
-        bodies = Amino::Array<Amino::Ptr<Bullet::RigidBody>>();
     }
 
     BulletScene(const BulletScene& input) {
@@ -213,29 +177,28 @@ public:
         dispatcher = input.dispatcher;
         solver = input.solver;
         dynamicsWorld = input.dynamicsWorld;
-        bodies = input.bodies;
-
     }
 
     ~BulletScene() {
         *ref_count -= 1;
         if (*ref_count <= 0) {
+            auto objArray = dynamicsWorld->getCollisionObjectArray();
+            for (int i = 0; i < dynamicsWorld->getNumCollisionObjects(); i++) {
+				btCollisionObject* obj = objArray[i];
+				btRigidBody* body = btRigidBody::upcast(obj);
+                if (body) {
+					delete body->getMotionState();
+				}
+				dynamicsWorld->removeCollisionObject(obj);
+				delete obj;
+			}
+
             delete dynamicsWorld;
             delete broadphase;
             delete collisionConfig;
             delete dispatcher;
             delete solver;
         }
-    }
-
-    void addRigidBody(Amino::Ptr<RigidBody> body) {
-        dynamicsWorld->addRigidBody(body->body);
-        bodies.push_back(body);
-    }
-
-    void removeRigidBody(Amino::Ptr<RigidBody> body) {
-        dynamicsWorld->removeRigidBody(body->body);
-        bodies.erase(std::remove(bodies.begin(), bodies.end(), body), bodies.end());
     }
 };
 
@@ -254,11 +217,6 @@ void Bullet::set_gravity(BulletScene& bullet_scene, const Bifrost::Math::float3&
 
 void Bullet::step_simulation(BulletScene& bullet_scene, const float delta_time) {
     bullet_scene.dynamicsWorld->stepSimulation(delta_time, 0);
-}
-
-
-void Bullet::amongus(const BulletScene& bullet_scene, int& output) {
-    output = *(bullet_scene.ref_count);
 }
 
 
@@ -300,35 +258,31 @@ void Bullet::compound_collision(
     collision_shape = Amino::newClassPtr<GenericCollisionShape>(child_shapes, translates, rotates);
 }
 
-void Bullet::create_rigid_body(
-    const Amino::Ptr<GenericCollisionShape>& collision_shape,
-    const Bifrost::Math::float3& position,
-    const Bifrost::Math::float4& orientation,
-    const float mass, const float friction, const float restitution,
-    Amino::Ptr<RigidBody>& rigid_body
-) {
-    rigid_body = Amino::newClassPtr<RigidBody>(collision_shape, position, orientation, mass, friction, restitution);
-}
-
 
 void Bullet::add_rigid_bodies(
     BulletScene& bullet_scene,
-    const Amino::Array<Amino::Ptr<RigidBody>>& rigid_bodies
+    const Amino::Array<rigidBody>& rigid_bodies
 ) {
-    for (Amino::Ptr<RigidBody> rigid_body : rigid_bodies) {
-        bullet_scene.addRigidBody(rigid_body);
-	}
+    for (rigidBody rigid_body : rigid_bodies) {
+        btTransform xform(convertQuat(rigid_body.rotation), convertV3(rigid_body.position));
+        btVector3 inertia(0, 0, 0);
+        rigid_body.collision_shape->shape->calculateLocalInertia(rigid_body.mass, inertia);
+        btRigidBody* btrb = new btRigidBody(rigid_body.mass, new btDefaultMotionState(xform), rigid_body.collision_shape->shape, inertia);
+        bullet_scene.dynamicsWorld->addRigidBody(btrb);
+    }
 }
 
 
-void Bullet::get_rigid_body_transform(const RigidBody& rigid_body, Bifrost::Math::float3& position, Bifrost::Math::float4& orientation) {
+void Bullet::get_rigid_body_transform(const BulletScene& bullet_scene, const unsigned int id, Bifrost::Math::float3& position, Bifrost::Math::float4& orientation) {
+    if (id >= bullet_scene.dynamicsWorld->getNumCollisionObjects())
+		return;
+
     btTransform trans;
-    rigid_body.motionState->getWorldTransform(trans);
-    position = convertV3(trans.getOrigin());
-    orientation = convertQuat(trans.getRotation());
-}
-
-
-void Bullet::get_rigid_bodies(const BulletScene& bullet_scene, Amino::Ptr<Amino::Array<Amino::Ptr<RigidBody>>>& rigid_bodies) {
-    rigid_bodies = Amino::newClassPtr<Amino::Array<Amino::Ptr<RigidBody>>>(bullet_scene.bodies);
+    auto obj = bullet_scene.dynamicsWorld->getCollisionObjectArray()[id];
+    auto rigid_body = btRigidBody::upcast(obj);
+    if (rigid_body) {  // This should always be true (I think)
+        rigid_body->getMotionState()->getWorldTransform(trans);
+        position = convertV3(trans.getOrigin());
+        orientation = convertQuat(trans.getRotation());
+    }
 }
