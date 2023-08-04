@@ -72,13 +72,20 @@ namespace Bullet {
 
 
     namespace Constrain {
+        struct AMINO_ANNOTATE("Amino::Struct") Limits
+        {
+            Bifrost::Math::bool3 limit;
+            Bifrost::Math::float3 max;
+            Bifrost::Math::float3 min;
+        };
+
         class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL Constraint;
 
         BULLETFROST_DECL
             void constrain_fixed(
                 const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
                 const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=1000.0f"), Amino::Ptr<Constraint>& constraint
+                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=-1.0f"), Amino::Ptr<Constraint>& constraint
 			)
 			AMINO_ANNOTATE("Amino::Node");
 
@@ -86,8 +93,10 @@ namespace Bullet {
             void constrain_6dof_spring(
                 const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
                 const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const Bifrost::Math::float3& linear_spring_stiffness, const Bifrost::Math::float3& linear_spring_damp,
-                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=1000.0f"), Amino::Ptr<Constraint>& constraint
+                const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
+                const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping,
+                const Limits& linear_limits, const Limits& angular_limits,
+                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=-1.0f"), Amino::Ptr<Constraint>& constraint
             )
             AMINO_ANNOTATE("Amino::Node");
 

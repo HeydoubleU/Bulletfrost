@@ -10,6 +10,8 @@ AMINO_DEFINE_DEFAULT_CLASS(Bullet::Constrain::Constraint);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::BulletScene);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::RigidBody);
 
+#define BIG_FLOAT 1e30f
+
 
 // Utility
 
@@ -51,86 +53,25 @@ public:
 		shape = new btEmptyShape();
 	}
 
-    // Copy, this is problem but I don't think it will get called.
     CollisionShape(const CollisionShape& input) {
+        // TODO: fix this copy constructor, it is problem but I don't think it will get called normally.
         shape = input.shape;
         mesh = input.mesh;
         child_shapes = input.child_shapes;
     }
 
-    // Plane
-    CollisionShape(Bifrost::Math::float3 normal, float plane_constant) {
-        shape =  new btStaticPlaneShape(convertV3(normal), plane_constant);
-    }
+    CollisionShape(btCollisionShape* shape, btTriangleMesh* mesh = nullptr)
+        : shape(shape), mesh(mesh) {}
 
-    // Box
-    CollisionShape(Bifrost::Math::float3 extents) {
-        shape = new btBoxShape(convertV3(extents));
-    }
-
-    // Sphere
-    CollisionShape(float radius) {
-		shape = new btSphereShape(radius);
-	}
-
-    // Point Cloud
-    CollisionShape(Amino::Array<Bifrost::Math::float3> points) {
-        btConvexHullShape* hull = new btConvexHullShape();
-        for (int i = 0; i < points.size(); i++) {
-			hull->addPoint(convertV3(points[i]));
-		}
-        hull->optimizeConvexHull(); // Are there situations where this shouldn't be called?
-		shape = hull;
-	}
-
-    //Mesh
-    CollisionShape(Amino::Array<Bifrost::Math::float3x3> triangles, bool use_bvh) {
-        mesh = new btTriangleMesh();
-        for (int i = 0; i < triangles.size(); i++) {
-            mesh->addTriangle(
-	            convertV3(triangles[i].c0),
-	            convertV3(triangles[i].c1),
-	            convertV3(triangles[i].c2)
-	        );
-        }
-
-        if (use_bvh) {
-            shape = new btBvhTriangleMeshShape(mesh, true);
-        }
-        else {
-            btGImpactMeshShape* gshape = new btGImpactMeshShape(mesh);
-            gshape->updateBound();
-            shape = gshape;
-		}
-    }
-
-    //Compound Shape
-    CollisionShape(
-        Amino::Array<Amino::Ptr<CollisionShape>> child_shapes,
-        Amino::Array<Bifrost::Math::float3> translates,
-        Amino::Array<Bifrost::Math::float4> rotates
-    ) : child_shapes(child_shapes) 
-    {
-        int size = child_shapes.size();
-        Bifrost::Math::float3 def_t; def_t.x = 0; def_t.y = 0; def_t.z = 0;
-        Bifrost::Math::float4 def_r; def_r.x = 0; def_r.y = 0; def_r.z = 0; def_r.w = 1;
-        translates.resize(size, def_t);
-        rotates.resize(size, def_r);
-
-        btCompoundShape* compound = new btCompoundShape();
-        for (int i = 0; i < size; i++) {
-			compound->addChildShape(btTransform(convertQuat(rotates[i]), convertV3(translates[i])), child_shapes[i]->shape);
-		}
-        shape = compound;
-    }
+    CollisionShape(btCollisionShape* shape, Amino::Array<Amino::Ptr<CollisionShape>> child_shapes)
+        : shape(shape), child_shapes(child_shapes) {}
 
     ~CollisionShape() {
         delete shape;
         delete mesh;
     }
-
-    //TODO: convert this to operator
     void setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation) {
+        //TODO: convert this to operator
         if (index >= child_shapes.size())
             return;
 
@@ -289,105 +230,191 @@ public:
 namespace Bullet {
 
     namespace Collision {
+
         void plane_collision(const Bifrost::Math::float3& normal, const float plane_constant, Amino::Ptr<CollisionShape>& collision_shape) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(normal, plane_constant);
+
+            auto* shape = new btStaticPlaneShape(convertV3(normal), plane_constant);
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape);
+
         }
 
 
         void box_collision(const Bifrost::Math::float3& extents, Amino::Ptr<CollisionShape>& collision_shape) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(extents);
+
+            auto* shape = new btBoxShape(convertV3(extents));
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape);
+
         }
 
 
         void sphere_collision(const float radius, Amino::Ptr<CollisionShape>& collision_shape) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(radius);
+
+            auto* shape = new btSphereShape(radius);
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape);
+
         }
 
 
-        void point_cloud_collision(
-            const Amino::Array<Bifrost::Math::float3>& points,
-            Amino::Ptr<CollisionShape>& collision_shape
-        ) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(points);
+        void point_cloud_collision(const Amino::Array<Bifrost::Math::float3>& points, Amino::Ptr<CollisionShape>& collision_shape) {
+
+            btConvexHullShape* shape = new btConvexHullShape();
+            for (int i = 0; i < points.size(); i++) {
+                shape->addPoint(convertV3(points[i]));
+            }
+            shape->optimizeConvexHull(); // Are there situations where this shouldn't be called?
+
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape);
+
         }
 
 
-        void mesh_collision(
-            const Amino::Array<Bifrost::Math::float3x3>& triangles,
-            const bool use_bvh,
-            Amino::Ptr<CollisionShape>& collision_shape
-        ) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(triangles, use_bvh);
+        void mesh_collision(const Amino::Array<Bifrost::Math::float3x3>& triangles, const bool use_bvh, Amino::Ptr<CollisionShape>& collision_shape) {
+
+            auto* mesh = new btTriangleMesh();
+            for (int i = 0; i < triangles.size(); i++) {
+                mesh->addTriangle(convertV3(triangles[i].c0), convertV3(triangles[i].c1), convertV3(triangles[i].c2));
+            }
+
+            if (use_bvh) {
+                auto* shape = new btBvhTriangleMeshShape(mesh, true);
+                collision_shape = Amino::newClassPtr<CollisionShape>(shape, mesh);
+            }
+            else {
+                auto* shape = new btGImpactMeshShape(mesh);
+                shape->updateBound();
+                collision_shape = Amino::newClassPtr<CollisionShape>(shape, mesh);
+            }
+
         }
 
 
         void compound_collision(
-            const Amino::Array<Amino::Ptr<CollisionShape>>& child_shapes,
-            const Amino::Array<Bifrost::Math::float3>& translates,
-            const Amino::Array<Bifrost::Math::float4>& rotates,
+            const Amino::Array<Amino::Ptr<CollisionShape>>& child_shapes, Amino::Array<Bifrost::Math::float3>& translates, Amino::Array<Bifrost::Math::float4>& rotates,
             Amino::Ptr<CollisionShape>& collision_shape
         ) {
-            collision_shape = Amino::newClassPtr<CollisionShape>(child_shapes, translates, rotates);
+
+            int size = child_shapes.size();
+            Bifrost::Math::float3 def_t; def_t.x = 0; def_t.y = 0; def_t.z = 0;
+            Bifrost::Math::float4 def_r; def_r.x = 0; def_r.y = 0; def_r.z = 0; def_r.w = 1;
+            translates.resize(size, def_t);
+            rotates.resize(size, def_r);
+
+            btCompoundShape* shape = new btCompoundShape();
+            for (int i = 0; i < size; i++) {
+                shape->addChildShape(btTransform(convertQuat(rotates[i]), convertV3(translates[i])), child_shapes[i]->shape);
+            }
+
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape, child_shapes);
+
         }
     } // Collision
 
 
 
     namespace Constrain {
+
         void constrain_fixed(
             const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a,
             const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b,
             const float& break_theshold, Amino::Ptr<Constraint>& constraint
         ) {
+
             btTransform frame_a(convertQuat(orient_a), convertV3(pivot_a));
             btTransform frame_b(convertQuat(orient_b), convertV3(pivot_b));
             constraint = Amino::newClassPtr<Constraint>(rigid_body_a, frame_a, rigid_body_b, frame_b, break_theshold);
+
         };
 
         void constrain_6dof_spring(
             const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a,
             const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b,
-            const Bifrost::Math::float3& linear_spring_stiffness, const Bifrost::Math::float3& linear_spring_damp,
+            const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
+            const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping,
+            const Limits& linear_limits, const Limits& angular_limits,
             const float& break_theshold, Amino::Ptr<Constraint>& constraint
         ) {
             btTransform frame_a(convertQuat(orient_a), convertV3(pivot_a));
             btTransform frame_b(convertQuat(orient_b), convertV3(pivot_b));
-            btGeneric6DofSpringConstraint* bt_con = new btGeneric6DofSpringConstraint(*rigid_body_a->body, *rigid_body_b->body, frame_a, frame_b, true);
+            btGeneric6DofSpring2Constraint* bt_con = new btGeneric6DofSpring2Constraint(*rigid_body_a->body, *rigid_body_b->body, frame_a, frame_b);
 
-            bt_con->setBreakingImpulseThreshold(break_theshold);
+            if (break_theshold < 0)
+                bt_con->setBreakingImpulseThreshold(BIG_FLOAT);
+            else
+                bt_con->setBreakingImpulseThreshold(break_theshold);
 
-            bt_con->setAngularLowerLimit(btVector3(-0.26, -0.26, -0.26));
-            bt_con->setAngularUpperLimit(btVector3(0.26, 0.26, 0.26));
+            // Limits
+            if (linear_limits.limit.x)
+				bt_con->setLimit(0, linear_limits.min.x, linear_limits.max.x);
+			else
+                bt_con->setLimit(0, -BIG_FLOAT, BIG_FLOAT);
 
-            bt_con->setLinearLowerLimit(btVector3(-1, -1, -1));
-            bt_con->setLinearUpperLimit(btVector3(1, 1, 1));
+            if (linear_limits.limit.y)
+                bt_con->setLimit(1, linear_limits.min.y, linear_limits.max.y);
+            else
+                bt_con->setLimit(1, -BIG_FLOAT, BIG_FLOAT);
 
-            if (linear_spring_stiffness.x > 0) {
+            if (linear_limits.limit.z)
+				bt_con->setLimit(2, linear_limits.min.z, linear_limits.max.z);
+			else
+				bt_con->setLimit(2, -BIG_FLOAT, BIG_FLOAT);
+
+            if (angular_limits.limit.x)
+				bt_con->setLimit(3, angular_limits.min.x, angular_limits.max.x);
+			else
+                bt_con->setLimit(3, -BIG_FLOAT, BIG_FLOAT);
+
+			if (angular_limits.limit.y)
+				bt_con->setLimit(4, angular_limits.min.y, angular_limits.max.y);
+			else
+				bt_con->setLimit(4, -BIG_FLOAT, BIG_FLOAT);
+
+            if (angular_limits.limit.z)
+                bt_con->setLimit(5, angular_limits.min.z, angular_limits.max.z);
+            else
+                bt_con->setLimit(5, -BIG_FLOAT, BIG_FLOAT);
+
+            // Springs
+            if (linear_stiffness.x > 0) {
                 bt_con->enableSpring(0, true);
-                bt_con->setStiffness(0, linear_spring_stiffness.x);
-                bt_con->enableSpring(3, true);
-                bt_con->setStiffness(3, linear_spring_stiffness.x);
+                bt_con->setStiffness(0, linear_stiffness.x);
+                bt_con->setDamping(0, linear_damping.x);
             }
-            if (linear_spring_stiffness.y > 0) {
-	            bt_con->enableSpring(1, true);
-	            bt_con->setStiffness(1, linear_spring_stiffness.y);
-                bt_con->enableSpring(4, true);
-                bt_con->setStiffness(4, linear_spring_stiffness.y);
-            }
-            if (linear_spring_stiffness.z > 0) {
+            else bt_con->enableSpring(0, false);
+
+            if (linear_stiffness.y > 0) {
+				bt_con->enableSpring(1, true);
+				bt_con->setStiffness(1, linear_stiffness.y);
+				bt_con->setDamping(1, linear_damping.y);
+			}
+            else bt_con->enableSpring(1, false);
+
+            if (linear_stiffness.z > 0) {
                 bt_con->enableSpring(2, true);
-                bt_con->setStiffness(2, linear_spring_stiffness.z);
-                bt_con->enableSpring(5, true);
-                bt_con->setStiffness(5, linear_spring_stiffness.z);
+                bt_con->setStiffness(2, linear_stiffness.z);
+                bt_con->setDamping(2, linear_damping.z);
             }
-            bt_con->setDamping(0, linear_spring_damp.x);
-            bt_con->setDamping(1, linear_spring_damp.y);
-            bt_con->setDamping(2, linear_spring_damp.z);
-            bt_con->setDamping(3, linear_spring_damp.x);
-            bt_con->setDamping(4, linear_spring_damp.y);
-            bt_con->setDamping(5, linear_spring_damp.z);
-            bt_con->setEquilibriumPoint();
-            //bt_con->setAxis(btVector3(-1, 0, 0), btVector3(1, 0, 0));
+            else bt_con->enableSpring(2, false);
+
+            if (angular_stiffness.x > 0) {
+				bt_con->enableSpring(3, true);
+				bt_con->setStiffness(3, angular_stiffness.x);
+				bt_con->setDamping(3, angular_damping.x);
+			}
+            else bt_con->enableSpring(3, false);
+
+            if (angular_stiffness.y > 0) {
+                bt_con->enableSpring(4, true);
+                bt_con->setStiffness(4, angular_stiffness.x);
+                bt_con->setDamping(4, angular_damping.x);
+            }
+            else bt_con->enableSpring(4, false);
+
+            if (angular_stiffness.z > 0) {
+                bt_con->enableSpring(5, true);
+                bt_con->setStiffness(5, angular_stiffness.x);
+                bt_con->setDamping(5, angular_damping.x);
+            }
+		    else bt_con->enableSpring(5, false);
 
             constraint = Amino::newClassPtr<Constraint>(bt_con, *(rigid_body_a->scene));
 
