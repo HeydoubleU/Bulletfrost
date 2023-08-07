@@ -1,16 +1,13 @@
+
 #include "Bulletfrost.h"
 #include <btBulletDynamicsCommon.h>
 #include "BulletCollision/Gimpact/btGImpactShape.h"
 #include <Amino/Cpp/ClassDefine.h>
-#include <string>
-#include <vector>
 
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::Collision::CollisionShape);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::Constrain::Constraint);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::BulletScene);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::RigidBody);
-
-#define BIG_FLOAT 1e30f
 
 
 // Utility
@@ -112,13 +109,6 @@ public:
     ~BulletScene() {
         *ref_count -= 1;
         if (*ref_count <= 0) {
-
-            /*auto objArray = dynamicsWorld->getCollisionObjectArray();
-            for (int i = 0; i < dynamicsWorld->getNumCollisionObjects(); i++) {
-                RigidBody* bif_rb = (Bullet::RigidBody*)(objArray[i]->getUserPointer());
-                bif_rb->scene = nullptr;
-			}*/
-
             delete dynamicsWorld;
             delete broadphase;
             delete collisionConfig;
@@ -130,100 +120,102 @@ public:
 };
 
 
-class Bullet::RigidBody {
-public:
-    btRigidBody* body;
-    Amino::Ptr<Collision::CollisionShape> collision_shape;
-    BulletScene* scene = nullptr;
+void Bullet::RigidBody::bodyFromData() {
+    btVector3 inertia(0, 0, 0);
+    rb_data.collision_shape->shape->calculateLocalInertia(rb_data.mass, inertia);
+    btDefaultMotionState* motionState = new btDefaultMotionState(btTransform(convertQuat(rb_data.orientation), convertV3(rb_data.position)));
+    body = new btRigidBody(rb_data.mass, motionState, rb_data.collision_shape->shape, inertia);
 
-    void bodyFromData(const RigidBodyData& rb_data) {
-        collision_shape = rb_data.collision_shape;
+    body->setLinearVelocity(convertV3(rb_data.linear_velocity));
+    body->setAngularVelocity(convertV3(rb_data.angular_velocity));
+    body->setFriction(rb_data.friction);
+    body->setRestitution(rb_data.restitution);
+    body->setDamping(rb_data.linear_damping, rb_data.angular_damping);
+}
 
-        btVector3 inertia(0, 0, 0);
-        collision_shape->shape->calculateLocalInertia(rb_data.mass, inertia);
-        btDefaultMotionState* motionState = new btDefaultMotionState(btTransform(convertQuat(rb_data.orientation), convertV3(rb_data.position)));
-        body = new btRigidBody(rb_data.mass, motionState, collision_shape->shape, inertia);
+// Copy Constructor not thread safe, it might be without add to world idk.
+Bullet::RigidBody::RigidBody(const RigidBody& input) : rb_data(input.rb_data) {
+    is_copy = true;
+    bodyFromData();
+    scene = new BulletScene(*input.scene);
+    //scene->dynamicsWorld->addRigidBody(body);
+}
 
-        body->setLinearVelocity(convertV3(rb_data.linear_velocity));
-        body->setAngularVelocity(convertV3(rb_data.angular_velocity));
-        body->setFriction(rb_data.friction);
-        body->setRestitution(rb_data.restitution);
-        body->setDamping(rb_data.linear_damping, rb_data.angular_damping);
+Bullet::RigidBody::RigidBody(const RigidBodyData& rb_data, const BulletScene& in_scene) : rb_data(rb_data) {
+    bodyFromData();
+    scene = new BulletScene(in_scene);
+    scene->dynamicsWorld->addRigidBody(body);
+}
+
+Bullet::RigidBody::~RigidBody() {
+    if (scene) {
+        scene->dynamicsWorld->removeRigidBody(body);
+        delete scene;
     }
 
-    RigidBody() {
-        RigidBodyData rb_data;
-        rb_data.orientation.w = 1;
-        bodyFromData(rb_data);
+    if (body) {
+        delete body->getMotionState();
+        delete body;
     }
-
-    RigidBody(RigidBodyData rb_data) {
-        bodyFromData(rb_data);
-    }
-
-    RigidBody(const RigidBodyData& rb_data, const BulletScene& in_scene) {
-        bodyFromData(rb_data);
-        scene = new BulletScene(in_scene);
-        scene->dynamicsWorld->addRigidBody(body);
-    }
-
-    RigidBody(const RigidBody& input) {  // bad bad bad bad bad bad bad
-        body = input.body;
-        collision_shape = input.collision_shape;
-        scene = input.scene;
-    }
-
-    ~RigidBody() {
-        if (scene) {
-            scene->dynamicsWorld->removeRigidBody(body);
-            delete scene;
-        }
-
-        if (body) {
-            delete body->getMotionState();
-            delete body;
-        }
         
-    }
+}
 
-};
+void Bullet::RigidBody::setDamping(float lin_damp, float ang_damp) {
+    rb_data.linear_damping = lin_damp;
+    rb_data.angular_damping = ang_damp;
+    body->setDamping(rb_data.linear_damping, rb_data.angular_damping);
+}
 
 
 
-class Bullet::Constrain::Constraint {
-public:
-    btTypedConstraint* constraint = nullptr;
-    BulletScene* scene = nullptr;
-
-    Constraint() {
-    }
-
-    Constraint(const Constraint& input) {
-    }
-
-    Constraint(btTypedConstraint* constraint, const BulletScene& in_scene) : constraint(constraint) {
-        scene = new BulletScene(in_scene);
-        scene->dynamicsWorld->addConstraint(constraint);
-    }
-
-    Constraint(Amino::Ptr<RigidBody> rb_a, btTransform frame_a,  Amino::Ptr<RigidBody> rb_b, btTransform frame_b, const float& break_threshold) {
-        constraint = new btFixedConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b);
-        constraint->setBreakingImpulseThreshold(break_threshold);
-        if (rb_a->scene->dynamicsWorld == rb_b->scene->dynamicsWorld) {
-            scene = new BulletScene(*(rb_a->scene));
-            scene->dynamicsWorld->addConstraint(constraint);
+Bullet::Constrain::Constraint::Constraint(
+    Amino::Ptr<RigidBody> rb_a, Amino::Ptr<RigidBody> rb_b, const ConstraintType& type,
+    Bifrost::Math::float3 pivot_a, Bifrost::Math::float3 pivot_b, Bifrost::Math::float4 orient_b, Bifrost::Math::float4 orient_a
+) : type(type), pivot_a(pivot_a), pivot_b(pivot_b), orient_a(orient_a), orient_b(orient_b)
+{
+    if (type == ConstraintType::Point) {
+        constraint = new btPoint2PointConstraint(*rb_a->body, *rb_b->body, convertV3(pivot_a), convertV3(pivot_b));
+	}
+    else {
+        btTransform frame_a(convertQuat(orient_a), convertV3(pivot_a));
+        btTransform frame_b(convertQuat(orient_b), convertV3(pivot_b));
+        switch (type) {
+        case ConstraintType::Point:
+            constraint = new btPoint2PointConstraint(*rb_a->body, *rb_b->body, convertV3(pivot_a), convertV3(pivot_b));
+            break;
+        case ConstraintType::Fixed:
+            constraint = new btFixedConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b);
+            break;
+        case ConstraintType::Hinge:
+            constraint = new btHingeConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b);
+            break;
+        case ConstraintType::SixDOF:
+            constraint = new btGeneric6DofConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b, true);
+            break;
+        case ConstraintType::SixDOFMotorized:
+            constraint = new btGeneric6DofSpring2Constraint(*rb_a->body, *rb_b->body, frame_a, frame_b);
+            break;
+        case ConstraintType::Slider:
+            constraint = new btSliderConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b, true);
+            break;
+        case ConstraintType::Cone:
+            constraint = new btConeTwistConstraint(*rb_a->body, *rb_b->body, frame_a, frame_b);
+            break;
         }
+    }    
+
+    scene = new BulletScene(*rb_a->scene);
+    scene->dynamicsWorld->addConstraint(constraint);
+}
+
+Bullet::Constrain::Constraint::~Constraint() {
+    if (scene) {
+        scene->dynamicsWorld->removeConstraint(constraint);
+        delete scene;
     }
 
-    ~Constraint() {
-        if (scene) {
-            scene->dynamicsWorld->removeConstraint(constraint);
-            delete scene;
-        }
-
-        delete constraint;
-    }
-};
+    delete constraint;
+}
 
 
 
@@ -310,120 +302,6 @@ namespace Bullet {
     } // Collision
 
 
-
-    namespace Constrain {
-
-        void constrain_fixed(
-            const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a,
-            const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b,
-            const float& break_theshold, Amino::Ptr<Constraint>& constraint
-        ) {
-
-            btTransform frame_a(convertQuat(orient_a), convertV3(pivot_a));
-            btTransform frame_b(convertQuat(orient_b), convertV3(pivot_b));
-            constraint = Amino::newClassPtr<Constraint>(rigid_body_a, frame_a, rigid_body_b, frame_b, break_theshold);
-
-        };
-
-        void constrain_6dof_spring(
-            const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a,
-            const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b,
-            const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
-            const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping,
-            const Limits& linear_limits, const Limits& angular_limits,
-            const float& break_theshold, Amino::Ptr<Constraint>& constraint
-        ) {
-            btTransform frame_a(convertQuat(orient_a), convertV3(pivot_a));
-            btTransform frame_b(convertQuat(orient_b), convertV3(pivot_b));
-            btGeneric6DofSpring2Constraint* bt_con = new btGeneric6DofSpring2Constraint(*rigid_body_a->body, *rigid_body_b->body, frame_a, frame_b);
-
-            if (break_theshold < 0)
-                bt_con->setBreakingImpulseThreshold(BIG_FLOAT);
-            else
-                bt_con->setBreakingImpulseThreshold(break_theshold);
-
-            // Limits
-            if (linear_limits.limit.x)
-				bt_con->setLimit(0, linear_limits.min.x, linear_limits.max.x);
-			else
-                bt_con->setLimit(0, -BIG_FLOAT, BIG_FLOAT);
-
-            if (linear_limits.limit.y)
-                bt_con->setLimit(1, linear_limits.min.y, linear_limits.max.y);
-            else
-                bt_con->setLimit(1, -BIG_FLOAT, BIG_FLOAT);
-
-            if (linear_limits.limit.z)
-				bt_con->setLimit(2, linear_limits.min.z, linear_limits.max.z);
-			else
-				bt_con->setLimit(2, -BIG_FLOAT, BIG_FLOAT);
-
-            if (angular_limits.limit.x)
-				bt_con->setLimit(3, angular_limits.min.x, angular_limits.max.x);
-			else
-                bt_con->setLimit(3, -BIG_FLOAT, BIG_FLOAT);
-
-			if (angular_limits.limit.y)
-				bt_con->setLimit(4, angular_limits.min.y, angular_limits.max.y);
-			else
-				bt_con->setLimit(4, -BIG_FLOAT, BIG_FLOAT);
-
-            if (angular_limits.limit.z)
-                bt_con->setLimit(5, angular_limits.min.z, angular_limits.max.z);
-            else
-                bt_con->setLimit(5, -BIG_FLOAT, BIG_FLOAT);
-
-            // Springs
-            if (linear_stiffness.x > 0) {
-                bt_con->enableSpring(0, true);
-                bt_con->setStiffness(0, linear_stiffness.x);
-                bt_con->setDamping(0, linear_damping.x);
-            }
-            else bt_con->enableSpring(0, false);
-
-            if (linear_stiffness.y > 0) {
-				bt_con->enableSpring(1, true);
-				bt_con->setStiffness(1, linear_stiffness.y);
-				bt_con->setDamping(1, linear_damping.y);
-			}
-            else bt_con->enableSpring(1, false);
-
-            if (linear_stiffness.z > 0) {
-                bt_con->enableSpring(2, true);
-                bt_con->setStiffness(2, linear_stiffness.z);
-                bt_con->setDamping(2, linear_damping.z);
-            }
-            else bt_con->enableSpring(2, false);
-
-            if (angular_stiffness.x > 0) {
-				bt_con->enableSpring(3, true);
-				bt_con->setStiffness(3, angular_stiffness.x);
-				bt_con->setDamping(3, angular_damping.x);
-			}
-            else bt_con->enableSpring(3, false);
-
-            if (angular_stiffness.y > 0) {
-                bt_con->enableSpring(4, true);
-                bt_con->setStiffness(4, angular_stiffness.x);
-                bt_con->setDamping(4, angular_damping.x);
-            }
-            else bt_con->enableSpring(4, false);
-
-            if (angular_stiffness.z > 0) {
-                bt_con->enableSpring(5, true);
-                bt_con->setStiffness(5, angular_stiffness.x);
-                bt_con->setDamping(5, angular_damping.x);
-            }
-		    else bt_con->enableSpring(5, false);
-
-            constraint = Amino::newClassPtr<Constraint>(bt_con, *(rigid_body_a->scene));
-
-        };
-
-    } // Constrain
-
-
-
     void create_bullet_scene(Amino::Ptr<BulletScene>& bullet_scene) {
         bullet_scene = Amino::newClassPtr<BulletScene>();
     }
@@ -446,31 +324,5 @@ namespace Bullet {
         }  
         rigid_bodies = Amino::newClassPtr<Amino::Array<Amino::Ptr<RigidBody>>>(new_array);
     }
-
-
-    void create_rigid_body(const RigidBodyData& rigid_body_data, Amino::Ptr<RigidBody>& rigid_body) {
-        rigid_body = Amino::newClassPtr<RigidBody>(rigid_body_data);
-	}
-
-
-    void remove_rigid_bodies(BulletScene& bullet_scene, const Amino::Array<Amino::Ptr<RigidBody>>& rigid_bodies) {
-        for (const Amino::Ptr<RigidBody>& rigid_body : rigid_bodies) {
-			bullet_scene.dynamicsWorld->removeRigidBody(rigid_body->body);
-            //rigid_body->scene = nullptr;
-		}
-    }
-
-
-    void rigid_body_transform(const RigidBody& rigid_body, Bifrost::Math::float3& position, Bifrost::Math::float4& orientation) {
-        btTransform trans;
-        rigid_body.body->getMotionState()->getWorldTransform(trans);
-        position = convertV3(trans.getOrigin());
-        orientation = convertQuat(trans.getRotation());
-    }
-
-
-    void body_count(const BulletScene& bullet_scene, unsigned int& count) {
-		count = bullet_scene.dynamicsWorld->getNumCollisionObjects();
-	}
 
 } // Bullet

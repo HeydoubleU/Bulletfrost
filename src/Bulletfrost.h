@@ -1,6 +1,11 @@
+/*
+* This is the main module for Bulletfrost. It contains all class, enum, and struct declarations, as well as BulletScene related operators.
+*/
 
 #ifndef BULLETFROST_H
 #define BULLETFROST_H
+constexpr float BIG_FLOAT = 1e30f;
+constexpr float PI = 3.14159265358979323846f;
 
 #include "BulletfrostExport.h"
 #include <Amino/Cpp/Annotate.h>
@@ -12,14 +17,138 @@
 #include <Bifrost/Object/Object.h>
 #include <Bifrost/Math/Types.h>
 
+
+class btVector3;
+class btQuaternion;
+class btTransform;
+class btTypedConstraint;
+class btRigidBody;
+
+
+btVector3 convertV3(const Bifrost::Math::float3 vec);
+Bifrost::Math::float3 convertV3(const btVector3 vec);
+btQuaternion convertQuat(const Bifrost::Math::float4 vec);
+Bifrost::Math::float4 convertQuat(const btQuaternion vec);
+
+
+// Classes, enums, and structs
 namespace Bullet {
-
-    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody;
-    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL BulletScene;
-
 
     namespace Collision {
         class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL CollisionShape;
+    } // Collision
+
+
+    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL BulletScene;
+
+    struct AMINO_ANNOTATE("Amino::Struct") RigidBodyData
+    {
+        Amino::Ptr<Collision::CollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
+        Bifrost::Math::float3 position;
+        Bifrost::Math::float4 orientation;
+        float mass;
+        float friction;
+        float restitution;
+        Bifrost::Math::float3 linear_velocity;
+        Bifrost::Math::float3 angular_velocity;
+        float linear_damping;
+        float angular_damping;
+
+        RigidBodyData() : mass(1.0f), friction(0.5f), restitution(0.5f)//, linear_damping(0.1f), angular_damping(0.1f)
+        {
+            orientation.w = 1.0f;
+        }
+    }; 
+
+    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody {
+    public:
+        btRigidBody* body;
+        BulletScene* scene = nullptr;
+        RigidBodyData rb_data;
+        bool is_copy = false; // for debugging
+
+        void bodyFromData();
+
+        RigidBody() {
+            rb_data = RigidBodyData();
+            rb_data.orientation.w = 1;
+            bodyFromData();
+        }
+
+        RigidBody(RigidBodyData rb_data) : rb_data(rb_data) {
+            bodyFromData();
+        }
+
+        RigidBody(const RigidBodyData & rb_data, const BulletScene & in_scene);
+
+        RigidBody(const RigidBody& input); // Copy Constructor not thread safe
+
+        ~RigidBody();
+
+        void setDamping(float lin_damp, float ang_damp);
+    };
+
+
+    namespace Constrain {
+
+        struct AMINO_ANNOTATE("Amino::Struct") Limits
+        {
+            Bifrost::Math::bool3 enable;
+            Bifrost::Math::float3 max;
+            Bifrost::Math::float3 min;
+        };
+
+        struct AMINO_ANNOTATE("Amino::Struct") Motors
+        {
+            Bifrost::Math::float3 force;
+            Bifrost::Math::float3 velocity;
+            Bifrost::Math::bool3 servo;
+            Bifrost::Math::float3 target;
+        };
+
+        enum class AMINO_ANNOTATE("Amino::Enum") ConstraintType : int
+        {
+            Fixed = 0,
+                Point = 1,
+                Hinge = 2,
+                Cone = 3,
+                Slider = 4,
+                SixDOF = 5,
+                SixDOFMotorized = 6,
+        };
+
+        class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL Constraint {
+        public:
+            btTypedConstraint* constraint = nullptr;
+            BulletScene* scene = nullptr;
+            ConstraintType type;
+            Bifrost::Math::float3 pivot_a;
+            Bifrost::Math::float3 pivot_b;
+            Bifrost::Math::float4 orient_a;
+            Bifrost::Math::float4 orient_b;
+
+            Constraint() : type(ConstraintType::Fixed) {}
+
+            Constraint(const Constraint & input) : type(ConstraintType::Fixed) {}
+
+            Constraint(
+                Amino::Ptr<RigidBody> rb_a, Amino::Ptr<RigidBody> rb_b, const ConstraintType & type,
+                Bifrost::Math::float3 pivot_a, Bifrost::Math::float3 pivot_b, Bifrost::Math::float4 orient_b, Bifrost::Math::float4 orient_a
+            );
+
+            ~Constraint();
+
+        };
+
+    } // Constrain
+
+} // Bullet
+
+
+// Operators
+namespace Bullet {
+
+    namespace Collision {
 
         BULLETFROST_DECL
             void plane_collision(
@@ -69,57 +198,10 @@ namespace Bullet {
 
     } // Collision
 
-
-
-    namespace Constrain {
-        struct AMINO_ANNOTATE("Amino::Struct") Limits
-        {
-            Bifrost::Math::bool3 limit;
-            Bifrost::Math::float3 max;
-            Bifrost::Math::float3 min;
-        };
-
-        class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL Constraint;
-
-        BULLETFROST_DECL
-            void constrain_fixed(
-                const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=-1.0f"), Amino::Ptr<Constraint>& constraint
-			)
-			AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void constrain_6dof_spring(
-                const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b AMINO_ANNOTATE("Amino::Port value={w:1.0f}"),
-                const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
-                const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping,
-                const Limits& linear_limits, const Limits& angular_limits,
-                const float& break_theshold AMINO_ANNOTATE("Amino::Port value=-1.0f"), Amino::Ptr<Constraint>& constraint
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-    } // Constrain
-
-
-    struct AMINO_ANNOTATE("Amino::Struct") RigidBodyData
-    {
-        Amino::Ptr<Collision::CollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
-        Bifrost::Math::float3 position;
-        Bifrost::Math::float4 orientation;
-        float mass;
-        float friction;
-        float restitution;
-        Bifrost::Math::float3 linear_velocity;
-        Bifrost::Math::float3 angular_velocity;
-        float linear_damping;
-        float angular_damping;
-    };
     
     BULLETFROST_DECL
         void create_bullet_scene(Amino::Ptr<BulletScene>& bullet_scene)
-            AMINO_ANNOTATE("Amino::Node");
+        AMINO_ANNOTATE("Amino::Node");
 
     BULLETFROST_DECL
         void set_gravity(
@@ -136,36 +218,10 @@ namespace Bullet {
         AMINO_ANNOTATE("Amino::Node");  
 
     BULLETFROST_DECL
-        void set_collision_shapes(
-            BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
-            const Amino::Array<Amino::Ptr<Collision::CollisionShape>>& collision_shapes AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true")
-        )
-        AMINO_ANNOTATE("Amino::Node");
-
-    BULLETFROST_DECL
         void add_rigid_bodies(
             const BulletScene& bullet_scene,
             const Amino::Array<RigidBodyData>& rigid_body_data AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true"),
             Amino::Ptr<Amino::Array<Amino::Ptr<RigidBody>>>& rigid_bodies
-        )
-        AMINO_ANNOTATE("Amino::Node");
-
-    BULLETFROST_DECL
-        void create_rigid_body(const RigidBodyData& rigid_body_data, Amino::Ptr<RigidBody>& rigid_body)
-        AMINO_ANNOTATE("Amino::Node");
-
-    BULLETFROST_DECL
-        void remove_rigid_bodies(
-            BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
-            const Amino::Array<Amino::Ptr<RigidBody>>& rigid_bodies
-        )
-        AMINO_ANNOTATE("Amino::Node");
-
-    BULLETFROST_DECL
-        void rigid_body_transform(
-            const RigidBody& rigid_body,
-            Bifrost::Math::float3& position,
-            Bifrost::Math::float4& orientation
         )
         AMINO_ANNOTATE("Amino::Node");
 
