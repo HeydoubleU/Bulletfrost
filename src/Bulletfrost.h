@@ -23,6 +23,8 @@ class btQuaternion;
 class btTransform;
 class btTypedConstraint;
 class btRigidBody;
+class btCollisionShape;
+class btTriangleMesh;
 
 
 btVector3 convertV3(const Bifrost::Math::float3 vec);
@@ -35,48 +37,73 @@ Bifrost::Math::float4 convertQuat(const btQuaternion vec);
 namespace Bullet {
 
     namespace Collision {
-        class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL CollisionShape;
+        class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL CollisionShape {
+        public:
+            btCollisionShape* shape;
+            btTriangleMesh* mesh = nullptr;
+            Amino::Array<Amino::Ptr<CollisionShape>> child_shapes;
+
+            CollisionShape();
+
+            CollisionShape(const CollisionShape& input) {
+                // TODO: fix this copy constructor, it is problem but I don't think it will get called normally.
+                shape = input.shape;
+                mesh = input.mesh;
+                child_shapes = input.child_shapes;
+            }
+
+            CollisionShape(btCollisionShape* shape, btTriangleMesh* mesh = nullptr) : shape(shape), mesh(mesh) {}
+
+            CollisionShape(btCollisionShape* shape, Amino::Array<Amino::Ptr<CollisionShape>> child_shapes) : shape(shape), child_shapes(child_shapes) {}
+
+            ~CollisionShape();
+
+            void setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation);
+        };
     } // Collision
 
 
     class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL BulletScene;
+
+    struct AMINO_ANNOTATE("Amino::Struct") PhysicalMaterial
+    {
+        float mass;
+		float friction;
+		float restitution;
+        float linear_damping;
+        float angular_damping;
+
+        PhysicalMaterial() : mass(1.0f), friction(0.5f), restitution(0.5f), linear_damping(0.1f), angular_damping(0.1f) {}
+	};
 
     struct AMINO_ANNOTATE("Amino::Struct") RigidBodyData
     {
         Amino::Ptr<Collision::CollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
         Bifrost::Math::float3 position;
         Bifrost::Math::float4 orientation;
-        float mass;
-        float friction;
-        float restitution;
         Bifrost::Math::float3 linear_velocity;
         Bifrost::Math::float3 angular_velocity;
-        float linear_damping;
-        float angular_damping;
+        PhysicalMaterial physics_material;
 
-        RigidBodyData() : mass(1.0f), friction(0.5f), restitution(0.5f)//, linear_damping(0.1f), angular_damping(0.1f)
-        {
-            orientation.w = 1.0f;
-        }
+        RigidBodyData() { orientation.w = 1.0f; }
     }; 
 
     class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody {
     public:
         btRigidBody* body;
         BulletScene* scene = nullptr;
-        RigidBodyData rb_data;
+        Amino::Ptr<Collision::CollisionShape> collision_shape;
+        PhysicalMaterial phy_mat;
         bool is_copy = false; // for debugging
 
-        void bodyFromData();
+        void bodyFromData(const RigidBodyData& rb_data);
 
         RigidBody() {
-            rb_data = RigidBodyData();
-            rb_data.orientation.w = 1;
-            bodyFromData();
+            bodyFromData(RigidBodyData());
         }
 
-        RigidBody(RigidBodyData rb_data) : rb_data(rb_data) {
-            bodyFromData();
+        RigidBody(const RigidBodyData & rb_data) {
+            bodyFromData(rb_data);
         }
 
         RigidBody(const RigidBodyData & rb_data, const BulletScene & in_scene);
@@ -86,6 +113,12 @@ namespace Bullet {
         ~RigidBody();
 
         void setDamping(float lin_damp, float ang_damp);
+
+        void setFriction(float friction);
+
+        void setRestitution(float restitution);
+
+        void setPhysicsMaterial(const PhysicalMaterial& mat);
     };
 
 
@@ -109,12 +142,12 @@ namespace Bullet {
         enum class AMINO_ANNOTATE("Amino::Enum") ConstraintType : int
         {
             Fixed = 0,
-                Point = 1,
-                Hinge = 2,
-                Cone = 3,
-                Slider = 4,
-                SixDOF = 5,
-                SixDOFMotorized = 6,
+            Point = 1,
+            Hinge = 2,
+            Cone = 3,
+            Slider = 4,
+            SixDOF = 5,
+            SixDOFMotorized = 6,
         };
 
         class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL Constraint {

@@ -40,42 +40,23 @@ Bifrost::Math::float4 convertQuat(const btQuaternion vec) {
 
 
 //Classes
-class Bullet::Collision::CollisionShape {
-public:
-    btCollisionShape* shape;
-    btTriangleMesh* mesh = nullptr;
-    Amino::Array<Amino::Ptr<CollisionShape>> child_shapes;
+Bullet::Collision::CollisionShape::CollisionShape() {
+	shape = new btEmptyShape();
+}
 
-    CollisionShape() {
-		shape = new btEmptyShape();
-	}
+Bullet::Collision::CollisionShape::~CollisionShape() {
+	delete shape;
+	delete mesh;
+}
 
-    CollisionShape(const CollisionShape& input) {
-        // TODO: fix this copy constructor, it is problem but I don't think it will get called normally.
-        shape = input.shape;
-        mesh = input.mesh;
-        child_shapes = input.child_shapes;
-    }
+void Bullet::Collision::CollisionShape::setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation) {
+    //TODO: convert this to operator
+    if (index >= child_shapes.size())
+        return;
 
-    CollisionShape(btCollisionShape* shape, btTriangleMesh* mesh = nullptr)
-        : shape(shape), mesh(mesh) {}
-
-    CollisionShape(btCollisionShape* shape, Amino::Array<Amino::Ptr<CollisionShape>> child_shapes)
-        : shape(shape), child_shapes(child_shapes) {}
-
-    ~CollisionShape() {
-        delete shape;
-        delete mesh;
-    }
-    void setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation) {
-        //TODO: convert this to operator
-        if (index >= child_shapes.size())
-            return;
-
-		btCompoundShape* compound = (btCompoundShape*)shape;
-		compound->updateChildTransform(index, btTransform(convertQuat(orientation), convertV3(position)));
-	}
-};
+	btCompoundShape* compound = (btCompoundShape*)shape;
+	compound->updateChildTransform(index, btTransform(convertQuat(orientation), convertV3(position)));
+}
 
 
 class Bullet::BulletScene {
@@ -120,29 +101,32 @@ public:
 };
 
 
-void Bullet::RigidBody::bodyFromData() {
+void Bullet::RigidBody::bodyFromData(const RigidBodyData& rb_data) {
+    collision_shape = rb_data.collision_shape;
+    phy_mat = rb_data.physics_material;
+
     btVector3 inertia(0, 0, 0);
-    rb_data.collision_shape->shape->calculateLocalInertia(rb_data.mass, inertia);
+    collision_shape->shape->calculateLocalInertia(phy_mat.mass, inertia);
     btDefaultMotionState* motionState = new btDefaultMotionState(btTransform(convertQuat(rb_data.orientation), convertV3(rb_data.position)));
-    body = new btRigidBody(rb_data.mass, motionState, rb_data.collision_shape->shape, inertia);
+    body = new btRigidBody(phy_mat.mass, motionState, collision_shape->shape, inertia);
 
     body->setLinearVelocity(convertV3(rb_data.linear_velocity));
     body->setAngularVelocity(convertV3(rb_data.angular_velocity));
-    body->setFriction(rb_data.friction);
-    body->setRestitution(rb_data.restitution);
-    body->setDamping(rb_data.linear_damping, rb_data.angular_damping);
+    body->setFriction(phy_mat.friction);
+    body->setRestitution(phy_mat.restitution);
+    body->setDamping(phy_mat.linear_damping, phy_mat.angular_damping);
 }
 
 // Copy Constructor not thread safe, it might be without add to world idk.
-Bullet::RigidBody::RigidBody(const RigidBody& input) : rb_data(input.rb_data) {
+Bullet::RigidBody::RigidBody(const RigidBody& input) {
     is_copy = true;
-    bodyFromData();
-    scene = new BulletScene(*input.scene);
+    //bodyFromData(input.rb_data);
+    //scene = new BulletScene(*input.scene);
     //scene->dynamicsWorld->addRigidBody(body);
 }
 
-Bullet::RigidBody::RigidBody(const RigidBodyData& rb_data, const BulletScene& in_scene) : rb_data(rb_data) {
-    bodyFromData();
+Bullet::RigidBody::RigidBody(const RigidBodyData& rb_data, const BulletScene& in_scene) {
+    bodyFromData(rb_data);
     scene = new BulletScene(in_scene);
     scene->dynamicsWorld->addRigidBody(body);
 }
@@ -161,9 +145,19 @@ Bullet::RigidBody::~RigidBody() {
 }
 
 void Bullet::RigidBody::setDamping(float lin_damp, float ang_damp) {
-    rb_data.linear_damping = lin_damp;
-    rb_data.angular_damping = ang_damp;
-    body->setDamping(rb_data.linear_damping, rb_data.angular_damping);
+    phy_mat.linear_damping = lin_damp;
+    phy_mat.angular_damping = ang_damp;
+    body->setDamping(phy_mat.linear_damping, phy_mat.angular_damping);
+}
+
+void Bullet::RigidBody::setFriction(float friction) {
+	phy_mat.friction = friction;
+	body->setFriction(phy_mat.friction);
+}
+
+void Bullet::RigidBody::setRestitution(float restitution) {
+	phy_mat.restitution = restitution;
+	body->setRestitution(phy_mat.restitution);
 }
 
 

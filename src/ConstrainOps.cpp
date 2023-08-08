@@ -4,7 +4,7 @@
 
 template <typename T>
 inline void setSixdofLimits(T constr, const Bullet::Constrain::Limits& linear_limits, const Bullet::Constrain::Limits& angular_limits) {
-    // Set constraint limits for SixDOF and SixDOFDynamic constraints
+    // Set constraint limits for SixDOF and SixDOFMororized constraints
 
     if (linear_limits.enable.x)
         constr->setLimit(0, linear_limits.min.x, linear_limits.max.x);
@@ -42,8 +42,7 @@ namespace Bullet {
 
     namespace Constrain {
 
-        // Create constraint
-        void constrain_rigid_bodies(
+        void constrain_rigid_bodies(  // Create constraint
             const ConstraintType& type,
             const Amino::Ptr<RigidBody>& rigid_body_a, const Bifrost::Math::float3& pivot_a, const Bifrost::Math::float4& orient_a,
             const Amino::Ptr<RigidBody>& rigid_body_b, const Bifrost::Math::float3& pivot_b, const Bifrost::Math::float4& orient_b,
@@ -185,6 +184,7 @@ namespace Bullet {
             out_constraint = constraint;
         }
 
+
         void set_constraint_sixdof_springs(
             Amino::Ptr<Constraint>& constraint,
             const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
@@ -217,6 +217,7 @@ namespace Bullet {
             constr->setDamping(5, angular_stiffness.z);
 
         }
+
 
         void set_constraint_sixdof_motors(Amino::Ptr<Constraint>& constraint, const Motors& linear_motors, const Motors& angular_motors)
         {

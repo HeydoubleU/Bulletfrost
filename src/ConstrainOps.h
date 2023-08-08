@@ -24,6 +24,33 @@ namespace Bullet {
             )
             AMINO_ANNOTATE("Amino::Node");
 
+        // SixDOF setters
+        CONSTRAIN_DECL
+            void set_constraint_sixdof_limits(
+                const Amino::Ptr<Constraint>& constraint,
+                const Limits& linear_limits, const Limits& angular_limits,
+                Amino::Ptr<Constraint>& out_constraint
+            )
+            AMINO_ANNOTATE("Amino::Node");
+
+        CONSTRAIN_DECL
+            void set_constraint_sixdof_springs(
+                Amino::Ptr<Constraint>& constraint AMINO_ANNOTATE("Amino::InOut outName=out_constraint"),
+                const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
+                const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping
+            )
+            AMINO_ANNOTATE("Amino::Node");
+
+        CONSTRAIN_DECL
+            void set_constraint_sixdof_motors(
+                Amino::Ptr<Constraint>& constraint AMINO_ANNOTATE("Amino::InOut outName=out_constraint"),
+                const Motors& linear_motors, const Motors& angular_motors
+            )
+            AMINO_ANNOTATE("Amino::Node");
+
+
+        // The following constraint types seem to be neglected or something. Some of their parameters have unexpected or little to no effect.
+        // They may still be useful but Fixed/Point/SixDOF should probably be preferred.
         CONSTRAIN_DECL
             void set_constraint_hinge(
                 Amino::Ptr<Constraint>& constraint AMINO_ANNOTATE("Amino::InOut outName=out_constraint"), const Bifrost::Math::float3& axis,
@@ -48,29 +75,6 @@ namespace Bullet {
             const float& swing_span_a, const float& swing_span_b, const float& twist_span,
             const float& softness, const float& bias, const float& relaxation, const float& damping,
             const bool& motor, const Bifrost::Math::float4& motor_target, const float& motor_impulse
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        CONSTRAIN_DECL
-            void set_constraint_sixdof_limits(
-                const Amino::Ptr<Constraint>& constraint,
-                const Limits& linear_limits, const Limits& angular_limits,
-                Amino::Ptr<Constraint>& out_constraint
-            )
-			AMINO_ANNOTATE("Amino::Node");
-
-        CONSTRAIN_DECL
-            void set_constraint_sixdof_springs(
-                Amino::Ptr<Constraint>& constraint AMINO_ANNOTATE("Amino::InOut outName=out_constraint"),
-                const Bifrost::Math::float3& linear_stiffness, const Bifrost::Math::float3& linear_damping,
-                const Bifrost::Math::float3& angular_stiffness, const Bifrost::Math::float3& angular_damping
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        CONSTRAIN_DECL
-            void set_constraint_sixdof_motors (
-                Amino::Ptr<Constraint>& constraint AMINO_ANNOTATE("Amino::InOut outName=out_constraint"),
-                const Motors& linear_motors, const Motors& angular_motors
             )
             AMINO_ANNOTATE("Amino::Node");
 
