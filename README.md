@@ -30,6 +30,6 @@ BIFROST_LIB_CONFIG_FILES = <existing value>;<..>/Bulletfrost/BulletfrostPackConf
 ```
 
 ## Getting Started
-Documentating compounds is still a todo item, however the library includes a few demo scenes with some explaination of their setup.
+Documenting compounds is still a todo, however the library includes a few demo scenes with some explanation of their setup.
 
 ![ezgif-5-1d2e0c242e](https://github.com/HeydoubleU/Bulletfrost/assets/56705510/eb76773d-ccfd-4acc-be7c-7864b1574776)
