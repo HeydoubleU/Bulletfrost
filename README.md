@@ -10,6 +10,7 @@ Bullet Physics for Bifrost. Created and tested with Bifrost 2.7.1.0 and Maya 202
 This initial release focuses on essentials for rigid body simulations, specifically creating collision objects from Bifrost geometry and rigid body constraints.
 
 In addition to further developing the RBD feature set, future feature goals include:
+* Diagnostic views for various compounds.
 * Soft body dynamics, cloth and lattice simulations.
 * Low level utilities, ie. collision query, ray casting, geometry sweep, general purpose bullet operators useful outside of just simulation.
 * GPU solver, this part of bullet appears to be experimental and completely undocumented so it is unclear how well this will go.
