@@ -5,8 +5,8 @@ set(CMAKE_PREFIX_PATH "$ENV{UserProfile}/vcpkg/packages" ${CMAKE_PREFIX_PATH})
 find_package(Bullet CONFIG REQUIRED)
 target_link_libraries(BulletfrostOps PRIVATE ${BULLET_LIBRARIES})
 
-target_compile_definitions( BulletfrostOps PRIVATE BULLETFROST_BUILD_NODEDEF_DLL CONSTRAIN_BUILD_NODEDEF_DLL RIGIDBODY_BUILD_NODEDEF_DLL)
-target_sources( BulletfrostOps PRIVATE Bulletfrost.cpp ConstrainOps.cpp RigidBodyOps.cpp)
+target_compile_definitions( BulletfrostOps PRIVATE BULLETFROST_BUILD_NODEDEF_DLL)
+target_sources( BulletfrostOps PRIVATE Bulletfrost.cpp ConstrainOps.cpp RigidBodyOps.cpp CollisionOps.cpp)
 target_link_libraries( BulletfrostOps PUBLIC Amino::Cpp )
 target_link_libraries( BulletfrostOps PUBLIC Amino::Core )
 target_link_libraries( BulletfrostOps PUBLIC Bifrost::Object )
@@ -18,6 +18,7 @@ set( headers_to_parse
     Bulletfrost.h
     ConstrainOps.h
     RigidBodyOps.h
+    CollisionOps.h
 )
 
 bifrost_header_parser( 

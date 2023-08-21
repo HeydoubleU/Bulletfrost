@@ -13,7 +13,7 @@ endif()
 # Project Name
 project(
     Bulletfrost 
-    VERSION 0.0.0
+    VERSION 1.0.0
     LANGUAGES CXX
 )
 

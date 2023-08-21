@@ -23,8 +23,10 @@ class btQuaternion;
 class btTransform;
 class btTypedConstraint;
 class btRigidBody;
+class btCollisionObject;
 class btCollisionShape;
 class btTriangleMesh;
+class btTriangleIndexVertexArray;
 
 
 btVector3 convertV3(const Bifrost::Math::float3 vec);
@@ -37,90 +39,138 @@ Bifrost::Math::float4 convertQuat(const btQuaternion vec);
 namespace Bullet {
 
     namespace Collision {
+
+        enum class AMINO_ANNOTATE("Amino::Enum") MeshConstructor : int {
+            AutoCompound = 0,
+            GImpact = 1,
+            BVH = 2
+        };
+
+        enum class AMINO_ANNOTATE("Amino::Enum") ShapeType : int {
+            Empty = 0,
+            Plane = 1,
+            Box = 2,
+            Sphere = 3,
+            PointCloud = 4,
+            Mesh = 5,
+            MeshBVH = 6,
+            Compound = 7
+        };
+
+        struct MeshData  // not for use in graph
+        {
+            btTriangleIndexVertexArray* btmesh = nullptr;
+            int num_tri;
+            int num_vert;
+            int* fv;
+            float* pp;
+
+            MeshData(int num_tri, int num_verts);
+
+            MeshData(const MeshData& input);
+
+            ~MeshData();
+        };
+
         class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL CollisionShape {
         public:
             btCollisionShape* shape;
-            btTriangleMesh* mesh = nullptr;
+            MeshData* mesh = nullptr;
             Amino::Array<Amino::Ptr<CollisionShape>> child_shapes;
+            ShapeType type;
+            bool dynamic = false;
+            bool is_copy = false; // for debug
+
+            //btTriangleMesh* copyMesh(btTriangleMesh * in_mesh);
 
             CollisionShape();
 
-            CollisionShape(const CollisionShape& input) {
-                // TODO: fix this copy constructor, it is problem but I don't think it will get called normally.
-                shape = input.shape;
-                mesh = input.mesh;
-                child_shapes = input.child_shapes;
-            }
+            CollisionShape(const CollisionShape & input);
 
-            CollisionShape(btCollisionShape* shape, btTriangleMesh* mesh = nullptr) : shape(shape), mesh(mesh) {}
+            CollisionShape(btCollisionShape * shape, ShapeType type, MeshData* mesh = nullptr) : shape(shape), type(type), mesh(mesh) {}
 
-            CollisionShape(btCollisionShape* shape, Amino::Array<Amino::Ptr<CollisionShape>> child_shapes) : shape(shape), child_shapes(child_shapes) {}
+            CollisionShape(btCollisionShape* shape, ShapeType type, Amino::Array<Amino::Ptr<CollisionShape>> child_shapes) : shape(shape), type(type), child_shapes(child_shapes) {}
 
             ~CollisionShape();
 
             void setChildTransform(int index, Bifrost::Math::float3 position, Bifrost::Math::float4 orientation);
         };
     } // Collision
-
+    ;
 
     class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL BulletScene;
 
-    struct AMINO_ANNOTATE("Amino::Struct") PhysicalMaterial
-    {
-        float mass;
-		float friction;
-		float restitution;
-        float linear_damping;
-        float angular_damping;
+    namespace RBD {
 
-        PhysicalMaterial() : mass(1.0f), friction(0.5f), restitution(0.5f), linear_damping(0.1f), angular_damping(0.1f) {}
-	};
+        struct AMINO_ANNOTATE("Amino::Struct") PhysicalMaterial
+        {
+            float mass;
+            float friction;
+            float restitution;
+            float linear_damping;
+            float angular_damping;
+        };
 
-    struct AMINO_ANNOTATE("Amino::Struct") RigidBodyData
-    {
-        Amino::Ptr<Collision::CollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
-        Bifrost::Math::float3 position;
-        Bifrost::Math::float4 orientation;
-        Bifrost::Math::float3 linear_velocity;
-        Bifrost::Math::float3 angular_velocity;
-        PhysicalMaterial physics_material;
+        enum class AMINO_ANNOTATE("Amino::Enum") RigidBodyMode : int {
+                Dynamic = 0,
+                Kinematic = 1,
+                Static = 2
+        };
 
-        RigidBodyData() { orientation.w = 1.0f; }
-    }; 
+        struct AMINO_ANNOTATE("Amino::Struct") RigidBodyData
+        {
+            RigidBodyMode mode;
+            Amino::Ptr<Collision::CollisionShape> collision_shape{Amino::PtrDefaultFlag{}};
+            Bifrost::Math::float3 position;
+            Bifrost::Math::float4 orientation;
+            Bifrost::Math::float3 linear_velocity;
+            Bifrost::Math::float3 angular_velocity;
+            PhysicalMaterial physical_material;
+        };
 
-    class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody {
-    public:
-        btRigidBody* body;
-        BulletScene* scene = nullptr;
-        Amino::Ptr<Collision::CollisionShape> collision_shape;
-        PhysicalMaterial phy_mat;
-        bool is_copy = false; // for debugging
+        class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL RigidBody {
+        public:
+            btCollisionObject* body;
+            btRigidBody* rb = nullptr;
+            Amino::Ptr<BulletScene> scene = nullptr;
+            Amino::Ptr<Collision::CollisionShape> collision_shape;
+            PhysicalMaterial phy_mat;
+            RigidBodyMode mode;
+            bool is_default = false;
+            bool is_copy = false; // for debugging
+            bool outdated_proxy = false;
 
-        void bodyFromData(const RigidBodyData& rb_data);
+            void setMode(RigidBodyMode new_mode);
 
-        RigidBody() {
-            bodyFromData(RigidBodyData());
-        }
+            void bodyFromData(const RigidBodyData & rb_data);
 
-        RigidBody(const RigidBodyData & rb_data) {
-            bodyFromData(rb_data);
-        }
+            RigidBody() {
+                auto rb_data = RigidBodyData();
+                rb_data.orientation.w = 1;
+                bodyFromData(rb_data);
+                is_default = true;
+            }
 
-        RigidBody(const RigidBodyData & rb_data, const BulletScene & in_scene);
+            RigidBody(const RigidBodyData & rb_data) {
+                bodyFromData(rb_data);
+            }
 
-        RigidBody(const RigidBody& input); // Copy Constructor not thread safe
+            RigidBody(const RigidBodyData & rb_data, const Amino::Ptr<BulletScene>& in_scene);
 
-        ~RigidBody();
+            RigidBody(const RigidBody & input); // Copy Constructor not thread safe
 
-        void setDamping(float lin_damp, float ang_damp);
+            ~RigidBody();
 
-        void setFriction(float friction);
+            void getData(RigidBodyData& rb_data) const;
 
-        void setRestitution(float restitution);
+            RigidBodyData getData() const {
+                auto rb_data = RigidBodyData();
+                getData(rb_data);
+                return rb_data;
+            }
+        };
 
-        void setPhysicsMaterial(const PhysicalMaterial& mat);
-    };
-
+    }
 
     namespace Constrain {
 
@@ -153,23 +203,27 @@ namespace Bullet {
         class AMINO_ANNOTATE("Amino::Class") BULLETFROST_DECL Constraint {
         public:
             btTypedConstraint* constraint = nullptr;
-            BulletScene* scene = nullptr;
+            Amino::Ptr<BulletScene> scene = nullptr;
             ConstraintType type;
-            Bifrost::Math::float3 pivot_a;
-            Bifrost::Math::float3 pivot_b;
-            Bifrost::Math::float4 orient_a;
-            Bifrost::Math::float4 orient_b;
+            bool disable_collision = false;
+            btRigidBody* world_empty = nullptr;
+            Bifrost::Math::float3 init_pos_a;
+            Bifrost::Math::float4 init_orient_a;
+            Bifrost::Math::float3 init_pos_b;
+            Bifrost::Math::float4 init_orient_b;
 
             Constraint() : type(ConstraintType::Fixed) {}
 
-            Constraint(const Constraint & input) : type(ConstraintType::Fixed) {}
+            Constraint(const Constraint& input);
 
             Constraint(
-                Amino::Ptr<RigidBody> rb_a, Amino::Ptr<RigidBody> rb_b, const ConstraintType & type,
-                Bifrost::Math::float3 pivot_a, Bifrost::Math::float3 pivot_b, Bifrost::Math::float4 orient_b, Bifrost::Math::float4 orient_a
+                const ConstraintType& type, btRigidBody* rb_a, btRigidBody* rb_b,
+                Bifrost::Math::float3 pivot_a, Bifrost::Math::float4 orient_a, Bifrost::Math::float3 pivot_b, Bifrost::Math::float4 orient_b
             );
 
             ~Constraint();
+
+            void setFrames(Bifrost::Math::float3 pivot_a, Bifrost::Math::float4 orient_a, Bifrost::Math::float3 pivot_b, Bifrost::Math::float4 orient_b) const;
 
         };
 
@@ -180,89 +234,83 @@ namespace Bullet {
 
 // Operators
 namespace Bullet {
-
-    namespace Collision {
-
-        BULLETFROST_DECL
-            void plane_collision(
-                const Bifrost::Math::float3& normal AMINO_ANNOTATE("Amino::Port value={x:0.0f, y:1.0f, z:0.0f}"),
-                const float plane_constant,
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void box_collision(
-                const Bifrost::Math::float3& extents AMINO_ANNOTATE("Amino::Port value={x:0.5f, y:0.5f, z:0.5f}"),
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void sphere_collision(
-                const float radius AMINO_ANNOTATE("Amino::Port value=1.0f"),
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void point_cloud_collision(
-                const Amino::Array<Bifrost::Math::float3>& points,
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void mesh_collision(
-                const Amino::Array<Bifrost::Math::float3x3>& triangles,
-                const bool use_bvh,
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-        BULLETFROST_DECL
-            void compound_collision(
-                const Amino::Array<Amino::Ptr<CollisionShape>>& child_shapes AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true"),
-                const Amino::Array<Bifrost::Math::float3>& translates AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true"),
-                const Amino::Array<Bifrost::Math::float4>& rotates AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true"),
-                Amino::Ptr<CollisionShape>& collision_shape
-            )
-            AMINO_ANNOTATE("Amino::Node");
-
-    } // Collision
-
     
     BULLETFROST_DECL
         void create_bullet_scene(Amino::Ptr<BulletScene>& bullet_scene)
-        AMINO_ANNOTATE("Amino::Node");
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
 
     BULLETFROST_DECL
-        void set_gravity(
-            BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
-            const Bifrost::Math::float3& gravity AMINO_ANNOTATE("Amino::Port value={y:-9.81f}")
+        void set_gravity(const Amino::Ptr<BulletScene>& bullet_scene,
+            const Bifrost::Math::float3& gravity AMINO_ANNOTATE("Amino::Port value={y:-9.81f}"),
+            Amino::Ptr<BulletScene>& out_bullet_scene
         )
-        AMINO_ANNOTATE("Amino::Node");
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
 
     BULLETFROST_DECL
-        void step_simulation(
-            BulletScene& bullet_scene AMINO_ANNOTATE("Amino::InOut outName=out_bullet_scene"),
-            const float delta_time AMINO_ANNOTATE("Amino::Port value=0.02f")
+        void step_simulation(const Amino::Ptr<BulletScene>& bullet_scene,
+            const float delta_time AMINO_ANNOTATE("Amino::Port value=0.02f"),
+            Amino::Ptr<BulletScene>& out_bullet_scene
         )
-        AMINO_ANNOTATE("Amino::Node");  
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+
+    // Add/remove from scene
+    BULLETFROST_DECL
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const RBD::RigidBodyData& input, Amino::Ptr<RBD::RigidBody>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
 
     BULLETFROST_DECL
-        void add_rigid_bodies(
-            const BulletScene& bullet_scene,
-            const Amino::Array<RigidBodyData>& rigid_body_data AMINO_ANNOTATE("Amino::Port isDefaultFanIn=true"),
-            Amino::Ptr<Amino::Array<Amino::Ptr<RigidBody>>>& rigid_bodies
-        )
-        AMINO_ANNOTATE("Amino::Node");
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const Amino::Array<RBD::RigidBodyData>& input, Amino::Ptr<Amino::Array<Amino::Ptr<RBD::RigidBody>>>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const Amino::Ptr<RBD::RigidBody>& input, Amino::Ptr<RBD::RigidBody>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void remove_from_bullet_scene(const Amino::Ptr<RBD::RigidBody>& input, Amino::Ptr<RBD::RigidBody>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const Amino::Array<Amino::Ptr<RBD::RigidBody>>& input, Amino::Ptr<Amino::Array<Amino::Ptr<RBD::RigidBody>>>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void remove_from_bullet_scene(const Amino::Array<Amino::Ptr<RBD::RigidBody>>& input, Amino::Ptr<Amino::Array<Amino::Ptr<RBD::RigidBody>>>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const Amino::Ptr<Constrain::Constraint>& input, Amino::Ptr<Constrain::Constraint>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void remove_from_bullet_scene(const Amino::Ptr<Constrain::Constraint>& input, Amino::Ptr<Constrain::Constraint>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void add_to_bullet_scene(const Amino::Ptr<BulletScene>& bullet_scene, const Amino::Array<Amino::Ptr<Constrain::Constraint>>& input, Amino::Ptr<Amino::Array<Amino::Ptr<Constrain::Constraint>>>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+    BULLETFROST_DECL
+        void remove_from_bullet_scene(const Amino::Array<Amino::Ptr<Constrain::Constraint>>& input, Amino::Ptr<Amino::Array<Amino::Ptr<Constrain::Constraint>>>& output)
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+
+    namespace RBD {
+        BULLETFROST_DECL
+            void refresh_rigid_body_proxy(const Amino::Ptr<RigidBody>& rigid_body, Amino::Ptr<RigidBody>& out_rigid_body)
+            AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+        BULLETFROST_DECL
+            void refresh_rigid_body_proxy(const Amino::Array<Amino::Ptr<RigidBody>>& rigid_body, Amino::Ptr<Amino::Array<Amino::Ptr<RigidBody>>>& out_rigid_body)
+            AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+    }
 
 } // Bullet
 
 AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::Collision::CollisionShape);
 AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::Constrain::Constraint);
 AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::BulletScene);
-AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::RigidBody);
+AMINO_DECLARE_DEFAULT_CLASS(BULLETFROST_DECL, Bullet::RBD::RigidBody);
 
 #endif
