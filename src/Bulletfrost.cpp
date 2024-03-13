@@ -416,6 +416,8 @@ Bullet::Constrain::Constraint::Constraint(
         case ConstraintType::Cone:
             constraint = new btConeTwistConstraint(*rb_a, *rb_b, frame_a, frame_b);
             break;
+        default:
+            break;
         }
     }
 }
@@ -464,6 +466,8 @@ void Bullet::Constrain::Constraint::setFrames(Bifrost::Math::float3 pivot_a, Bif
             break;
         case ConstraintType::Cone:
             setConstraintFramesGeneric<btConeTwistConstraint>(constraint, frame_a, frame_b);
+            break;
+        default:
             break;
         }
     }
