@@ -33,6 +33,8 @@ project(
     LANGUAGES CXX
 )
 
+set(BULLETFROST_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}-${PROJECT_VERSION}")
+
 # Bifrost setup and utilities...
 include(${BIFROST_LOCATION}/sdk/cmake/setup.cmake)
 

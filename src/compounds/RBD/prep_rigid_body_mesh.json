@@ -1,0 +1,557 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::RBD::prep_rigid_body_mesh",
+            "uriImported": "file:///prep_rigid_body_mesh.json",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../../icons/bullet_logo.svg"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-1578 -202"
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "32.000000"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "mesh"
+                                                },
+                                                {
+                                                    "metaName": "mode"
+                                                },
+                                                {
+                                                    "metaName": "collision_shape"
+                                                },
+                                                {
+                                                    "metaName": "transform"
+                                                },
+                                                {
+                                                    "metaName": "linear_velocity"
+                                                },
+                                                {
+                                                    "metaName": "angular_velocity"
+                                                },
+                                                {
+                                                    "metaName": "physical_material"
+                                                },
+                                                {
+                                                    "metaName": "enabled"
+                                                },
+                                                {
+                                                    "metaName": "initial_state"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "2107.23 -78.3871"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "out_mesh"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "37.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-775.692 -641.65 2859.32 1341.15"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "zValue",
+                    "metaType": "string",
+                    "metaValue": "251.000000"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "1238.51 -1760.77"
+                },
+                {
+                    "metaName": "UILayout",
+                    "metaType": "string",
+                    "metaValue": "{\n    \"NodeLayout\": {\n        \"hideUndeclaredPorts\": false,\n        \"items\": [\n            {\n                \"port\": \"mesh\"\n            },\n            {\n                \"port\": \"instances\"\n            },\n            {\n                \"port\": \"update_source\"\n            },\n            {\n                \"port\": \"fallback_collision_shape\"\n            },\n            {\n                \"port\": \"start_frame\"\n            },\n            {\n                \"port\": \"set_age_limit\"\n            },\n            {\n                \"port\": \"age_limit\"\n            },\n            {\n                \"port\": \"shape_type\"\n            },\n            {\n                \"port\": \"offset_primatives\"\n            },\n            {\n                \"port\": \"collision_shapes\"\n            },\n            {\n                \"port\": \"center_mass_source\"\n            },\n            {\n                \"port\": \"constraints\"\n            },\n            {\n                \"port\": \"transform\"\n            },\n            {\n                \"port\": \"collision_shape\"\n            },\n            {\n                \"expanded\": false,\n                \"group\": \"Properties\",\n                \"items\": [\n                    {\n                        \"port\": \"initial_state\"\n                    },\n                    {\n                        \"port\": \"enabled\"\n                    },\n                    {\n                        \"port\": \"dynamic_collision_shape\"\n                    },\n                    {\n                        \"port\": \"mode\"\n                    },\n                    {\n                        \"port\": \"material\"\n                    },\n                    {\n                        \"port\": \"margin\"\n                    },\n                    {\n                        \"port\": \"linear_velocity\"\n                    },\n                    {\n                        \"port\": \"angular_velocity\"\n                    },\n                    {\n                        \"port\": \"physical_material\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n"
+                },
+                {
+                    "metaName": "PortExpandedState",
+                    "metadata": [
+                        {
+                            "metaName": "Properties",
+                            "metaType": "string",
+                            "metaValue": "0"
+                        }
+                    ]
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "mesh",
+                    "portDirection": "input",
+                    "portType": "Object"
+                },
+                {
+                    "portName": "mode",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBodyMode",
+                    "portDefault": "Dynamic"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "metadata": [
+                        {
+                            "metaName": "quick_create",
+                            "metaType": "string",
+                            "metaValue": "Bullet::Collision::geo_collision_shape;Bullet::Collision::primitive_collision_shape"
+                        }
+                    ]
+                },
+                {
+                    "portName": "transform",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4",
+                    "portDefault": {
+                        "c0": {
+                            "x": "1f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "1f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "1f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "1f"
+                        }
+                    }
+                },
+                {
+                    "portName": "linear_velocity",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "angular_velocity",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "physical_material",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::PhysicalMaterial",
+                    "portDefault": {
+                        "mass": "1f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "portName": "enabled",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portDefault": "true"
+                },
+                {
+                    "portName": "out_mesh",
+                    "portDirection": "output",
+                    "portType": "Object"
+                },
+                {
+                    "portName": "initial_state",
+                    "portDirection": "input",
+                    "portType": "uchar",
+                    "portDefault": "1",
+                    "metadata": [
+                        {
+                            "metaName": "UIWidget",
+                            "metaType": "string",
+                            "metaValue": "ComboBox"
+                        },
+                        {
+                            "metaName": "UIWidgetProp",
+                            "metaType": "string",
+                            "metaValue": "editable=false;items={Activated=1;\"Activated (Never Sleep)\"=4;Sleeping=3;Deactivated=5}"
+                        }
+                    ]
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "set_property1",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1098 -742"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "31.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property3",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-134.966 -462.936"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property4",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "222 -322"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "33.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property5",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "492 -202"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "34.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property6",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "762 -82"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "35.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "45.000000"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "1078.19 16.3594"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_collision_shape",
+                    "nodeType": "Bullet::Collision::set_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-582.879 -616.755"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "39.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_property7",
+                    "nodeType": "Core::Object::set_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "1356.77 197.308"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "53.000000"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "set_property1.out_object",
+                    "target": "set_collision_shape.mesh"
+                },
+                {
+                    "source": "set_property3.out_object",
+                    "target": "set_property4.object"
+                },
+                {
+                    "source": "set_property4.out_object",
+                    "target": "set_property5.object"
+                },
+                {
+                    "source": "set_property5.out_object",
+                    "target": "set_property6.object"
+                },
+                {
+                    "source": "set_property6.out_object",
+                    "target": "set_property.object"
+                },
+                {
+                    "source": "set_collision_shape.out_mesh",
+                    "target": "set_property3.object"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "set_property1.object"
+                },
+                {
+                    "source": ".mode",
+                    "target": "set_property1.value"
+                },
+                {
+                    "source": ".transform",
+                    "target": "set_property3.value"
+                },
+                {
+                    "source": ".linear_velocity",
+                    "target": "set_property4.value"
+                },
+                {
+                    "source": ".angular_velocity",
+                    "target": "set_property5.value"
+                },
+                {
+                    "source": ".physical_material",
+                    "target": "set_property6.value"
+                },
+                {
+                    "source": ".enabled",
+                    "target": "set_property.value"
+                },
+                {
+                    "source": ".collision_shape",
+                    "target": "set_collision_shape.collision_shape"
+                },
+                {
+                    "source": "set_property.out_object",
+                    "target": "set_property7.object"
+                },
+                {
+                    "source": "set_property7.out_object",
+                    "target": ".out_mesh"
+                },
+                {
+                    "source": ".initial_state",
+                    "target": "set_property7.value"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "set_property1.key",
+                    "valueType": "string",
+                    "value": "mode"
+                },
+                {
+                    "valueName": "set_property3.key",
+                    "valueType": "string",
+                    "value": "transform"
+                },
+                {
+                    "valueName": "set_property4.key",
+                    "valueType": "string",
+                    "value": "velocity"
+                },
+                {
+                    "valueName": "set_property5.key",
+                    "valueType": "string",
+                    "value": "spin"
+                },
+                {
+                    "valueName": "set_property6.key",
+                    "valueType": "string",
+                    "value": "physical_material"
+                },
+                {
+                    "valueName": "set_property.key",
+                    "valueType": "string",
+                    "value": "enabled"
+                },
+                {
+                    "valueName": "set_collision_shape.mesh",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "set_collision_shape.collision_shape",
+                    "valueType": "Bullet::Collision::CollisionShape",
+                    "value": {}
+                },
+                {
+                    "valueName": "set_property7.key",
+                    "valueType": "string",
+                    "value": "activation"
+                }
+            ],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

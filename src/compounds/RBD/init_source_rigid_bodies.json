@@ -1,0 +1,748 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::RBD::init_source_rigid_bodies",
+            "uriImported": "stream:/bifrostGraphShape1",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../../icons/bullet_logo.svg"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-2677.49 -1249.11"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "source"
+                                                },
+                                                {
+                                                    "metaName": "default_material"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "37.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "1388.49 -1209.33"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "out_source"
+                                                },
+                                                {
+                                                    "metaName": "point_rigid_body"
+                                                },
+                                                {
+                                                    "metaName": "constraints"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "41.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-2621.78 -514.838 3096.97 1439.78"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "2777 -2004"
+                },
+                {
+                    "metaName": "zValue",
+                    "metaType": "string",
+                    "metaValue": "89.000000"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "source",
+                    "portDirection": "input",
+                    "portType": "Object",
+                    "portDefault": {}
+                },
+                {
+                    "portName": "out_source",
+                    "portDirection": "output",
+                    "portType": "Object"
+                },
+                {
+                    "portName": "default_material",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::PhysicalMaterial",
+                    "portDefault": {
+                        "mass": "1f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "TypeWranglingSuggestedTypes",
+                            "metaType": "string",
+                            "metaValue": "float, long, uint, bool, string, Math::float2, Math::float3, Math::float4, Math::float3x3, Math::float4x4"
+                        }
+                    ]
+                },
+                {
+                    "portName": "point_rigid_body",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::RBD::RigidBody>"
+                },
+                {
+                    "portName": "constraints",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::Constrain::Constraint>"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "create_rigid_body",
+                    "nodeType": "Bullet::RBD::create_rigid_body",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-637.152 -782.375"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "31.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 -390"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default1",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 -126"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "33.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default2",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 144"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "34.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default3",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 416"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "38.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default4",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 -1080"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "43.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_point_position",
+                    "nodeType": "Geometry::Properties::get_point_position",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1392 -600"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "35.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_source_collision_shapes",
+                    "nodeType": "Bullet::Collision::get_source_collision_shapes",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1393.43 -810"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "39.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_geo_property",
+                    "nodeType": "Geometry::Properties::set_geo_property",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "31.5291 -1216.75"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "40.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "value",
+                    "valueType": "Bullet::RBD::RigidBodyData",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-909.415 -777.498"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "value",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "value.angular_velocity",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "output.physical_material",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "output.position",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "output",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "32.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "init_source_constraints",
+                    "nodeType": "Bullet::Constrain::init_source_constraints",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "481.524 -1236.28"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "42.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "set_rigid_body_activation",
+                    "nodeType": "Bullet::RBD::set_rigid_body_activation",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-299.488 -791.095"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "45.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_geo_property_or_default5",
+                    "nodeType": "Geometry::Properties::get_geo_property_or_default",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1391.46 705.833"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "44.000000"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "value.output",
+                    "target": "create_rigid_body.rigid_body_data"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default.data",
+                    "target": "value.value.orientation"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default1.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default1.data",
+                    "target": "value.value.linear_velocity"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default2.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default2.data",
+                    "target": "value.value.angular_velocity"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default3.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default3.data",
+                    "target": "value.value.physical_material"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default4.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default4.data",
+                    "target": "value.value.mode"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_point_position.geometry"
+                },
+                {
+                    "source": "get_point_position.point_position",
+                    "target": "value.value.position"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_source_collision_shapes.source"
+                },
+                {
+                    "source": "get_source_collision_shapes.collision_shapes",
+                    "target": "value.value.collision_shape"
+                },
+                {
+                    "source": ".source",
+                    "target": "set_geo_property.geometry"
+                },
+                {
+                    "source": ".default_material",
+                    "target": "get_geo_property_or_default3.default_value"
+                },
+                {
+                    "source": "set_geo_property.out_geometry",
+                    "target": "init_source_constraints.source"
+                },
+                {
+                    "source": "init_source_constraints.our_source",
+                    "target": ".out_source"
+                },
+                {
+                    "source": "init_source_constraints.constraints",
+                    "target": ".constraints"
+                },
+                {
+                    "source": "create_rigid_body.rigid_body",
+                    "target": "set_rigid_body_activation.rigid_body"
+                },
+                {
+                    "source": "set_rigid_body_activation.out_rigid_body",
+                    "target": "set_geo_property.data"
+                },
+                {
+                    "source": "set_rigid_body_activation.out_rigid_body",
+                    "target": ".point_rigid_body"
+                },
+                {
+                    "source": ".source",
+                    "target": "get_geo_property_or_default5.geometry"
+                },
+                {
+                    "source": "get_geo_property_or_default5.data",
+                    "target": "set_rigid_body_activation.state"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "get_geo_property_or_default.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default.property",
+                    "valueType": "string",
+                    "value": "point_orientation"
+                },
+                {
+                    "valueName": "get_geo_property_or_default.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default.default_value",
+                    "valueType": "Math::float4",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    }
+                },
+                {
+                    "valueName": "get_geo_property_or_default1.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default1.property",
+                    "valueType": "string",
+                    "value": "point_velocity"
+                },
+                {
+                    "valueName": "get_geo_property_or_default1.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default1.default_value",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "get_geo_property_or_default2.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default2.property",
+                    "valueType": "string",
+                    "value": "point_spin"
+                },
+                {
+                    "valueName": "get_geo_property_or_default2.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default2.default_value",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "get_geo_property_or_default3.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default3.property",
+                    "valueType": "string",
+                    "value": "point_physical_material"
+                },
+                {
+                    "valueName": "get_geo_property_or_default3.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default3.default_value",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "1f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "get_geo_property_or_default4.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default4.property",
+                    "valueType": "string",
+                    "value": "point_mode"
+                },
+                {
+                    "valueName": "get_geo_property_or_default4.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default4.default_value",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Dynamic"
+                },
+                {
+                    "valueName": "get_source_collision_shapes.source",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_source_collision_shapes.fallback_shape",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "set_geo_property.property",
+                    "valueType": "string",
+                    "value": "point_rigid_body"
+                },
+                {
+                    "valueName": "set_geo_property.target",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "set_rigid_body_activation.force",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "get_geo_property_or_default5.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "get_geo_property_or_default5.property",
+                    "valueType": "string",
+                    "value": "point_activation"
+                },
+                {
+                    "valueName": "get_geo_property_or_default5.component",
+                    "valueType": "string",
+                    "value": "point_component"
+                },
+                {
+                    "valueName": "get_geo_property_or_default5.default_value",
+                    "valueType": "uchar",
+                    "value": "0"
+                }
+            ],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

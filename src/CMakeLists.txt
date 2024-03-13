@@ -34,3 +34,6 @@ set( CONFIG_JSON_FILES "./compounds")
 set( config_json ${CMAKE_BINARY_DIR}/${PROJECT_NAME}PackConfig.json )
 configure_file(PackConfig.json.in ${config_json} )
 install(FILES ${config_json} DESTINATION . )
+
+add_subdirectory(resources)
+add_subdirectory(compounds)
