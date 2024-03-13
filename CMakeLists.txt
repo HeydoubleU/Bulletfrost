@@ -10,6 +10,15 @@ if( NOT BIFROST_LOCATION )
     endif()
 endif()
 
+# The INPUTS arg was deprecated in Bifrost 2.8. Will not compile without updating
+option(USE_DEPRECATED_HEADER_PARSER_ARGS "Use old args deprecated after 2.8" OFF)
+
+if( USE_DEPRECATED_HEADER_PARSER_ARGS )
+    set(HEADER_FILE_ARG "INPUTS")
+else()
+    set(HEADER_FILE_ARG "HEADER_FILES")
+endif()
+
 # Project Name
 project(
     Bulletfrost 

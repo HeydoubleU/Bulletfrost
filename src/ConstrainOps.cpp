@@ -105,7 +105,8 @@ namespace Bullet {
             btHingeConstraint* constr = (btHingeConstraint*)(constraint->constraint);
 
             // 3. Set parameters...
-            constr->setAxis(convertV3(axis));
+            btVector3 axis_converted = convertV3(axis);
+            constr->setAxis(axis_converted);
             constr->enableAngularMotor(motor, motor_velocity, motor_impulse);
 
             // There is no disabling limits, rather they're just set to a large range

@@ -29,7 +29,7 @@ class btTriangleMesh;
 class btTriangleIndexVertexArray;
 
 
-btVector3 convertV3(const Bifrost::Math::float3 vec);
+btVector3 convertV3(const Bifrost::Math::float3& vec);
 Bifrost::Math::float3 convertV3(const btVector3 vec);
 btQuaternion convertQuat(const Bifrost::Math::float4 vec);
 Bifrost::Math::float4 convertQuat(const btQuaternion vec);

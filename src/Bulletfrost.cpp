@@ -14,7 +14,7 @@ AMINO_DEFINE_DEFAULT_CLASS(Bullet::RBD::RigidBody);
 
 // Utility
 
-btVector3 convertV3(const Bifrost::Math::float3 vec) {
+btVector3 convertV3(const Bifrost::Math::float3& vec) {
 	return btVector3(vec.x, vec.y, vec.z);
 }
 
