@@ -1,7 +1,6 @@
 add_library( BulletfrostOps SHARED)
 
 # Bullet libraries
-set(CMAKE_PREFIX_PATH "$ENV{UserProfile}/vcpkg/packages" ${CMAKE_PREFIX_PATH})
 find_package(Bullet CONFIG REQUIRED)
 target_link_libraries(BulletfrostOps PRIVATE ${BULLET_LIBRARIES})
 

@@ -10,6 +10,11 @@ if( NOT BIFROST_LOCATION )
     endif()
 endif()
 
+# Set in python build script
+if( NOT BULLETFROST_RELEASE_VERSION )
+    set( BULLETFROST_RELEASE_VERSION 0.0.0)
+endif()
+
 # The INPUTS arg was deprecated in Bifrost 2.8. Will not compile without updating
 option(USE_DEPRECATED_HEADER_PARSER_ARGS "Use old args deprecated after 2.8" OFF)
 
@@ -19,10 +24,12 @@ else()
     set(HEADER_FILE_ARG "HEADER_FILES")
 endif()
 
+set( CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake )
+
 # Project Name
 project(
     Bulletfrost 
-    VERSION 1.0.0
+    VERSION ${BULLETFROST_RELEASE_VERSION}
     LANGUAGES CXX
 )
 
