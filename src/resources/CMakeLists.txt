@@ -1,2 +1,3 @@
 add_subdirectory(icons)
 add_subdirectory(docs)
+add_subdirectory(example_graphs)

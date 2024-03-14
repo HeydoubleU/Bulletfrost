@@ -15,6 +15,9 @@
             "jsonLibs": [
                 {
                     "path": "${CONFIG_JSON_FILES}"
+                },
+                {
+                    "path": "example_graphs"
                 }
             ]
         }

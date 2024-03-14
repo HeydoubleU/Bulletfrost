@@ -1,0 +1,1934 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::basic_RBD_01",
+            "uriImported": "stream:/bifrostGraphShape1",
+            "metadata": [
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "default_meshShape",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-2957.65 -664.918"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "mesh"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "59.000000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "locator1",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-1341 -575"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "transform"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "55.000000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "locator2",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-1580.14 301.483"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "transform1"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "34.000000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "locator3",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-1440.46 1073.14"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "transform2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "37.000000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "locator4",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-1510.06 1890.07"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "transform3"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "43.000000"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "wallShape",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-328.84 142.246"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "mesh2"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "48.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "1346.05 -626.367"
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "31.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffa58bd7"
+                        },
+                        {
+                            "metaName": "fontSize",
+                            "metaType": "string",
+                            "metaValue": "8"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "The solver assumes a constant number of sources and points. This is not a limit of the underlying operators, just this solver compound. The benefit of this design is that properties can be changed on input sources on the fly, and the solver doesn't have to worry about which updated point goes to which solved point."
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "362.956 -832.47 536.96 127"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "52.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Collision shape based off bounding box"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-2151.46 -449.865 1087.23 461.255"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop1",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-1939.01 127.729 1045.84 587.353"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Point cloud collision shape based on the mesh's point poisition"
+                        },
+                        {
+                            "metaName": "fontScaleOffset",
+                            "metaType": "string",
+                            "metaValue": "0"
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#28b2b2b5"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop2",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Point cloud collision shape based on scatter"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-2042.7 785.925 1291.29 699.081"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note3",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "We can scatter points on the mesh for a sparser point cloud ie. better performance (at the cost of some accuracy)."
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffd574a5"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-1675.2 923.302 543.356 104"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "51.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop3",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Static rigid body"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-359.51 -114.793 913.79 600.044"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note4",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffe0a66c"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "Mesh and Mesh (BVH) have limitations as dynamic rigid bodies. These work best for kinematic and static bodies"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-132.186 14.2404 440.733 104"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "56.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop4",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-2028.47 1539.82 1362.3 732.224"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Compound concave collision shape"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note5",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "Compound shapes are the best option for concave collisions with dynamic rigid bodies. Auto compound uses btCompoundFromGimpactShape, which is accurate, but its children do not implement scale, margin, and the resulting shape is often very expensive. A custom compound shape algorithm is needed."
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffd574a5"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-1783.04 1647.89 730.861 152"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "46.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note6",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "fontSize",
+                            "metaType": "string",
+                            "metaValue": "12"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "The brain of the graph is 'simulate_bullet'. All rigid bodies are the same so there's no dedicate 'colliders' input, instead these would just be rigid bodies in 'static' mode.\n\nThe output geo type will always be instances, because this is what the solver opperates on internally. Instances can be used as a source directly, but they should be passed through a 'source_rigid_body_instances' which sets their physical properties. Collision shapes are set at the mesh level using 'set_collision_shape', any point that instances the mesh will also instance it's collision shape. If the mesh has no collision shape property, it will be computed automatically using the fallback shape type.\n\nThis example however uses meshes which are sourced with 'source_rigid_bodies', this converts a mesh array into a single instances object. For setting per body properties we could use 'source_rigid_body_instances' afterwards, but a generally more convient option is to use 'prep_rigid_body_mesh'."
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffd574a5"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-2407.94 -1147.72 1009.29 496"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "54.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-3674 -992.569 2646 1553.14"
+                },
+                {
+                    "metaName": "compoundIsGraph",
+                    "metaValue": "true"
+                },
+                {
+                    "metaName": "category",
+                    "metaType": "string",
+                    "metaValue": "Bullet"
+                },
+                {
+                    "metaName": "description",
+                    "metaType": "string",
+                    "metaValue": "Basic RBD example with full mesh collision"
+                },
+                {
+                    "metaName": "example_scene",
+                    "metaType": "string",
+                    "metaValue": "basic_RBD_01_example.ma"
+                },
+                {
+                    "metaName": "materials",
+                    "metaValue": "true"
+                },
+                {
+                    "metaName": "thumbnail",
+                    "metaType": "string",
+                    "metaValue": "basic_RBD_01_thumb.png"
+                }
+            ],
+            "terminalStates": [
+                {
+                    "name": "Core::Graph::terminal::final",
+                    "enabled": "false"
+                },
+                {
+                    "name": "Core::Graph::terminal::proxy",
+                    "enabled": "true"
+                },
+                {
+                    "name": "Core::Graph::terminal::diagnostic",
+                    "enabled": "false"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "mesh",
+                    "portDirection": "input",
+                    "portType": "Object",
+                    "portDefault": {},
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/default_mesh/default_meshShape"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "portName": "transform",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4",
+                    "portDefault": {
+                        "c0": {
+                            "x": "0.919463038f",
+                            "y": "0.217276782f",
+                            "z": "-0.327686608f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "-0.184474558f",
+                            "y": "0.974404693f",
+                            "z": "0.128470242f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0.34721297f",
+                            "y": "-0.0576737896f",
+                            "z": "0.936011136f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "-8.58545399f",
+                            "y": "12.9323778f",
+                            "z": "-0.173881188f",
+                            "w": "1f"
+                        }
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/locator1"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "portName": "transform1",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4",
+                    "portDefault": {
+                        "c0": {
+                            "x": "0.866307795f",
+                            "y": "-0.436147571f",
+                            "z": "-0.243487269f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0.443484545f",
+                            "y": "0.895879269f",
+                            "z": "-0.0268656574f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0.229852587f",
+                            "y": "-0.0847089142f",
+                            "z": "0.969531953f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "-0.776459813f",
+                            "y": "14.9190264f",
+                            "z": "1.38574886f",
+                            "w": "1f"
+                        }
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/locator2"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "portName": "transform2",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4",
+                    "portDefault": {
+                        "c0": {
+                            "x": "0.92291069f",
+                            "y": "0.211365625f",
+                            "z": "-0.32180813f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0.0534107238f",
+                            "y": "0.757466853f",
+                            "z": "0.650685191f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0.381291479f",
+                            "y": "-0.617712319f",
+                            "z": "0.687785089f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "9.62841702f",
+                            "y": "17.1722622f",
+                            "z": "-1.55403924f",
+                            "w": "1f"
+                        }
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/locator3"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "portName": "transform3",
+                    "portDirection": "input",
+                    "portType": "Math::float4x4",
+                    "portDefault": {
+                        "c0": {
+                            "x": "-0.0247166697f",
+                            "y": "0.968117774f",
+                            "z": "-0.249273017f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0.0432722531f",
+                            "y": "0.250151575f",
+                            "z": "0.967239201f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0.998757541f",
+                            "y": "0.0131203281f",
+                            "z": "-0.048075553f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "27.8634815f",
+                            "y": "15.8282166f",
+                            "z": "-0.32075116f",
+                            "w": "1f"
+                        }
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/locator4"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "portName": "mesh2",
+                    "portDirection": "input",
+                    "portType": "Object",
+                    "portDefault": {},
+                    "metadata": [
+                        {
+                            "metaName": "pathinfo",
+                            "metadata": [
+                                {
+                                    "metaName": "path",
+                                    "metaType": "string",
+                                    "metaValue": "/wall/wallShape"
+                                },
+                                {
+                                    "metaName": "setOperation",
+                                    "metaType": "string",
+                                    "metaValue": "+"
+                                },
+                                {
+                                    "metaName": "active",
+                                    "metaType": "string",
+                                    "metaValue": "true"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "simulate_bullet",
+                    "nodeType": "Bullet::simulate_bullet",
+                    "fanInPortNames": {
+                        "sources": [
+                            "source"
+                        ]
+                    },
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::diagnostic",
+                            "enabled": "true"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::final",
+                            "enabled": "true"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::proxy",
+                            "enabled": "true"
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "sources",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "549 -700"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "63.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "bullet_simulation_settings",
+                    "nodeType": "Bullet::bullet_simulation_settings",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "262 -578"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Ground Plane",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "50.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "source_rigid_bodies",
+                    "nodeType": "Bullet::RBD::source_rigid_bodies",
+                    "fanInPortNames": {
+                        "geometry": [
+                            "out_mesh",
+                            "out_mesh1",
+                            "out_mesh2",
+                            "out_mesh4",
+                            "out_mesh5"
+                        ],
+                        "constraints": []
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "geometry",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-297 -686"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "53.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "prep_rigid_body_mesh5",
+                    "nodeType": "Bullet::RBD::prep_rigid_body_mesh",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-997.572 -684.518"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "60.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "terminal1",
+                    "nodeType": "Core::Graph::terminal",
+                    "fanInPortNames": {
+                        "final": [],
+                        "proxy": [
+                            "output"
+                        ],
+                        "diagnostic": []
+                    },
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::final",
+                            "enabled": "false"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::diagnostic",
+                            "enabled": "false"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::proxy",
+                            "enabled": "true"
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "1000 -738"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "32.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "primitive_collision_shape1",
+                    "nodeType": "Bullet::Collision::primitive_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Primitive",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "Primitive.Box",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "Common",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1304.26 -306.842"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "61.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "SRT_to_matrix",
+                    "nodeType": "Core::Math::SRT_to_matrix",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1592 -361"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "33.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "prep_rigid_body_mesh1",
+                    "nodeType": "Bullet::RBD::prep_rigid_body_mesh",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1128.17 207.729"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "38.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "prep_rigid_body_mesh2",
+                    "nodeType": "Bullet::RBD::prep_rigid_body_mesh",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1019.81 971.956"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "39.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "geo_collision_shape1",
+                    "nodeType": "Bullet::Collision::geo_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "Collision: {shape_type}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1559.47 506.082"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "62.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "prep_rigid_body_mesh3",
+                    "nodeType": "Bullet::RBD::prep_rigid_body_mesh",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1093.46 1785.47"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Properties",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "44.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "scatter_points",
+                    "nodeType": "Modeling::Points::scatter_points",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Scatter Settings",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "Properties",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1743.54 1140.03"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "47.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "geo_collision_shape2",
+                    "nodeType": "Bullet::Collision::geo_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "Collision: {shape_type}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1443.44 1269.09"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "41.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "pass1",
+                    "nodeType": "Core::Graph::pass",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1929.01 220.502"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "35.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "pass2",
+                    "nodeType": "Core::Graph::pass",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1989.12 993.462"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "pass",
+                    "nodeType": "Core::Graph::pass",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1915.97 1805.5"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "45.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "prep_rigid_body_mesh4",
+                    "nodeType": "Bullet::RBD::prep_rigid_body_mesh",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "289.558 132.239"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "49.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "geo_collision_shape3",
+                    "nodeType": "Bullet::Collision::geo_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "Collision: {shape_type}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-16.3643 249.234"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "40.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "geo_collision_shape6",
+                    "nodeType": "Bullet::Collision::geo_collision_shape",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "Collision: {shape_type}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1513.26 2063.05"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "42.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "compute_bounding_box1",
+                    "nodeType": "Bullet::Utility::compute_bounding_box",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1871.14 -243.244"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "57.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "get_point_position",
+                    "nodeType": "Geometry::Properties::get_point_position",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-2128.72 -245.337"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "58.000000"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "bullet_simulation_settings.settings",
+                    "target": "simulate_bullet.settings"
+                },
+                {
+                    "source": "source_rigid_bodies.source",
+                    "target": "simulate_bullet.sources.source"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "prep_rigid_body_mesh5.mesh"
+                },
+                {
+                    "source": "simulate_bullet.output",
+                    "target": "terminal1.proxy.output"
+                },
+                {
+                    "source": ".transform",
+                    "target": "prep_rigid_body_mesh5.transform"
+                },
+                {
+                    "source": "SRT_to_matrix.transform",
+                    "target": "primitive_collision_shape1.transform"
+                },
+                {
+                    "source": ".transform1",
+                    "target": "prep_rigid_body_mesh1.transform"
+                },
+                {
+                    "source": "scatter_points.points",
+                    "target": "geo_collision_shape2.geometry"
+                },
+                {
+                    "source": ".transform2",
+                    "target": "prep_rigid_body_mesh2.transform"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "pass1.input"
+                },
+                {
+                    "source": "pass1.output",
+                    "target": "geo_collision_shape1.geometry"
+                },
+                {
+                    "source": "pass1.output",
+                    "target": "prep_rigid_body_mesh1.mesh"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "pass2.input"
+                },
+                {
+                    "source": "pass2.output",
+                    "target": "scatter_points.geometry"
+                },
+                {
+                    "source": "pass2.output",
+                    "target": "prep_rigid_body_mesh2.mesh"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "pass.input"
+                },
+                {
+                    "source": ".transform3",
+                    "target": "prep_rigid_body_mesh3.transform"
+                },
+                {
+                    "source": "geo_collision_shape3.collision_shape",
+                    "target": "prep_rigid_body_mesh4.collision_shape"
+                },
+                {
+                    "source": "pass.output",
+                    "target": "geo_collision_shape6.geometry"
+                },
+                {
+                    "source": "pass.output",
+                    "target": "prep_rigid_body_mesh3.mesh"
+                },
+                {
+                    "source": ".mesh2",
+                    "target": "geo_collision_shape3.geometry"
+                },
+                {
+                    "source": ".mesh2",
+                    "target": "prep_rigid_body_mesh4.mesh"
+                },
+                {
+                    "source": "geo_collision_shape6.collision_shape",
+                    "target": "prep_rigid_body_mesh3.collision_shape"
+                },
+                {
+                    "source": "geo_collision_shape2.collision_shape",
+                    "target": "prep_rigid_body_mesh2.collision_shape"
+                },
+                {
+                    "source": "geo_collision_shape1.collision_shape",
+                    "target": "prep_rigid_body_mesh1.collision_shape"
+                },
+                {
+                    "source": "primitive_collision_shape1.collision_shape",
+                    "target": "prep_rigid_body_mesh5.collision_shape"
+                },
+                {
+                    "source": ".mesh",
+                    "target": "get_point_position.geometry"
+                },
+                {
+                    "source": "get_point_position.point_position",
+                    "target": "compute_bounding_box1.point_position"
+                },
+                {
+                    "source": "compute_bounding_box1.center",
+                    "target": "SRT_to_matrix.translation"
+                },
+                {
+                    "source": "compute_bounding_box1.extents",
+                    "target": "primitive_collision_shape1.extents"
+                },
+                {
+                    "source": "prep_rigid_body_mesh5.out_mesh",
+                    "target": "source_rigid_bodies.geometry.out_mesh"
+                },
+                {
+                    "source": "prep_rigid_body_mesh1.out_mesh",
+                    "target": "source_rigid_bodies.geometry.out_mesh1"
+                },
+                {
+                    "source": "prep_rigid_body_mesh2.out_mesh",
+                    "target": "source_rigid_bodies.geometry.out_mesh2"
+                },
+                {
+                    "source": "prep_rigid_body_mesh3.out_mesh",
+                    "target": "source_rigid_bodies.geometry.out_mesh5"
+                },
+                {
+                    "source": "prep_rigid_body_mesh4.out_mesh",
+                    "target": "source_rigid_bodies.geometry.out_mesh4"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "bullet_simulation_settings.gravity_vector",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "-98f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "bullet_simulation_settings.substeps",
+                    "valueType": "uint",
+                    "value": "10U"
+                },
+                {
+                    "valueName": "bullet_simulation_settings.ground",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "bullet_simulation_settings.extent",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh5.physical_material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "10f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "SRT_to_matrix.quaternion",
+                    "valueType": "Math::float4",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh1.mode",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Dynamic"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh1.transform",
+                    "valueType": "Math::float4x4",
+                    "value": {
+                        "c0": {
+                            "x": "1f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "1f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "1f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "1f"
+                        }
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh1.physical_material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "10f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh1.enabled",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh2.mode",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Dynamic"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh2.transform",
+                    "valueType": "Math::float4x4",
+                    "value": {
+                        "c0": {
+                            "x": "1f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "1f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "1f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "1f"
+                        }
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh2.physical_material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "10f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh2.enabled",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "geo_collision_shape1.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "geo_collision_shape1.shape_type",
+                    "valueType": "long",
+                    "value": "0"
+                },
+                {
+                    "valueName": "geo_collision_shape1.margin",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh3.mode",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Dynamic"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh3.transform",
+                    "valueType": "Math::float4x4",
+                    "value": {
+                        "c0": {
+                            "x": "1f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "1f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "1f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "1f"
+                        }
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh3.physical_material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "10f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh3.enabled",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "scatter_points.scatter_mode",
+                    "valueType": "Modeling::Points::ScatteringMode",
+                    "value": "BlueNoise"
+                },
+                {
+                    "valueName": "scatter_points.amount",
+                    "valueType": "float",
+                    "value": "400f"
+                },
+                {
+                    "valueName": "geo_collision_shape2.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "geo_collision_shape2.shape_type",
+                    "valueType": "long",
+                    "value": "0"
+                },
+                {
+                    "valueName": "geo_collision_shape2.margin",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh4.mode",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Static"
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh4.transform",
+                    "valueType": "Math::float4x4",
+                    "value": {
+                        "c0": {
+                            "x": "1f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c1": {
+                            "x": "0f",
+                            "y": "1f",
+                            "z": "0f",
+                            "w": "0f"
+                        },
+                        "c2": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "1f",
+                            "w": "0f"
+                        },
+                        "c3": {
+                            "x": "0f",
+                            "y": "0f",
+                            "z": "0f",
+                            "w": "1f"
+                        }
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh4.physical_material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "1f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "prep_rigid_body_mesh4.enabled",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "geo_collision_shape3.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "geo_collision_shape3.shape_type",
+                    "valueType": "long",
+                    "value": "3"
+                },
+                {
+                    "valueName": "geo_collision_shape3.margin",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "geo_collision_shape3.dynamic",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "geo_collision_shape6.geometry",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "geo_collision_shape6.shape_type",
+                    "valueType": "long",
+                    "value": "1"
+                },
+                {
+                    "valueName": "geo_collision_shape6.margin",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "geo_collision_shape6.ray_depth",
+                    "valueType": "float",
+                    "value": "20f"
+                }
+            ],
+            "reservedNodeNames": [
+                {
+                    "name": "output"
+                },
+                {
+                    "name": "default_meshShape"
+                },
+                {
+                    "name": "locator1"
+                },
+                {
+                    "name": "locator2"
+                },
+                {
+                    "name": "locator3"
+                },
+                {
+                    "name": "locator4"
+                },
+                {
+                    "name": "wallShape"
+                }
+            ]
+        }
+    ]
+}

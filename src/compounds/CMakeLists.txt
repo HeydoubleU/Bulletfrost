@@ -1,6 +1,5 @@
 file( GLOB_RECURSE ALL_COMPOUND_JSON_FILES ${CMAKE_CURRENT_SOURCE_DIR}/*.json )
 
-set( bulletfrost_compounds )
 foreach( compound_json_file ${ALL_COMPOUND_JSON_FILES})
     file(RELATIVE_PATH RELATIVE_PATH_TO_FILE ${CMAKE_CURRENT_SOURCE_DIR} ${compound_json_file})
     get_filename_component(FILE_DIR ${compound_json_file} DIRECTORY)

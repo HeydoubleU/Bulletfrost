@@ -1,0 +1,1866 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::fields_04",
+            "uriImported": "stream:/bifrostGraphShape1",
+            "metadata": [
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes"
+                        },
+                        {
+                            "metaName": "io_onodes"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffb2b2b5"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "Forces can be applied to rigid bodies via fields using 'bullet_fields'.\n\nBy default, angular acceleration is computed by curling the acceleration field, 'use_angular_accel' enables the use of a custom angular acceleration field."
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-62.6708 -853.69 502.89 200"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "39.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "sticky_note1",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "sticky_note"
+                        },
+                        {
+                            "metaName": "text",
+                            "metaType": "string",
+                            "metaValue": "This is a simple and low cost solution, but in the future I'd like to implenent standard influences."
+                        },
+                        {
+                            "metaName": "color",
+                            "metaType": "string",
+                            "metaValue": "#ffe2cc5c"
+                        },
+                        {
+                            "metaName": "fontSize",
+                            "metaType": "string",
+                            "metaValue": "8"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "81.9742 -667.569 356.082 89"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "38.000000"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "backdrop",
+                    "metadata": [
+                        {
+                            "metaName": "type",
+                            "metaType": "string",
+                            "metaValue": "backdrop"
+                        },
+                        {
+                            "metaName": "coords",
+                            "metaType": "string",
+                            "metaValue": "-1730.81 -791.691 1395.61 559"
+                        },
+                        {
+                            "metaName": "title",
+                            "metaType": "string",
+                            "metaValue": "Setup block tower"
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-1045.5 -1186.5 2242 1316"
+                },
+                {
+                    "metaName": "compoundIsGraph",
+                    "metaValue": "true"
+                },
+                {
+                    "metaName": "category",
+                    "metaType": "string",
+                    "metaValue": "Bullet"
+                },
+                {
+                    "metaName": "description",
+                    "metaType": "string",
+                    "metaValue": "An example on how to use fields to apply forces to a bullet simulation"
+                },
+                {
+                    "metaName": "example_scene",
+                    "metaType": "string",
+                    "metaValue": "fields_04_example.ma"
+                },
+                {
+                    "metaName": "materials",
+                    "metaValue": "true"
+                },
+                {
+                    "metaName": "thumbnail",
+                    "metaType": "string",
+                    "metaValue": "fields_04_thumb.png"
+                }
+            ],
+            "terminalStates": [
+                {
+                    "name": "Core::Graph::terminal::final",
+                    "enabled": "false"
+                },
+                {
+                    "name": "Core::Graph::terminal::proxy",
+                    "enabled": "true"
+                },
+                {
+                    "name": "Core::Graph::terminal::diagnostic",
+                    "enabled": "false"
+                }
+            ],
+            "ports": [],
+            "compounds": [
+                {
+                    "name": "turbulent_wind_field",
+                    "uriImported": "stream:/bifrostGraphShape1",
+                    "metadata": [
+                        {
+                            "metaName": "documentation",
+                            "metaType": "string",
+                            "metaValue": "docs/turbulent_wind_field.md"
+                        },
+                        {
+                            "metaName": "icon",
+                            "metaType": "string",
+                            "metaValue": "icons/hw_hair_icon.png"
+                        },
+                        {
+                            "metaName": "io_nodes",
+                            "metadata": [
+                                {
+                                    "metaName": "io_inodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "input",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-1294.31 -1572.4"
+                                                },
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "turbulence_mag"
+                                                        },
+                                                        {
+                                                            "metaName": "num_frequencies"
+                                                        },
+                                                        {
+                                                            "metaName": "frequency"
+                                                        },
+                                                        {
+                                                            "metaName": "ratio"
+                                                        },
+                                                        {
+                                                            "metaName": "frequency_ratio"
+                                                        },
+                                                        {
+                                                            "metaName": "evolve_speed"
+                                                        },
+                                                        {
+                                                            "metaName": "translate_speed"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "43.000000"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "input2",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-729.46 -858.776"
+                                                },
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "direction"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "44.000000"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "input3",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-1188.91 -1950.45"
+                                                },
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "magnitude"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "45.000000"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "io_onodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "output",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "1020.33 -1373.09"
+                                                },
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "field"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "46.000000"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "UILayout",
+                            "metaType": "string",
+                            "metaValue": "{\n    \"NodeLayout\": {\n        \"hideUndeclaredPorts\": false,\n        \"items\": [\n            {\n                \"expanded\": false,\n                \"group\": \"Settings\",\n                \"items\": [\n                    {\n                        \"port\": \"magnitude\"\n                    },\n                    {\n                        \"port\": \"direction\"\n                    },\n                    {\n                        \"port\": \"direction_mag\"\n                    },\n                    {\n                        \"port\": \"turbulence_mag\"\n                    },\n                    {\n                        \"port\": \"translate_speed\"\n                    },\n                    {\n                        \"port\": \"evolve_speed\"\n                    },\n                    {\n                        \"port\": \"num_frequencies\"\n                    },\n                    {\n                        \"port\": \"frequency\"\n                    },\n                    {\n                        \"port\": \"ratio\"\n                    },\n                    {\n                        \"port\": \"frequency_ratio\"\n                    }\n                ]\n            }\n        ]\n    }\n}\n"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Turbulence",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "Settings",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "ViewportRect",
+                            "metaType": "string",
+                            "metaValue": "-2141.05 -1965.7 2646.13 1007.01"
+                        },
+                        {
+                            "metaName": "BEP_manipArgs",
+                            "metaType": "string",
+                            "metaValue": "[{\"t_port\": \"direction\", \"style_attrs\": {\"shape\": 5, \"ove\": 1, \"ovrgbf\": 1, \"wire\": false, \"ovrgb\": [0.1, 1.3, 0.7]}}]"
+                        },
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "274.352 -331.271"
+                        }
+                    ],
+                    "ports": [
+                        {
+                            "portName": "turbulence_mag",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "1f"
+                        },
+                        {
+                            "portName": "num_frequencies",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "3f"
+                        },
+                        {
+                            "portName": "frequency",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "0.200000003f"
+                        },
+                        {
+                            "portName": "ratio",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "0.5f"
+                        },
+                        {
+                            "portName": "frequency_ratio",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "0.5f"
+                        },
+                        {
+                            "portName": "evolve_speed",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "2f"
+                        },
+                        {
+                            "portName": "translate_speed",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "4f"
+                        },
+                        {
+                            "portName": "direction",
+                            "portDirection": "input",
+                            "portType": "Math::float3",
+                            "portDefault": {
+                                "x": "1f",
+                                "y": "0f",
+                                "z": "0f"
+                            }
+                        },
+                        {
+                            "portName": "magnitude",
+                            "portDirection": "input",
+                            "portType": "float",
+                            "portDefault": "5f"
+                        },
+                        {
+                            "portName": "field",
+                            "portDirection": "output",
+                            "portType": "Core::Fields::VectorField"
+                        }
+                    ],
+                    "compoundNodes": [
+                        {
+                            "nodeName": "normalize",
+                            "nodeType": "Core::Math::normalize",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-396.4 -1037.1"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "31.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "vector_field",
+                            "nodeType": "Core::Fields::vector_field",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "398 -896.359"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "32.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "fractal_turbulence_field",
+                            "nodeType": "Core::Fields::fractal_turbulence_field",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-376.218 -1596.31"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "33.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "time",
+                            "nodeType": "Core::Time::time",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-1563.42 -1305.1"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "34.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "scalar_field",
+                            "nodeType": "Core::Fields::scalar_field",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-653.866 -1379.84"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "35.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "translate_field",
+                            "nodeType": "Core::Fields::translate_field",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "336.046 -1588.02"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "36.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "multiply",
+                            "nodeType": "Core::Math::multiply",
+                            "multiInPortNames": [
+                                "master_mag",
+                                "output1",
+                                "normalized"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "28.913 -1182.02"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "37.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "add",
+                            "nodeType": "Core::Math::add",
+                            "multiInPortNames": [
+                                "noise_field",
+                                "vector_field"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "649.117 -1366.38"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "38.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "multiply3",
+                            "nodeType": "Core::Math::multiply",
+                            "multiInPortNames": [
+                                "output2",
+                                "seconds"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-988.927 -1131.29"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "39.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "multiply4",
+                            "nodeType": "Core::Math::multiply",
+                            "multiInPortNames": [
+                                "output2",
+                                "seconds"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-918.861 -1359"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "40.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "multiply5",
+                            "nodeType": "Core::Math::multiply",
+                            "multiInPortNames": [
+                                "normalized",
+                                "master_mag"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "3.77547 -904.008"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "41.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "multiply6",
+                            "nodeType": "Core::Math::multiply",
+                            "multiInPortNames": [
+                                "master_mag",
+                                "turbulence_mag"
+                            ],
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-656.635 -1728.24"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "42.000000"
+                                }
+                            ]
+                        }
+                    ],
+                    "connections": [
+                        {
+                            "source": "normalize.normalized",
+                            "target": "multiply.first.normalized"
+                        },
+                        {
+                            "source": "vector_field.vector_field",
+                            "target": "add.first.vector_field"
+                        },
+                        {
+                            "source": "fractal_turbulence_field.noise_field",
+                            "target": "translate_field.field"
+                        },
+                        {
+                            "source": "time.seconds",
+                            "target": "multiply4.first.seconds"
+                        },
+                        {
+                            "source": "time.seconds",
+                            "target": "multiply3.first.seconds"
+                        },
+                        {
+                            "source": "scalar_field.scalar_field",
+                            "target": "fractal_turbulence_field.time"
+                        },
+                        {
+                            "source": "translate_field.translated_field",
+                            "target": "add.first.noise_field"
+                        },
+                        {
+                            "source": "multiply.output",
+                            "target": "translate_field.translate"
+                        },
+                        {
+                            "source": "multiply3.output",
+                            "target": "multiply.first.output1"
+                        },
+                        {
+                            "source": "multiply4.output",
+                            "target": "scalar_field.value"
+                        },
+                        {
+                            "source": "multiply5.output",
+                            "target": "vector_field.value"
+                        },
+                        {
+                            "source": "multiply6.output",
+                            "target": "fractal_turbulence_field.magnitude"
+                        },
+                        {
+                            "source": ".turbulence_mag",
+                            "target": "multiply6.first.turbulence_mag"
+                        },
+                        {
+                            "source": ".num_frequencies",
+                            "target": "fractal_turbulence_field.num_frequencies"
+                        },
+                        {
+                            "source": ".frequency",
+                            "target": "fractal_turbulence_field.frequency"
+                        },
+                        {
+                            "source": ".ratio",
+                            "target": "fractal_turbulence_field.ratio"
+                        },
+                        {
+                            "source": ".frequency_ratio",
+                            "target": "fractal_turbulence_field.frequency_ratio"
+                        },
+                        {
+                            "source": ".evolve_speed",
+                            "target": "multiply4.first.output2"
+                        },
+                        {
+                            "source": ".translate_speed",
+                            "target": "multiply3.first.output2"
+                        },
+                        {
+                            "source": ".direction",
+                            "target": "normalize.value"
+                        },
+                        {
+                            "source": ".magnitude",
+                            "target": "multiply6.first.master_mag"
+                        },
+                        {
+                            "source": ".magnitude",
+                            "target": "multiply5.first.master_mag"
+                        },
+                        {
+                            "source": ".magnitude",
+                            "target": "multiply.first.master_mag"
+                        },
+                        {
+                            "source": "add.output",
+                            "target": ".field"
+                        },
+                        {
+                            "source": ".direction",
+                            "target": "multiply5.first.normalized"
+                        }
+                    ],
+                    "values": [
+                        {
+                            "valueName": "fractal_turbulence_field.magnitude",
+                            "valueType": "float",
+                            "value": "1.94099998f"
+                        },
+                        {
+                            "valueName": "fractal_turbulence_field.num_frequencies",
+                            "valueType": "float",
+                            "value": "3f"
+                        },
+                        {
+                            "valueName": "fractal_turbulence_field.frequency",
+                            "valueType": "float",
+                            "value": "0.103399999f"
+                        },
+                        {
+                            "valueName": "fractal_turbulence_field.ratio",
+                            "valueType": "float",
+                            "value": "0.5f"
+                        },
+                        {
+                            "valueName": "fractal_turbulence_field.frequency_ratio",
+                            "valueType": "float",
+                            "value": "0.5f"
+                        },
+                        {
+                            "valueName": "scalar_field.value",
+                            "valueType": "float",
+                            "value": "0f"
+                        },
+                        {
+                            "valueName": "translate_field.translate",
+                            "valueType": "Math::float3",
+                            "value": {
+                                "x": "0f",
+                                "y": "0f",
+                                "z": "0f"
+                            }
+                        }
+                    ],
+                    "reservedNodeNames": [
+                        {
+                            "name": "input"
+                        },
+                        {
+                            "name": "input2"
+                        },
+                        {
+                            "name": "input3"
+                        },
+                        {
+                            "name": "output"
+                        }
+                    ]
+                },
+                {
+                    "name": "calc_pos",
+                    "uriImported": "stream:/bifrostGraphShape1",
+                    "metadata": [
+                        {
+                            "metaName": "io_nodes",
+                            "metadata": [
+                                {
+                                    "metaName": "io_inodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "input",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "output"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "io_onodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "output",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "vector3"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "ports": [
+                        {
+                            "portName": "output",
+                            "portDirection": "input",
+                            "portType": "int"
+                        },
+                        {
+                            "portName": "vector3",
+                            "portDirection": "output"
+                        }
+                    ],
+                    "compoundNodes": [
+                        {
+                            "nodeName": "half_of",
+                            "nodeType": "Core::Math::half_of",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "179.000000"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-1643.41 -508.335"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "increment",
+                            "nodeType": "Core::Math::increment",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "181.000000"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-2054.63 -640.828"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "scalar_to_vector3",
+                            "nodeType": "Core::Conversion::scalar_to_vector3",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "178.000000"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-1379.32 -625.04"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "to_float",
+                            "nodeType": "Core::Type_Conversion::to_float",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "180.000000"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-1816.81 -611.928"
+                                }
+                            ]
+                        }
+                    ],
+                    "connections": [
+                        {
+                            "source": "to_float.float",
+                            "target": "half_of.value"
+                        },
+                        {
+                            "source": "half_of.half_value",
+                            "target": "scalar_to_vector3.y"
+                        },
+                        {
+                            "source": ".output",
+                            "target": "increment.value"
+                        },
+                        {
+                            "source": "increment.output",
+                            "target": "to_float.from"
+                        },
+                        {
+                            "source": "scalar_to_vector3.vector3",
+                            "target": ".vector3"
+                        }
+                    ],
+                    "values": [
+                        {
+                            "valueName": "increment.by",
+                            "valueType": "char",
+                            "value": "1"
+                        }
+                    ],
+                    "reservedNodeNames": [
+                        {
+                            "name": "input"
+                        },
+                        {
+                            "name": "output"
+                        }
+                    ]
+                },
+                {
+                    "name": "enable_fields",
+                    "uriImported": "stream:/bifrostGraphShape1",
+                    "metadata": [
+                        {
+                            "metaName": "io_nodes",
+                            "metadata": [
+                                {
+                                    "metaName": "io_inodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "input",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "-782 -60.5"
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "31.000000"
+                                                },
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "fields"
+                                                        },
+                                                        {
+                                                            "metaName": "frame"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "metaName": "io_onodes",
+                                    "metadata": [
+                                        {
+                                            "metaName": "output",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "io_ports",
+                                                    "metadata": [
+                                                        {
+                                                            "metaName": "output"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "metaName": "DisplayMode",
+                                                    "metaType": "string",
+                                                    "metaValue": "2"
+                                                },
+                                                {
+                                                    "metaName": "LayoutPos",
+                                                    "metaType": "string",
+                                                    "metaValue": "558 -60.5"
+                                                },
+                                                {
+                                                    "metaName": "zValue",
+                                                    "metaType": "string",
+                                                    "metaValue": "32.000000"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "ViewportRect",
+                            "metaType": "string",
+                            "metaValue": "-1739.74 -908.09 3245.13 1335.09"
+                        }
+                    ],
+                    "ports": [
+                        {
+                            "portName": "fields",
+                            "portDirection": "input",
+                            "portType": "Object"
+                        },
+                        {
+                            "portName": "output",
+                            "portDirection": "output"
+                        },
+                        {
+                            "portName": "frame",
+                            "portDirection": "input",
+                            "portType": "float"
+                        }
+                    ],
+                    "compoundNodes": [
+                        {
+                            "nodeName": "greater",
+                            "nodeType": "Core::Logic::greater",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-392.639 -479.836"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "35.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "if",
+                            "nodeType": "Core::Logic::if",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "54.8564 -458.251"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "33.000000"
+                                }
+                            ]
+                        },
+                        {
+                            "nodeName": "time",
+                            "nodeType": "Core::Time::time",
+                            "metadata": [
+                                {
+                                    "metaName": "DisplayMode",
+                                    "metaType": "string",
+                                    "metaValue": "2"
+                                },
+                                {
+                                    "metaName": "LayoutPos",
+                                    "metaType": "string",
+                                    "metaValue": "-663.788 -490.176"
+                                },
+                                {
+                                    "metaName": "zValue",
+                                    "metaType": "string",
+                                    "metaValue": "34.000000"
+                                }
+                            ]
+                        }
+                    ],
+                    "connections": [
+                        {
+                            "source": "time.frame",
+                            "target": "greater.first"
+                        },
+                        {
+                            "source": "greater.output",
+                            "target": "if.condition"
+                        },
+                        {
+                            "source": ".fields",
+                            "target": "if.true_case"
+                        },
+                        {
+                            "source": "if.output",
+                            "target": ".output"
+                        },
+                        {
+                            "source": ".frame",
+                            "target": "greater.second"
+                        }
+                    ],
+                    "values": [
+                        {
+                            "valueName": "greater.second",
+                            "valueType": "float",
+                            "value": "60f"
+                        }
+                    ],
+                    "reservedNodeNames": [
+                        {
+                            "name": "input"
+                        },
+                        {
+                            "name": "output"
+                        }
+                    ]
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "create_mesh_plane",
+                    "nodeType": "Modeling::Primitive::create_mesh_plane",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Transform",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "Geometry",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                },
+                                {
+                                    "metaName": "Dimensions",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1150.81 -681.692"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "33.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "simulate_bullet",
+                    "nodeType": "Bullet::simulate_bullet",
+                    "fanInPortNames": {
+                        "sources": [
+                            "source"
+                        ]
+                    },
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::diagnostic",
+                            "enabled": "true"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::final",
+                            "enabled": "true"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::proxy",
+                            "enabled": "true"
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "644.822 -622.563"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "40.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "bullet_simulation_settings",
+                    "nodeType": "Bullet::bullet_simulation_settings",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "641.62 -402.093"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "42.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "source_rigid_body_instances",
+                    "nodeType": "Bullet::RBD::source_rigid_body_instances",
+                    "fanInPortNames": {
+                        "constraints": []
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-570.208 -617.7"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "31.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "create_instances",
+                    "nodeType": "Modeling::Instances::create_instances",
+                    "fanInPortNames": {
+                        "instance_geometries": [
+                            "cube_mesh"
+                        ],
+                        "preview_geometries": []
+                    },
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-820.815 -591.692"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "34.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "create_mesh_cube",
+                    "nodeType": "Modeling::Primitive::create_mesh_cube",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1150.81 -441.691"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "32.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "terminal",
+                    "nodeType": "Core::Graph::terminal",
+                    "fanInPortNames": {
+                        "final": [],
+                        "proxy": [
+                            "output"
+                        ],
+                        "diagnostic": []
+                    },
+                    "terminalStates": [
+                        {
+                            "name": "Core::Graph::terminal::final",
+                            "enabled": "false"
+                        },
+                        {
+                            "name": "Core::Graph::terminal::diagnostic",
+                            "enabled": "false"
+                        }
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "944.822 -622.563"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "41.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "turbulent_wind_field",
+                    "nodeType": "turbulent_wind_field",
+                    "metadata": [
+                        {
+                            "metaName": "PortExpandedState",
+                            "metadata": [
+                                {
+                                    "metaName": "Settings",
+                                    "metaType": "string",
+                                    "metaValue": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "0"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-230.663 -405.1"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "43.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "value",
+                    "valueType": "int",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "{value}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1720.81 -711.692"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "35.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "value1",
+                    "valueType": "int",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1720.81 -561.692"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "calc_pos",
+                    "nodeType": "calc_pos",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-1420.81 -531.692"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "37.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "bullet_fields",
+                    "nodeType": "Bullet::bullet_fields",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "57.5903 -473.257"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "45.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "enable_fields",
+                    "nodeType": "enable_fields",
+                    "metadata": [
+                        {
+                            "metaName": "NodeValueDisplay",
+                            "metadata": [
+                                {
+                                    "metaName": "show",
+                                    "metaType": "string",
+                                    "metaValue": "1"
+                                },
+                                {
+                                    "metaName": "format",
+                                    "metaType": "string",
+                                    "metaValue": "Enable on frame: {frame}"
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "0"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "308.323 -444.332"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "44.000000"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "bullet_simulation_settings.settings",
+                    "target": "simulate_bullet.settings"
+                },
+                {
+                    "source": "source_rigid_body_instances.source",
+                    "target": "simulate_bullet.sources.source"
+                },
+                {
+                    "source": "create_mesh_plane.plane_mesh",
+                    "target": "create_instances.points"
+                },
+                {
+                    "source": "create_mesh_cube.cube_mesh",
+                    "target": "create_instances.instance_geometries.cube_mesh"
+                },
+                {
+                    "source": "create_instances.instances",
+                    "target": "source_rigid_body_instances.instances"
+                },
+                {
+                    "source": "simulate_bullet.output",
+                    "target": "terminal.proxy.output"
+                },
+                {
+                    "source": "value.output",
+                    "target": "create_mesh_plane.length_segments"
+                },
+                {
+                    "source": "value.output",
+                    "target": "create_mesh_plane.length"
+                },
+                {
+                    "source": "value1.output",
+                    "target": "create_mesh_plane.width"
+                },
+                {
+                    "source": "value1.output",
+                    "target": "create_mesh_plane.width_segments"
+                },
+                {
+                    "source": "value.output",
+                    "target": "calc_pos.output"
+                },
+                {
+                    "source": "calc_pos.vector3",
+                    "target": "create_mesh_plane.position"
+                },
+                {
+                    "source": "turbulent_wind_field.field",
+                    "target": "bullet_fields.acceleration"
+                },
+                {
+                    "source": "bullet_fields.fields",
+                    "target": "enable_fields.fields"
+                },
+                {
+                    "source": "enable_fields.output",
+                    "target": "simulate_bullet.fields"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "create_mesh_plane.length",
+                    "valueType": "float",
+                    "value": "10f"
+                },
+                {
+                    "valueName": "create_mesh_plane.width",
+                    "valueType": "float",
+                    "value": "10f"
+                },
+                {
+                    "valueName": "create_mesh_plane.up_axis",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "1f"
+                    }
+                },
+                {
+                    "valueName": "create_mesh_plane.position",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "5.5f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "bullet_simulation_settings.gravity_vector",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "-19.2199993f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "bullet_simulation_settings.substeps",
+                    "valueType": "uint",
+                    "value": "5U"
+                },
+                {
+                    "valueName": "bullet_simulation_settings.ground",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "source_rigid_body_instances.mode",
+                    "valueType": "Bullet::RBD::RigidBodyMode",
+                    "value": "Dynamic"
+                },
+                {
+                    "valueName": "source_rigid_body_instances.material",
+                    "valueType": "Bullet::RBD::PhysicalMaterial",
+                    "value": {
+                        "mass": "1f",
+                        "friction": "0.5f",
+                        "restitution": "0.5f",
+                        "linear_damping": "0.00999999978f",
+                        "angular_damping": "0.00999999978f"
+                    }
+                },
+                {
+                    "valueName": "source_rigid_body_instances.enabled",
+                    "valueType": "bool",
+                    "value": "true"
+                },
+                {
+                    "valueName": "source_rigid_body_instances.fallback_collision_shape",
+                    "valueType": "long",
+                    "value": "4"
+                },
+                {
+                    "valueName": "source_rigid_body_instances.initial_state",
+                    "valueType": "uchar",
+                    "value": "1"
+                },
+                {
+                    "valueName": "turbulent_wind_field.turbulence_mag",
+                    "valueType": "float",
+                    "value": "3.60299993f"
+                },
+                {
+                    "valueName": "turbulent_wind_field.frequency",
+                    "valueType": "float",
+                    "value": "0.105599999f"
+                },
+                {
+                    "valueName": "turbulent_wind_field.evolve_speed",
+                    "valueType": "float",
+                    "value": "0.975300014f"
+                },
+                {
+                    "valueName": "turbulent_wind_field.translate_speed",
+                    "valueType": "float",
+                    "value": "1.07799995f"
+                },
+                {
+                    "valueName": "turbulent_wind_field.direction",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0.668799996f",
+                        "y": "0.996599972f",
+                        "z": "-0.654299974f"
+                    }
+                },
+                {
+                    "valueName": "turbulent_wind_field.magnitude",
+                    "valueType": "float",
+                    "value": "11.1599998f"
+                },
+                {
+                    "valueName": "value.value",
+                    "valueType": "int",
+                    "value": "80L"
+                },
+                {
+                    "valueName": "value1.value",
+                    "valueType": "int",
+                    "value": "10L"
+                },
+                {
+                    "valueName": "calc_pos.output",
+                    "valueType": "int",
+                    "value": "0L"
+                },
+                {
+                    "valueName": "bullet_fields.acceleration",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "bullet_fields.angular_accel",
+                    "valueType": "Math::float3",
+                    "value": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "valueName": "bullet_fields.drag",
+                    "valueType": "float",
+                    "value": "1f"
+                },
+                {
+                    "valueName": "bullet_fields.angular_drag",
+                    "valueType": "float",
+                    "value": "0f"
+                },
+                {
+                    "valueName": "bullet_fields.use_angular_drag",
+                    "valueType": "bool",
+                    "value": "false"
+                },
+                {
+                    "valueName": "enable_fields.fields",
+                    "valueType": "Object",
+                    "value": {}
+                },
+                {
+                    "valueName": "enable_fields.frame",
+                    "valueType": "float",
+                    "value": "60f"
+                }
+            ]
+        }
+    ]
+}
