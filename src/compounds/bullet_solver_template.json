@@ -20,6 +20,11 @@
                     "metaValue": "../icons/bullet_logo.svg"
                 },
                 {
+                    "metaName": "documentation",
+                    "metaType": "string",
+                    "metaValue": "../docs/bullet_solver_template.md"
+                },
+                {
                     "metaName": "io_nodes",
                     "metadata": [
                         {

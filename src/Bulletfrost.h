@@ -251,7 +251,7 @@ namespace Bullet {
             const float delta_time AMINO_ANNOTATE("Amino::Port value=0.02f"),
             Amino::Ptr<BulletScene>& out_bullet_scene
         )
-        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+        AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}, {documentation, ../docs/step_simulation.md}]");
 
 
     // Add/remove from scene
