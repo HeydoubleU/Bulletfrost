@@ -2240,7 +2240,7 @@
                 },
                 {
                     "nodeName": "or_conditional",
-                    "nodeType": "Hyuu::Logic::or_conditional",
+                    "nodeType": "Core::Logic::or",
                     "metadata": [
                         {
                             "metaName": "DisplayMode",
