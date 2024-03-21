@@ -46,6 +46,27 @@ def check_cmake_exists():
         build_script_print("CMake found on system PATH")
     except Exception as e:
         raise Exception("There was an error finding CMake. Check that CMake is on the system PATH") from e
+    
+def check_vcpkg_exists(platform_name):
+    project_root_path = os.path.dirname(os.path.realpath(__file__))
+    cur_dir = os.getcwd()
+    if cur_dir != project_root_path:
+        os.chdir(project_root_path)
+    vcpkg_cmd = os.path.join(".", "vcpkg", "vcpkg")
+
+    try:
+        subprocess.check_call([vcpkg_cmd, "--version"])
+        build_script_print("vcpkg already bootstrapped at: {}".format(vcpkg_cmd))
+    except Exception:
+        build_script_print("vcpkg not bootstrapped. Attempting to clone and bootstrap")
+        subprocess.check_call(["git", "submodule", "update", "--init", "--recursive"])
+        if platform_name == "Windows":
+            subprocess.check_call([".\\vcpkg\\bootstrap-vcpkg.bat", "-disableMetrics"])
+        else:
+            subprocess.check_call(["./vcpkg/bootstrap-vcpkg.sh", "-disableMetrics"])
+
+    subprocess.check_call(["git", "submodule", "update", "--recursive"])
+
 
 def get_bifrost_install_path(platform_name):
     base_bifrost_install_path = PLATFORM_INFO[platform_name]["bifrost_path"]
@@ -224,8 +245,10 @@ def main(args):
     bifrost_install_path = args.bifrost_path
     is_fresh_build = args.fresh_build
 
-    check_cmake_exists()
     platform_name = platform.system()
+    check_cmake_exists()
+    check_vcpkg_exists(platform_name)
+    
     if not bifrost_install_path:
         bifrost_install_path = get_bifrost_install_path(platform_name)
         build_script_print("Detected Bifrost install path: {}".format(bifrost_install_path))
