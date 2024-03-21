@@ -21,13 +21,13 @@ The current release only includes a windows build, but hopefully this will chang
 Copy the `Bulletfrost` folder to your user compounds or other preferred location. Set `BIFROST_LIB_CONFIG_FILES` to the location of `BulletfrostPackConfig.json`. This can be done by editing your Maya.env with the following
 
 ```
-BIFROST_LIB_CONFIG_FILES = <..>/Bulletfrost/BulletfrostPackConfig.json
+BIFROST_LIB_CONFIG_FILES = <..>/Bulletfrost-<version>/BulletfrostPackConfig.json
 ```
 
-If the environment variable is already set you can append a path with using `;`
+If the environment variable is already set you can append a path with using `;` on Windows, or `:` on MacOS and Linux.
 
 ```
-BIFROST_LIB_CONFIG_FILES = <existing value>;<..>/Bulletfrost/BulletfrostPackConfig.json
+BIFROST_LIB_CONFIG_FILES = <existing value>;<..>/Bulletfrost-<version>/BulletfrostPackConfig.json
 ```
 
 ## Getting Started
