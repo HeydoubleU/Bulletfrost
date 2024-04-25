@@ -47,6 +47,9 @@ def check_cmake_exists():
     except Exception as e:
         raise Exception("There was an error finding CMake. Check that CMake is on the system PATH") from e
     
+def version_sort_function(version):
+    return tuple(map(int, version.split(".")))
+    
 def check_vcpkg_exists(platform_name):
     project_root_path = os.path.dirname(os.path.realpath(__file__))
     cur_dir = os.getcwd()
@@ -81,7 +84,7 @@ def get_bifrost_install_path(platform_name):
         if max_maya_version:
             maya_version_path = os.path.join(base_bifrost_install_path, max_maya_version)
             bifrost_versions = [d for d in os.listdir(maya_version_path) if os.path.isdir(os.path.join(maya_version_path, d))]
-            max_bifrost_version = max(bifrost_versions)
+            max_bifrost_version = max(bifrost_versions, key=version_sort_function)
     except:
         pass
 
@@ -107,7 +110,9 @@ def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_b
     release_name = release_data["release_name"]
     bif_install_version = release_data["bif_install_version"]
     maya_install_version = release_data["maya_install_version"]
-    if bif_install_version < MIN_BIF_SDK_SUPPORT:
+    # The min version will be first if it's compatible, needed for comparing strings
+    bif_version_compatibility = sorted([MIN_BIF_SDK_SUPPORT, bif_install_version], key=version_sort_function)[0]
+    if bif_version_compatibility != MIN_BIF_SDK_SUPPORT:
         raise Exception("The Bifrost operator SDK requires at least Bifrost version {}".format(MIN_BIF_SDK_SUPPORT))
     build_script_print("Bifrost version is: {}".format(bif_install_version))
     build_script_print("Maya version is: {}".format(maya_install_version))
@@ -137,7 +142,9 @@ def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_b
     )
 
 def check_deprecated_cmake_args(bif_install_version):
-    if bif_install_version < MIN_NO_DEPRECATED_ARGS_VERSION:
+    # The min version will be first if it's compatible, needed for comparing strings
+    bif_version_compatibility = sorted([MIN_NO_DEPRECATED_ARGS_VERSION, bif_install_version], key=version_sort_function)[0]
+    if bif_version_compatibility != MIN_NO_DEPRECATED_ARGS_VERSION:
         return ["-DUSE_DEPRECATED_HEADER_PARSER_ARGS=ON"]
     else:
         return []
@@ -208,7 +215,9 @@ def set_windows_compiler():
 def get_macOS_architecture_flags(is_release, bif_install_version, maya_install_version):
     osx_arch_flag = "-DCMAKE_OSX_ARCHITECTURES="
     vcpkg_triplet_flag = "-DVCPKG_TARGET_TRIPLET="
-    has_bifrost_arm_support = (bif_install_version >= PLATFORM_INFO["Darwin"]["min_arm_arch_bif_version"]
+    # A little confusing, but the min version will be first if it's compatible, needed for comparing version strings
+    bif_version_compatibility = sorted([PLATFORM_INFO["Darwin"]["min_arm_arch_bif_version"], bif_install_version], key=version_sort_function)[0]
+    has_bifrost_arm_support = (bif_version_compatibility == PLATFORM_INFO["Darwin"]["min_arm_arch_bif_version"]
                                and maya_install_version >= PLATFORM_INFO["Darwin"]["min_arm_arch_maya_version"])
     if is_release and has_bifrost_arm_support:
         # Build a universal binary for public releases
