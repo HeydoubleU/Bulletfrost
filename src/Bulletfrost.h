@@ -14,6 +14,7 @@ constexpr float PI = 3.14159265358979323846f;
 #include <Amino/Core/String.h>
 #include <Amino/Core/Any.h>
 #include <Amino/Core/Ptr.h>
+#include <Amino/Core/Array.h>
 #include <Bifrost/Object/Object.h>
 #include <Bifrost/Math/Types.h>
 
