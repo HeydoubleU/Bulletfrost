@@ -14,6 +14,7 @@ constexpr float PI = 3.14159265358979323846f;
 #include <Amino/Core/String.h>
 #include <Amino/Core/Any.h>
 #include <Amino/Core/Ptr.h>
+#include <Amino/Core/Array.h>
 #include <Bifrost/Object/Object.h>
 #include <Bifrost/Math/Types.h>
 
@@ -54,7 +55,8 @@ namespace Bullet {
             PointCloud = 4,
             Mesh = 5,
             MeshBVH = 6,
-            Compound = 7
+            Compound = 7,
+            MultiSphere = 8,
         };
 
         struct MeshData  // not for use in graph

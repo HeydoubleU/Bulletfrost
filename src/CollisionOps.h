@@ -33,6 +33,14 @@ namespace Bullet {
             AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
 
         BULLETFROST_DECL
+            void multisphere_collision(
+                const Amino::Array<Bifrost::Math::float3>& positions,
+                const Amino::Array<float>& radi,
+                Amino::Ptr<CollisionShape>& collision_shape
+            )
+            AMINO_ANNOTATE("Amino::Node metadata=[{icon, ../icons/bullet_logo.svg}]");
+
+        BULLETFROST_DECL
             void point_cloud_collision(
                 const Amino::Array<Bifrost::Math::float3>& points,
                 Amino::Ptr<CollisionShape>& collision_shape

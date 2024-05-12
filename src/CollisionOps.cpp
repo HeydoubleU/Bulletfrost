@@ -32,6 +32,20 @@ namespace Bullet {
         }
 
 
+        void multisphere_collision(const Amino::Array<Bifrost::Math::float3>& positions, const Amino::Array<float>& radi, Amino::Ptr<CollisionShape>& collision_shape) {
+            int count = std::min(positions.size(), radi.size());
+            btVector3* p = new btVector3[count];
+            float* r = new float[count];
+
+            for (int i = 0; i < count; i++) {
+                p[i] = convertV3(positions[i]);
+                r[i] = radi[i];
+            }
+            auto* shape = new btMultiSphereShape(p, r, count);
+            collision_shape = Amino::newClassPtr<CollisionShape>(shape, ShapeType::MultiSphere);
+        }
+
+
         void point_cloud_collision(const Amino::Array<Bifrost::Math::float3>& points, Amino::Ptr<CollisionShape>& collision_shape)
         {
             btConvexHullShape* shape = new btConvexHullShape();

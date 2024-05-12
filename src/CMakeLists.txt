@@ -24,8 +24,8 @@ set( headers_to_parse
 bifrost_header_parser( 
     BulletfrostJsonFiles  # Name of the target.
     "compounds"                 # Install dir - relative to install prefix.
-    INCLUDES    ${CMAKE_CURRENT_SOURCE_DIR}
-    INPUTS      ${headers_to_parse})
+    INCLUDE_DIRS    ${CMAKE_CURRENT_SOURCE_DIR}
+    HEADER_FILES      ${headers_to_parse})
 
 # Create config json file to load the bifrost pack
 set( CONFIG_PACK_VERSION "${PROJECT_VERSION}")

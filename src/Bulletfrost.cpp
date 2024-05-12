@@ -91,50 +91,72 @@ namespace Bullet {
             dynamic = input.dynamic;
             type = input.type;
 
-            if (type == ShapeType::Plane) {
-                auto* in_shape = (btStaticPlaneShape*)input.shape;
-                shape = new btStaticPlaneShape(in_shape->getPlaneNormal(), in_shape->getPlaneConstant());
-            }
-            else if (type == ShapeType::Box) {
-                auto* in_shape = (btBoxShape*)input.shape;
-                shape = new btBoxShape(in_shape->getHalfExtentsWithMargin());
-            }
-            else if (type == ShapeType::Sphere) {
-                auto* in_shape = (btSphereShape*)input.shape;
-                shape = new btSphereShape(in_shape->getRadius());
-            }
-            else if (type == ShapeType::PointCloud) {
-                auto* in_shape = (btConvexHullShape*)input.shape;
-                auto* points_shape = new btConvexHullShape();
-                auto points = in_shape->getUnscaledPoints();
-                for (int i = 0; i < in_shape->getNumPoints(); i++) {
-                    points_shape->addPoint(points[i], false);
+            switch (type) {
+                case ShapeType::Plane: {
+                    auto* in_shape = (btStaticPlaneShape*)input.shape;
+                    shape = new btStaticPlaneShape(in_shape->getPlaneNormal(), in_shape->getPlaneConstant());
+                    break;
                 }
-                points_shape->recalcLocalAabb();
-                points_shape->optimizeConvexHull();
-                shape = points_shape;
-            }
-            else if (type == ShapeType::Mesh) {
-                mesh = new MeshData(*input.mesh);
-                auto* gshape = new btGImpactMeshShape(mesh->btmesh);
-                gshape->updateBound();
-                shape = gshape;
-            }
-            else if (type == ShapeType::MeshBVH) {
-                mesh = new MeshData(*input.mesh);
-                shape = new btBvhTriangleMeshShape(mesh->btmesh, true);
-            }
-            else if (type == ShapeType::Compound) {
-                auto* in_shape = (btCompoundShape*)input.shape;
-                auto* comp_shape = new btCompoundShape();
-                for (int i = 0; i < in_shape->getNumChildShapes(); i++) {
-                    comp_shape->addChildShape(in_shape->getChildTransform(i), in_shape->getChildShape(i));
+                case ShapeType::Box: {
+                    auto* in_shape = (btBoxShape*)input.shape;
+                    shape = new btBoxShape(in_shape->getHalfExtentsWithMargin());
+                    break;
                 }
-                child_shapes = input.child_shapes;
-                shape = comp_shape;
-            }
-            else {
-                shape = new btEmptyShape();
+                case ShapeType::Sphere: {
+                    auto* in_shape = (btSphereShape*)input.shape;
+                    shape = new btSphereShape(in_shape->getRadius());
+                    break;
+                }
+                case ShapeType::PointCloud: {
+                    auto* in_shape = (btConvexHullShape*)input.shape;
+                    auto* points_shape = new btConvexHullShape();
+                    auto points = in_shape->getUnscaledPoints();
+                    for (int i = 0; i < in_shape->getNumPoints(); i++) {
+                        points_shape->addPoint(points[i], false);
+                    }
+                    points_shape->recalcLocalAabb();
+                    points_shape->optimizeConvexHull();
+                    shape = points_shape;
+                    break;
+                }
+                case ShapeType::Mesh: {
+                    mesh = new MeshData(*input.mesh);
+                    auto* gshape = new btGImpactMeshShape(mesh->btmesh);
+                    gshape->updateBound();
+                    shape = gshape;
+                    break;
+                }
+                case ShapeType::MeshBVH: {
+                    mesh = new MeshData(*input.mesh);
+                    shape = new btBvhTriangleMeshShape(mesh->btmesh, true);
+                    break;
+                }
+                case ShapeType::Compound: {
+                    auto* in_shape = (btCompoundShape*)input.shape;
+                    auto* comp_shape = new btCompoundShape();
+                    for (int i = 0; i < in_shape->getNumChildShapes(); i++) {
+                        comp_shape->addChildShape(in_shape->getChildTransform(i), in_shape->getChildShape(i));
+                    }
+                    child_shapes = input.child_shapes;
+                    shape = comp_shape;
+                    break;
+                }
+                case ShapeType::MultiSphere: {
+                    auto* in_shape = (btMultiSphereShape*)input.shape;
+                    int count = in_shape->getSphereCount();
+                    btVector3* p = new btVector3[count];
+                    float* r = new float[count];
+                    for (int i = 0; i < count; i++) {
+                        p[i] = in_shape->getSpherePosition(i);
+                        r[i] = in_shape->getSphereRadius(i);
+                    }
+                    shape = new btMultiSphereShape(p, r, count);
+                    break;
+                }
+                default: {
+                    shape = new btEmptyShape();
+                    break;
+                }
             }
 
             shape->setMargin(input.shape->getMargin());
