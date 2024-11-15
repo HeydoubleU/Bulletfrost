@@ -4,12 +4,51 @@
 #include "BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolverMt.h"
 #include "BulletCollision/CollisionDispatch/btCollisionDispatcherMt.h"
 #include "BulletCollision/Gimpact/btGImpactShape.h"
+
+#include <CL/cl.h>
+#include "Bullet3OpenCL/RigidBody/b3GpuRigidBodyPipeline.h"
+#include "Bullet3OpenCL/RigidBody/b3GpuNarrowPhase.h"
+#include "Bullet3OpenCL/BroadphaseCollision/b3GpuGridBroadphase.h"
+
+
 #include <Amino/Cpp/ClassDefine.h>
 
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::Collision::CollisionShape);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::Constrain::Constraint);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::BulletScene);
 AMINO_DEFINE_DEFAULT_CLASS(Bullet::RBD::RigidBody);
+
+// OpenCL
+// 
+// Get platform
+bool CL_INITED = false;
+cl_platform_id PLATFORM;
+cl_device_id CL_DEVICE;
+cl_context CL_CONTEXT;
+cl_command_queue CL_QUEUE;
+
+bool initOpenCl() {
+	if (CL_INITED)
+		return true;
+
+	cl_int err;
+	cl_uint num_platforms;
+	err = clGetPlatformIDs(1, &PLATFORM, &num_platforms);
+    if (err != CL_SUCCESS) return false;
+
+	cl_uint num_devices;
+	err = clGetDeviceIDs(PLATFORM, CL_DEVICE_TYPE_GPU, 1, &CL_DEVICE, &num_devices);
+	if (err != CL_SUCCESS) return false;
+
+	CL_CONTEXT = clCreateContext(NULL, 1, &CL_DEVICE, NULL, NULL, &err);
+    if (err != CL_SUCCESS) return false;
+
+	CL_QUEUE = clCreateCommandQueue(CL_CONTEXT, CL_DEVICE, 0, &err);
+	if (err != CL_SUCCESS) return false;
+
+	CL_INITED = true;
+	return true;
+}
 
 
 // Utility
@@ -195,46 +234,26 @@ public:
     btDefaultCollisionConfiguration* collisionConfig;
     btDiscreteDynamicsWorld* dynamicsWorld;
 
+	b3GpuBroadphaseInterface* m_bp;
+	b3GpuNarrowPhase* m_np;
+    b3GpuRigidBodyPipeline* pipeline;
+
+	bool open_cl_inited = false;
+
     BulletScene() {
         broadphase = new btDbvtBroadphase();
         collisionConfig = new btDefaultCollisionConfiguration();
         dispatcher = new btCollisionDispatcher(collisionConfig);
         solver = new btSequentialImpulseConstraintSolver();
         dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfig);
+
+		open_cl_inited = initOpenCl();
+		b3Config config = b3Config();
+        m_bp = new b3GpuGridBroadphase(CL_CONTEXT, CL_DEVICE, CL_QUEUE);
+		m_np = new b3GpuNarrowPhase(CL_CONTEXT, CL_DEVICE, CL_QUEUE, config);
+		pipeline = new b3GpuRigidBodyPipeline(CL_CONTEXT, CL_DEVICE, CL_QUEUE, m_np, m_bp, nullptr, config);
+
     }
-
-    /*BulletScene(const int threads) {
-        // Constructor for multithreaded world
-        // This is disabled as it causes a crash, probably something I'm doing wrong.
-        // Mt performance gains don't seem to be that great anyway, might be a better strategy to use multiple worlds in bifrost for-each.
-        broadphase = new btDbvtBroadphase();
-
-        btDefaultCollisionConstructionInfo cci;
-        cci.m_defaultMaxPersistentManifoldPoolSize = 80000;
-        cci.m_defaultMaxCollisionAlgorithmPoolSize = 80000;
-        collisionConfig = new btDefaultCollisionConfiguration(cci);
-
-
-        if (threads > 1) {
-            const int tc = 1000;
-            btConstraintSolver* solvers[tc];
-            for (int i = 0; i < tc; ++i)
-            {
-                solvers[i] = new btSequentialImpulseConstraintSolver();
-            }
-
-            pool = new btConstraintSolverPoolMt(solvers, tc);
-            dispatcher = new btCollisionDispatcherMt(collisionConfig);
-            solver = new btSequentialImpulseConstraintSolverMt();
-            dynamicsWorld = new btDiscreteDynamicsWorldMt(dispatcher, broadphase, pool, solver, collisionConfig);
-        }
-        else {
-            dispatcher = new btCollisionDispatcher(collisionConfig);
-            solver = new btSequentialImpulseConstraintSolver();
-            dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfig);
-        }
-            
-    }*/
 
     BulletScene(const BulletScene& input) {
         broadphase = input.broadphase;
@@ -242,6 +261,11 @@ public:
         solver = input.solver;
         collisionConfig = input.collisionConfig;
         dynamicsWorld = input.dynamicsWorld;
+
+		open_cl_inited = input.open_cl_inited;
+		m_bp = input.m_bp;
+		m_np = input.m_np;
+		pipeline = input.pipeline;
     }
 
     ~BulletScene() {
@@ -250,11 +274,18 @@ public:
         delete collisionConfig;
         delete dispatcher;
         delete solver;
+
+		delete m_bp;
+		delete m_np;
+		delete pipeline;
     }
 
     void addObject(const RBD::RigidBody* rigid_body) const {
-        if (rigid_body->rb)
+        if (rigid_body->rb) {
             dynamicsWorld->addRigidBody(rigid_body->rb);
+			pipeline->
+        }
+
         else
             dynamicsWorld->addCollisionObject(rigid_body->body);
 	}
