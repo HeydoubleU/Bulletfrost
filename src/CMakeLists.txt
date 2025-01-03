@@ -1,12 +1,16 @@
 add_library( BulletfrostOps SHARED)
 
+# OpenCL
+#string(REPLACE "\\" "/" UserProfileUnfucked $ENV{UserProfile})
+#set(OpenCL_INCLUDE_DIR "${UserProfileUnfucked}/vcpkg/packages/opencl_x64-windows/include")
+#set(OpenCL_LIBRARY "${UserProfileUnfucked}/vcpkg/packages/opencl_x64-windows/lib/OpenCL.lib")
+#find_package(OpenCL REQUIRED)
+#target_link_libraries(BulletfrostOps PRIVATE OpenCL::OpenCL)
+
 # Bullet libraries
 set(CMAKE_PREFIX_PATH "$ENV{UserProfile}/vcpkg/packages" ${CMAKE_PREFIX_PATH})
 find_package(Bullet CONFIG REQUIRED)
 target_link_libraries(BulletfrostOps PRIVATE ${BULLET_LIBRARIES})
-
-find_package(OpenCL REQUIRED)
-target_link_libraries(BulletfrostOps PRIVATE OpenCL::OpenCL)
 
 target_compile_definitions( BulletfrostOps PRIVATE BULLETFROST_BUILD_NODEDEF_DLL)
 target_sources( BulletfrostOps PRIVATE Bulletfrost.cpp ConstrainOps.cpp RigidBodyOps.cpp CollisionOps.cpp)
