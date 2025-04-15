@@ -1,0 +1,275 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::Utility::compute_bounding_box",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../../icons/bullet_logo.svg"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "point_position"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "41.000000"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-922.558 16.297"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "490 -61"
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "32.000000"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "center"
+                                                },
+                                                {
+                                                    "metaName": "extents"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-1341.66 -670.046 2691.08 1279.69"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "zValue",
+                    "metaType": "string",
+                    "metaValue": "90.000000"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "-470.927 -220.639"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "point_position",
+                    "portDirection": "input",
+                    "portType": "array<Math::float3>",
+                    "portDefault": []
+                },
+                {
+                    "portName": "center",
+                    "portDirection": "output",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "extents",
+                    "portDirection": "output",
+                    "portType": "Math::float3"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "array_bounds1",
+                    "nodeType": "Core::Array::array_bounds",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "40.000000"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-609.147 19.7846"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "half_of",
+                    "nodeType": "Core::Math::half_of",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "38.000000"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-24.0396 221.077"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "lerp",
+                    "nodeType": "Core::Math::lerp",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-184.232 -46.0746"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "subtract2",
+                    "nodeType": "Core::Math::subtract",
+                    "multiInPortNames": [
+                        "max_bound",
+                        "min_bound"
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "39.000000"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-337.578 219.199"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "array_bounds1.min_bound",
+                    "target": "lerp.first"
+                },
+                {
+                    "source": "array_bounds1.min_bound",
+                    "target": "subtract2.first.min_bound"
+                },
+                {
+                    "source": "array_bounds1.max_bound",
+                    "target": "subtract2.first.max_bound"
+                },
+                {
+                    "source": "array_bounds1.max_bound",
+                    "target": "lerp.second"
+                },
+                {
+                    "source": "subtract2.output",
+                    "target": "half_of.value"
+                },
+                {
+                    "source": ".point_position",
+                    "target": "array_bounds1.array"
+                },
+                {
+                    "source": "lerp.interpolated",
+                    "target": ".center"
+                },
+                {
+                    "source": "half_of.half_value",
+                    "target": ".extents"
+                }
+            ],
+            "values": [
+                {
+                    "valueName": "lerp.fraction",
+                    "valueType": "float",
+                    "value": "0.5f"
+                }
+            ],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

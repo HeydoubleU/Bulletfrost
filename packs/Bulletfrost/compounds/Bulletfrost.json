@@ -1,0 +1,693 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [
+        {
+            "className": "Bullet::BulletScene",
+            "msTypeNameMangleName": "VBulletScene@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet11BulletSceneE"
+        },
+        {
+            "enumName": "Bullet::Collision::MeshConstructor",
+            "msTypeNameMangleName": "W4MeshConstructor@Collision@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Collision15MeshConstructorE",
+            "enumMembers": [
+                {
+                    "enumKey": "AutoCompound",
+                    "enumValue": "0"
+                },
+                {
+                    "enumKey": "GImpact",
+                    "enumValue": "1"
+                },
+                {
+                    "enumKey": "BVH",
+                    "enumValue": "2"
+                }
+            ]
+        },
+        {
+            "enumName": "Bullet::Collision::ShapeType",
+            "msTypeNameMangleName": "W4ShapeType@Collision@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Collision9ShapeTypeE",
+            "enumMembers": [
+                {
+                    "enumKey": "Empty",
+                    "enumValue": "0"
+                },
+                {
+                    "enumKey": "Plane",
+                    "enumValue": "1"
+                },
+                {
+                    "enumKey": "Box",
+                    "enumValue": "2"
+                },
+                {
+                    "enumKey": "Sphere",
+                    "enumValue": "3"
+                },
+                {
+                    "enumKey": "PointCloud",
+                    "enumValue": "4"
+                },
+                {
+                    "enumKey": "Mesh",
+                    "enumValue": "5"
+                },
+                {
+                    "enumKey": "MeshBVH",
+                    "enumValue": "6"
+                },
+                {
+                    "enumKey": "Compound",
+                    "enumValue": "7"
+                },
+                {
+                    "enumKey": "MultiSphere",
+                    "enumValue": "8"
+                }
+            ]
+        },
+        {
+            "className": "Bullet::Collision::CollisionShape",
+            "msTypeNameMangleName": "VCollisionShape@Collision@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Collision14CollisionShapeE"
+        },
+        {
+            "structName": "Bullet::RBD::PhysicalMaterial",
+            "msTypeNameMangleName": "UPhysicalMaterial@RBD@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet3RBD16PhysicalMaterialE",
+            "structMembers": [
+                {
+                    "memberName": "mass",
+                    "memberType": "float"
+                },
+                {
+                    "memberName": "friction",
+                    "memberType": "float"
+                },
+                {
+                    "memberName": "restitution",
+                    "memberType": "float"
+                },
+                {
+                    "memberName": "linear_damping",
+                    "memberType": "float"
+                },
+                {
+                    "memberName": "angular_damping",
+                    "memberType": "float"
+                }
+            ]
+        },
+        {
+            "enumName": "Bullet::RBD::RigidBodyMode",
+            "msTypeNameMangleName": "W4RigidBodyMode@RBD@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet3RBD13RigidBodyModeE",
+            "enumMembers": [
+                {
+                    "enumKey": "Dynamic",
+                    "enumValue": "0"
+                },
+                {
+                    "enumKey": "Kinematic",
+                    "enumValue": "1"
+                },
+                {
+                    "enumKey": "Static",
+                    "enumValue": "2"
+                }
+            ]
+        },
+        {
+            "structName": "Bullet::RBD::RigidBodyData",
+            "msTypeNameMangleName": "URigidBodyData@RBD@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet3RBD13RigidBodyDataE",
+            "structMembers": [
+                {
+                    "memberName": "mode",
+                    "memberType": "Bullet::RBD::RigidBodyMode"
+                },
+                {
+                    "memberName": "collision_shape",
+                    "memberType": "Bullet::Collision::CollisionShape"
+                },
+                {
+                    "memberName": "position",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "orientation",
+                    "memberType": "Math::float4"
+                },
+                {
+                    "memberName": "linear_velocity",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "angular_velocity",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "physical_material",
+                    "memberType": "Bullet::RBD::PhysicalMaterial"
+                }
+            ]
+        },
+        {
+            "className": "Bullet::RBD::RigidBody",
+            "msTypeNameMangleName": "VRigidBody@RBD@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet3RBD9RigidBodyE"
+        },
+        {
+            "structName": "Bullet::Constrain::Limits",
+            "msTypeNameMangleName": "ULimits@Constrain@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Constrain6LimitsE",
+            "structMembers": [
+                {
+                    "memberName": "enable",
+                    "memberType": "Math::bool3"
+                },
+                {
+                    "memberName": "max",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "min",
+                    "memberType": "Math::float3"
+                }
+            ]
+        },
+        {
+            "structName": "Bullet::Constrain::Motors",
+            "msTypeNameMangleName": "UMotors@Constrain@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Constrain6MotorsE",
+            "structMembers": [
+                {
+                    "memberName": "force",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "velocity",
+                    "memberType": "Math::float3"
+                },
+                {
+                    "memberName": "servo",
+                    "memberType": "Math::bool3"
+                },
+                {
+                    "memberName": "target",
+                    "memberType": "Math::float3"
+                }
+            ]
+        },
+        {
+            "enumName": "Bullet::Constrain::ConstraintType",
+            "msTypeNameMangleName": "W4ConstraintType@Constrain@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Constrain14ConstraintTypeE",
+            "enumMembers": [
+                {
+                    "enumKey": "Fixed",
+                    "enumValue": "0"
+                },
+                {
+                    "enumKey": "Point",
+                    "enumValue": "1"
+                },
+                {
+                    "enumKey": "Hinge",
+                    "enumValue": "2"
+                },
+                {
+                    "enumKey": "Cone",
+                    "enumValue": "3"
+                },
+                {
+                    "enumKey": "Slider",
+                    "enumValue": "4"
+                },
+                {
+                    "enumKey": "SixDOF",
+                    "enumValue": "5"
+                },
+                {
+                    "enumKey": "SixDOFMotorized",
+                    "enumValue": "6"
+                }
+            ]
+        },
+        {
+            "className": "Bullet::Constrain::Constraint",
+            "msTypeNameMangleName": "VConstraint@Constrain@Bullet@@",
+            "itaniumTypeNameMangleName": "N6Bullet9Constrain10ConstraintE"
+        }
+    ],
+    "operators": [
+        {
+            "name": "Bullet::create_bullet_scene",
+            "msMangle": "?create_bullet_scene@Bullet@@YAXAEAV?$Ptr@VBulletScene@Bullet@@@Amino@@@Z",
+            "itaniumMangle": "_ZN6Bullet19create_bullet_sceneERN5Amino3PtrINS_11BulletSceneEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "output",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::set_gravity",
+            "msMangle": "?set_gravity@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBUfloat3@Math@Bifrost@@AEAV23@@Z",
+            "itaniumMangle": "_ZN6Bullet11set_gravityERKN5Amino3PtrINS_11BulletSceneEEERKN7Bifrost4Math6float3ERS3_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "gravity",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "-9.81000042f",
+                        "z": "0f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_bullet_scene",
+                    "portDirection": "output",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::step_simulation",
+            "msMangle": "?step_simulation@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@MAEAV23@@Z",
+            "itaniumMangle": "_ZN6Bullet15step_simulationERKN5Amino3PtrINS_11BulletSceneEEEfRS3_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "delta_time",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portDefault": "0.0199999996f",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_bullet_scene",
+                    "portDirection": "output",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBURigidBodyData@RBD@1@AEAV?$Ptr@VRigidBody@RBD@Bullet@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS_3RBD13RigidBodyDataERNS1_INS6_9RigidBodyEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBodyData",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBV?$Array@URigidBodyData@RBD@Bullet@@@3@AEAV?$Ptr@V?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS0_5ArrayINS_3RBD13RigidBodyDataEEERNS1_INS6_INS1_INS7_9RigidBodyEEEEEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::RBD::RigidBodyData>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBV?$Ptr@VRigidBody@RBD@Bullet@@@3@AEAV43@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS1_INS_3RBD9RigidBodyEEERS8_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBV?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@3@AEAV?$Ptr@V?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS0_5ArrayINS1_INS_3RBD9RigidBodyEEEEERNS1_ISA_EE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBV?$Ptr@VConstraint@Constrain@Bullet@@@3@AEAV43@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS1_INS_9Constrain10ConstraintEEERS8_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::add_to_bullet_scene",
+            "msMangle": "?add_to_bullet_scene@Bullet@@YAXAEBV?$Ptr@VBulletScene@Bullet@@@Amino@@AEBV?$Array@V?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@@3@AEAV?$Ptr@V?$Array@V?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@@Amino@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet19add_to_bullet_sceneERKN5Amino3PtrINS_11BulletSceneEEERKNS0_5ArrayINS1_INS_9Constrain10ConstraintEEEEERNS1_ISA_EE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "bullet_scene",
+                    "portDirection": "input",
+                    "portType": "Bullet::BulletScene",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::Constrain::Constraint>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::Constrain::Constraint>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::remove_from_bullet_scene",
+            "msMangle": "?remove_from_bullet_scene@Bullet@@YAXAEBV?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@AEAV23@@Z",
+            "itaniumMangle": "_ZN6Bullet24remove_from_bullet_sceneERKN5Amino3PtrINS_3RBD9RigidBodyEEERS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::remove_from_bullet_scene",
+            "msMangle": "?remove_from_bullet_scene@Bullet@@YAXAEBV?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@AEAV?$Ptr@V?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet24remove_from_bullet_sceneERKN5Amino5ArrayINS0_3PtrINS_3RBD9RigidBodyEEEEERNS2_IS6_EE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::remove_from_bullet_scene",
+            "msMangle": "?remove_from_bullet_scene@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEAV23@@Z",
+            "itaniumMangle": "_ZN6Bullet24remove_from_bullet_sceneERKN5Amino3PtrINS_9Constrain10ConstraintEEERS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::remove_from_bullet_scene",
+            "msMangle": "?remove_from_bullet_scene@Bullet@@YAXAEBV?$Array@V?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@@Amino@@AEAV?$Ptr@V?$Array@V?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@@Amino@@@3@@Z",
+            "itaniumMangle": "_ZN6Bullet24remove_from_bullet_sceneERKN5Amino5ArrayINS0_3PtrINS_9Constrain10ConstraintEEEEERNS2_IS6_EE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "input",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::Constrain::Constraint>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "output",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::Constrain::Constraint>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::RBD::refresh_rigid_body_proxy",
+            "msMangle": "?refresh_rigid_body_proxy@RBD@Bullet@@YAXAEBV?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet3RBD24refresh_rigid_body_proxyERKN5Amino3PtrINS0_9RigidBodyEEERS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "rigid_body",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "out_rigid_body",
+                    "portDirection": "output",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::RBD::refresh_rigid_body_proxy",
+            "msMangle": "?refresh_rigid_body_proxy@RBD@Bullet@@YAXAEBV?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@AEAV?$Ptr@V?$Array@V?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@@Amino@@@4@@Z",
+            "itaniumMangle": "_ZN6Bullet3RBD24refresh_rigid_body_proxyERKN5Amino5ArrayINS1_3PtrINS0_9RigidBodyEEEEERNS3_IS6_EE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "rigid_body",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_rigid_body",
+                    "portDirection": "output",
+                    "portType": "array<Bullet::RBD::RigidBody>",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        }
+    ]
+}

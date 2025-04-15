@@ -1,0 +1,455 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "operators": [
+        {
+            "name": "Bullet::Collision::plane_collision",
+            "msMangle": "?plane_collision@Collision@Bullet@@YAXAEBUfloat3@Math@Bifrost@@MAEAV?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision15plane_collisionERKN7Bifrost4Math6float3EfRN5Amino3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "normal",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "1f",
+                        "z": "0f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "plane_constant",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::box_collision",
+            "msMangle": "?box_collision@Collision@Bullet@@YAXAEBUfloat3@Math@Bifrost@@AEAV?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision13box_collisionERKN7Bifrost4Math6float3ERN5Amino3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "extents",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "0.5f",
+                        "y": "0.5f",
+                        "z": "0.5f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::sphere_collision",
+            "msMangle": "?sphere_collision@Collision@Bullet@@YAXMAEAV?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision16sphere_collisionEfRN5Amino3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "radius",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portDefault": "1f",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::multisphere_collision",
+            "msMangle": "?multisphere_collision@Collision@Bullet@@YAXAEBV?$Array@Ufloat3@Math@Bifrost@@@Amino@@AEBV?$Array@M@4@AEAV?$Ptr@VCollisionShape@Collision@Bullet@@@4@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision21multisphere_collisionERKN5Amino5ArrayIN7Bifrost4Math6float3EEERKNS2_IfEERNS1_3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "positions",
+                    "portDirection": "input",
+                    "portType": "array<Math::float3>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "radi",
+                    "portDirection": "input",
+                    "portType": "array<float>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::point_cloud_collision",
+            "msMangle": "?point_cloud_collision@Collision@Bullet@@YAXAEBV?$Array@Ufloat3@Math@Bifrost@@@Amino@@AEAV?$Ptr@VCollisionShape@Collision@Bullet@@@4@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision21point_cloud_collisionERKN5Amino5ArrayIN7Bifrost4Math6float3EEERNS1_3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "points",
+                    "portDirection": "input",
+                    "portType": "array<Math::float3>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::mesh_collision",
+            "msMangle": "?mesh_collision@Collision@Bullet@@YAXAEBV?$Array@Ufloat3@Math@Bifrost@@@Amino@@AEBV?$Array@I@4@W4MeshConstructor@12@MAEAV?$Ptr@VCollisionShape@Collision@Bullet@@@4@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision14mesh_collisionERKN5Amino5ArrayIN7Bifrost4Math6float3EEERKNS2_IjEENS0_15MeshConstructorEfRNS1_3PtrINS0_14CollisionShapeEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "points",
+                    "portDirection": "input",
+                    "portType": "array<Math::float3>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "face_vertex",
+                    "portDirection": "input",
+                    "portType": "array<uint>",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "constructor",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::MeshConstructor",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "depth",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::compound_collision",
+            "msMangle": "?compound_collision@Collision@Bullet@@YAXAEBV?$Array@V?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@@Amino@@AEBV?$Array@Ufloat3@Math@Bifrost@@@4@AEBV?$Array@Ufloat4@Math@Bifrost@@@4@AEAV?$Ptr@VCollisionShape@Collision@Bullet@@@4@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision18compound_collisionERKN5Amino5ArrayINS1_3PtrINS0_14CollisionShapeEEEEERKNS2_IN7Bifrost4Math6float3EEERKNS2_INSA_6float4EEERS5_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "child_shapes",
+                    "portDirection": "input",
+                    "portType": "array<Bullet::Collision::CollisionShape>",
+                    "isDefaultFanIn": "true",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "translates",
+                    "portDirection": "input",
+                    "portType": "array<Math::float3>",
+                    "isDefaultFanIn": "true",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "rotates",
+                    "portDirection": "input",
+                    "portType": "array<Math::float4>",
+                    "isDefaultFanIn": "true",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::set_collision_shape_margin",
+            "msMangle": "?set_collision_shape_margin@Collision@Bullet@@YAXAEAVCollisionShape@12@AEBM@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision26set_collision_shape_marginERNS0_14CollisionShapeERKf",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portAssociated": "collision_shape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "margin",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::set_collision_shape_scale",
+            "msMangle": "?set_collision_shape_scale@Collision@Bullet@@YAXAEAVCollisionShape@12@AEBUfloat3@Math@Bifrost@@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision25set_collision_shape_scaleERNS0_14CollisionShapeERKN7Bifrost4Math6float3E",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portAssociated": "collision_shape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "scale",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::get_collision_shape_scale",
+            "msMangle": "?get_collision_shape_scale@Collision@Bullet@@YAXAEBV?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@AEAUfloat3@Math@Bifrost@@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision25get_collision_shape_scaleERKN5Amino3PtrINS0_14CollisionShapeEEERN7Bifrost4Math6float3E",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "scale",
+                    "portDirection": "output",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::set_collision_dynamic",
+            "msMangle": "?set_collision_dynamic@Collision@Bullet@@YAXAEAVCollisionShape@12@_N@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision21set_collision_dynamicERNS0_14CollisionShapeEb",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_collision_shape",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portAssociated": "collision_shape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "dynamic",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byValue"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::get_collision_dynamic",
+            "msMangle": "?get_collision_dynamic@Collision@Bullet@@YAXAEBV?$Ptr@VCollisionShape@Collision@Bullet@@@Amino@@AEA_N@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision21get_collision_dynamicERKN5Amino3PtrINS0_14CollisionShapeEEERb",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "collision_shape",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "dynamic",
+                    "portDirection": "output",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::is_copy",
+            "msMangle": "?is_copy@Collision@Bullet@@YAXAEBVCollisionShape@12@AEA_N@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision7is_copyERKNS0_14CollisionShapeERb",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "object",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "is_copy",
+                    "portDirection": "output",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Collision::get_shape_type",
+            "msMangle": "?get_shape_type@Collision@Bullet@@YAXAEBVCollisionShape@12@AEAW4ShapeType@12@@Z",
+            "itaniumMangle": "_ZN6Bullet9Collision14get_shape_typeERKNS0_14CollisionShapeERNS0_9ShapeTypeE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "object",
+                    "portDirection": "input",
+                    "portType": "Bullet::Collision::CollisionShape",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "type",
+                    "portDirection": "output",
+                    "portType": "Bullet::Collision::ShapeType",
+                    "portConvention": "byReference"
+                }
+            ]
+        }
+    ]
+}

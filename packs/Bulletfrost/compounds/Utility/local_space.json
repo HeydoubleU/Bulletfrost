@@ -1,0 +1,314 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "compounds": [
+        {
+            "name": "Bullet::Utility::local_space",
+            "uriImported": "stream:/bifrostGraphShape1",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../../icons/bullet_logo.svg"
+                },
+                {
+                    "metaName": "io_nodes",
+                    "metadata": [
+                        {
+                            "metaName": "io_inodes",
+                            "metadata": [
+                                {
+                                    "metaName": "input",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "-761.229 -270.345"
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "34.000000"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "reference_position"
+                                                },
+                                                {
+                                                    "metaName": "reference_orientation"
+                                                },
+                                                {
+                                                    "metaName": "world_position"
+                                                },
+                                                {
+                                                    "metaName": "world_orientation"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "metaName": "io_onodes",
+                            "metadata": [
+                                {
+                                    "metaName": "output",
+                                    "metadata": [
+                                        {
+                                            "metaName": "DisplayMode",
+                                            "metaType": "string",
+                                            "metaValue": "2"
+                                        },
+                                        {
+                                            "metaName": "LayoutPos",
+                                            "metaType": "string",
+                                            "metaValue": "812.247 -203.441"
+                                        },
+                                        {
+                                            "metaName": "io_ports",
+                                            "metadata": [
+                                                {
+                                                    "metaName": "local_position"
+                                                },
+                                                {
+                                                    "metaName": "local_orientation"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "metaName": "zValue",
+                                            "metaType": "string",
+                                            "metaValue": "33.000000"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "metaName": "ViewportRect",
+                    "metaType": "string",
+                    "metaValue": "-1012 -447 2024 894"
+                },
+                {
+                    "metaName": "DisplayMode",
+                    "metaType": "string",
+                    "metaValue": "2"
+                },
+                {
+                    "metaName": "LayoutPos",
+                    "metaType": "string",
+                    "metaValue": "95.8873 182.937"
+                },
+                {
+                    "metaName": "zValue",
+                    "metaType": "string",
+                    "metaValue": "58.000000"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "reference_position",
+                    "portDirection": "input",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "reference_orientation",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    }
+                },
+                {
+                    "portName": "world_position",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f"
+                    }
+                },
+                {
+                    "portName": "world_orientation",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    }
+                },
+                {
+                    "portName": "local_position",
+                    "portDirection": "output",
+                    "portType": "Math::float3"
+                },
+                {
+                    "portName": "local_orientation",
+                    "portDirection": "output",
+                    "portType": "Math::float4"
+                }
+            ],
+            "compoundNodes": [
+                {
+                    "nodeName": "multiply_quaternions",
+                    "nodeType": "Core::Math::multiply_quaternions",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "256.591 -71.0868"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "32.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "rotate_by_quaternion",
+                    "nodeType": "Core::Math::rotate_by_quaternion",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "294.775 -303.867"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "35.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "subtract",
+                    "nodeType": "Core::Math::subtract",
+                    "multiInPortNames": [
+                        "pivot_a",
+                        "position"
+                    ],
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-125.433 -409.115"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "36.000000"
+                        }
+                    ]
+                },
+                {
+                    "nodeName": "quaternion_invert",
+                    "nodeType": "Core::Math::quaternion_invert",
+                    "metadata": [
+                        {
+                            "metaName": "DisplayMode",
+                            "metaType": "string",
+                            "metaValue": "2"
+                        },
+                        {
+                            "metaName": "LayoutPos",
+                            "metaType": "string",
+                            "metaValue": "-38.3576 -148.066"
+                        },
+                        {
+                            "metaName": "zValue",
+                            "metaType": "string",
+                            "metaValue": "37.000000"
+                        }
+                    ]
+                }
+            ],
+            "connections": [
+                {
+                    "source": "subtract.output",
+                    "target": "rotate_by_quaternion.vector"
+                },
+                {
+                    "source": ".world_position",
+                    "target": "subtract.first.pivot_a"
+                },
+                {
+                    "source": "rotate_by_quaternion.rotated_vector",
+                    "target": ".local_position"
+                },
+                {
+                    "source": "multiply_quaternions.quaternion",
+                    "target": ".local_orientation"
+                },
+                {
+                    "source": "quaternion_invert.inverse",
+                    "target": "rotate_by_quaternion.quaternion"
+                },
+                {
+                    "source": ".world_orientation",
+                    "target": "multiply_quaternions.first"
+                },
+                {
+                    "source": "quaternion_invert.inverse",
+                    "target": "multiply_quaternions.second"
+                },
+                {
+                    "source": ".reference_position",
+                    "target": "subtract.first.position"
+                },
+                {
+                    "source": ".reference_orientation",
+                    "target": "quaternion_invert.quaternion"
+                }
+            ],
+            "values": [],
+            "reservedNodeNames": [
+                {
+                    "name": "input"
+                },
+                {
+                    "name": "output"
+                }
+            ]
+        }
+    ]
+}

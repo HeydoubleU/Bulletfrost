@@ -1,7 +1,7 @@
 import os, shutil
 
 source_path = os.path.expanduser("~") + "/source"
-compounds_path = "A:/TeamEnvironment/Compounds"
+compounds_path = f"{source_path}/repos/HeydoubleU/Bulletfrost/packs"
 lib_name = "Bulletfrost"
 
 

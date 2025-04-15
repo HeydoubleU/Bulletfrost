@@ -1,0 +1,700 @@
+{
+    "header": {
+        "metadata": [
+            {
+                "metaName": "adskFileFormatVersion",
+                "metaValue": "100L"
+            }
+        ]
+    },
+    "namespaces": [],
+    "types": [],
+    "operators": [
+        {
+            "name": "Bullet::Constrain::constrain_rigid_bodies",
+            "msMangle": "?constrain_rigid_bodies@Constrain@Bullet@@YAXAEBW4ConstraintType@12@AEBV?$Ptr@VRigidBody@RBD@Bullet@@@Amino@@AEBUfloat3@Math@Bifrost@@AEBUfloat4@78@123_NAEAV?$Ptr@VConstraint@Constrain@Bullet@@@5@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain22constrain_rigid_bodiesERKNS0_14ConstraintTypeERKN5Amino3PtrINS_3RBD9RigidBodyEEERKN7Bifrost4Math6float3ERKNSC_6float4ESA_SF_SI_bRNS5_INS0_10ConstraintEEE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "type",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::ConstraintType",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "rigid_body_a",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "pivot_a",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_a",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "rigid_body_b",
+                    "portDirection": "input",
+                    "portType": "Bullet::RBD::RigidBody",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "pivot_b",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_b",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "disable_collision",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_breaking",
+            "msMangle": "?set_constraint_breaking@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBMAEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain23set_constraint_breakingERKN5Amino3PtrINS0_10ConstraintEEERKfRS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "breaking_threshold",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_frames",
+            "msMangle": "?set_constraint_frames@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBUfloat3@Math@Bifrost@@AEBUfloat4@67@12AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain21set_constraint_framesERKN5Amino3PtrINS0_10ConstraintEEERKN7Bifrost4Math6float3ERKNS8_6float4ESB_SE_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "pivot_a",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_a",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "pivot_b",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_b",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portDefault": {
+                        "x": "0f",
+                        "y": "0f",
+                        "z": "0f",
+                        "w": "1f"
+                    },
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_sixdof_limits",
+            "msMangle": "?set_constraint_sixdof_limits@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBULimits@12@1AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain28set_constraint_sixdof_limitsERKN5Amino3PtrINS0_10ConstraintEEERKNS0_6LimitsES9_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "linear_limits",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Limits",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_limits",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Limits",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_sixdof_springs",
+            "msMangle": "?set_constraint_sixdof_springs@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBUfloat3@Math@Bifrost@@111AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain29set_constraint_sixdof_springsERKN5Amino3PtrINS0_10ConstraintEEERKN7Bifrost4Math6float3ESB_SB_SB_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "linear_stiffness",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "linear_damping",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_stiffness",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_damping",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_sixdof_motors",
+            "msMangle": "?set_constraint_sixdof_motors@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBUMotors@12@1AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain28set_constraint_sixdof_motorsERKN5Amino3PtrINS0_10ConstraintEEERKNS0_6MotorsES9_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "linear_motors",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Motors",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_motors",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Motors",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_hinge",
+            "msMangle": "?set_constraint_hinge@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBUfloat3@Math@Bifrost@@AEB_NAEBM3333233AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain20set_constraint_hingeERKN5Amino3PtrINS0_10ConstraintEEERKN7Bifrost4Math6float3ERKbRKfSF_SF_SF_SF_SD_SF_SF_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "axis",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "limit",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "limit_max",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "limit_min",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "softness",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "bias",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "relax",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor_velocity",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor_impulse",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_slider",
+            "msMangle": "?set_constraint_slider@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEB_NAEBM2122AEBUfloat3@Math@Bifrost@@322AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain21set_constraint_sliderERKN5Amino3PtrINS0_10ConstraintEEERKbRKfSA_S8_SA_SA_RKN7Bifrost4Math6float3ESF_SA_SA_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "linear_limit",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "linear_limit_max",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "linear_limit_min",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_limit",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_limit_max",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_limit_min",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "lin_SRD",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "ang_SRD",
+                    "portDirection": "input",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "linear_ortho_stiffness",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "angular_ortho_stiffness",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_cone",
+            "msMangle": "?set_constraint_cone@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEBM111111AEB_NAEBUfloat4@Math@Bifrost@@1AEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain19set_constraint_coneERKN5Amino3PtrINS0_10ConstraintEEERKfS8_S8_S8_S8_S8_S8_RKbRKN7Bifrost4Math6float4ES8_RS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "swing_span_a",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "swing_span_b",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "twist_span",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "softness",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "bias",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "relaxation",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "damping",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor_target",
+                    "portDirection": "input",
+                    "portType": "Math::float4",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "motor_impulse",
+                    "portDirection": "input",
+                    "portType": "float",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::set_constraint_enabled",
+            "msMangle": "?set_constraint_enabled@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@_NAEAV34@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain22set_constraint_enabledERKN5Amino3PtrINS0_10ConstraintEEEbRS4_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "enabled",
+                    "portDirection": "input",
+                    "portType": "bool",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "out_constraint",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::get_constraint_enabled",
+            "msMangle": "?get_constraint_enabled@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEA_N@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain22get_constraint_enabledERKN5Amino3PtrINS0_10ConstraintEEERb",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "enabled",
+                    "portDirection": "output",
+                    "portType": "bool",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::get_constraint_type",
+            "msMangle": "?get_constraint_type@Constrain@Bullet@@YAXAEBV?$Ptr@VConstraint@Constrain@Bullet@@@Amino@@AEAW4ConstraintType@12@@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain19get_constraint_typeERKN5Amino3PtrINS0_10ConstraintEEERNS0_14ConstraintTypeE",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byReferenceToPtr"
+                },
+                {
+                    "portName": "type",
+                    "portDirection": "output",
+                    "portType": "Bullet::Constrain::ConstraintType",
+                    "portConvention": "byReference"
+                }
+            ]
+        },
+        {
+            "name": "Bullet::Constrain::get_constraint_initial_frames",
+            "msMangle": "?get_constraint_initial_frames@Constrain@Bullet@@YAXAEBVConstraint@12@AEAUfloat3@Math@Bifrost@@AEAUfloat4@56@12@Z",
+            "itaniumMangle": "_ZN6Bullet9Constrain29get_constraint_initial_framesERKNS0_10ConstraintERN7Bifrost4Math6float3ERNS5_6float4ES7_S9_",
+            "metadata": [
+                {
+                    "metaName": "icon",
+                    "metaType": "string",
+                    "metaValue": "../icons/bullet_logo.svg"
+                }
+            ],
+            "ports": [
+                {
+                    "portName": "constraint",
+                    "portDirection": "input",
+                    "portType": "Bullet::Constrain::Constraint",
+                    "portConvention": "byValue"
+                },
+                {
+                    "portName": "pivot_a",
+                    "portDirection": "output",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_a",
+                    "portDirection": "output",
+                    "portType": "Math::float4",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "pivot_b",
+                    "portDirection": "output",
+                    "portType": "Math::float3",
+                    "portConvention": "byReference"
+                },
+                {
+                    "portName": "orient_b",
+                    "portDirection": "output",
+                    "portType": "Math::float4",
+                    "portConvention": "byReference"
+                }
+            ]
+        }
+    ]
+}

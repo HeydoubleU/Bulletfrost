@@ -1,0 +1,22 @@
+{
+    "AminoConfigurations": [
+        {
+            "vendorName": "Hyuu",
+            "libraryVersion": "1.0.0",
+            "libraryName": "Bulletfrost",
+            "sharedLibs": [
+                {
+                    "path": "./lib",
+                    "files": [
+                        "BulletfrostOps"
+                    ]
+                }
+            ],
+            "jsonLibs": [
+                {
+                    "path": "./compounds"
+                }
+            ]
+        }
+    ]
+}
