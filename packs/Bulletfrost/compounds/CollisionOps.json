@@ -45,7 +45,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::box_collision",
@@ -76,7 +79,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::sphere_collision",
@@ -103,7 +109,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::multisphere_collision",
@@ -135,7 +144,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::point_cloud_collision",
@@ -161,7 +173,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::mesh_collision",
@@ -205,7 +220,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::compound_collision",
@@ -246,7 +264,10 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::set_collision_shape_margin",
@@ -279,7 +300,10 @@
                     "portType": "float",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::set_collision_shape_scale",
@@ -312,7 +336,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::get_collision_shape_scale",
@@ -338,7 +365,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::set_collision_dynamic",
@@ -371,7 +401,10 @@
                     "portType": "bool",
                     "portConvention": "byValue"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::get_collision_dynamic",
@@ -397,7 +430,10 @@
                     "portType": "bool",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::is_copy",
@@ -423,7 +459,10 @@
                     "portType": "bool",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::Collision::get_shape_type",
@@ -449,7 +488,8 @@
                     "portType": "Bullet::Collision::ShapeType",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         }
     ]
 }

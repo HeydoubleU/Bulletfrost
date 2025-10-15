@@ -106,7 +106,10 @@
                     "memberName": "angular_damping",
                     "memberType": "float"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "enumName": "Bullet::RBD::RigidBodyMode",
@@ -160,7 +163,10 @@
                     "memberName": "physical_material",
                     "memberType": "Bullet::RBD::PhysicalMaterial"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "className": "Bullet::RBD::RigidBody",
@@ -184,7 +190,10 @@
                     "memberName": "min",
                     "memberType": "Math::float3"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "structName": "Bullet::Constrain::Motors",
@@ -207,7 +216,10 @@
                     "memberName": "target",
                     "memberType": "Math::float3"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "enumName": "Bullet::Constrain::ConstraintType",
@@ -269,7 +281,8 @@
                     "portType": "Bullet::BulletScene",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::set_gravity",
@@ -306,7 +319,10 @@
                     "portType": "Bullet::BulletScene",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::step_simulation",
@@ -339,7 +355,10 @@
                     "portType": "Bullet::BulletScene",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -371,7 +390,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -403,7 +425,10 @@
                     "portType": "array<Bullet::RBD::RigidBody>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -435,7 +460,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -467,7 +493,8 @@
                     "portType": "array<Bullet::RBD::RigidBody>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -499,7 +526,8 @@
                     "portType": "Bullet::Constrain::Constraint",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::add_to_bullet_scene",
@@ -531,7 +559,8 @@
                     "portType": "array<Bullet::Constrain::Constraint>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::remove_from_bullet_scene",
@@ -557,7 +586,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::remove_from_bullet_scene",
@@ -583,7 +613,8 @@
                     "portType": "array<Bullet::RBD::RigidBody>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::remove_from_bullet_scene",
@@ -609,7 +640,8 @@
                     "portType": "Bullet::Constrain::Constraint",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::remove_from_bullet_scene",
@@ -635,7 +667,8 @@
                     "portType": "array<Bullet::Constrain::Constraint>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::refresh_rigid_body_proxy",
@@ -661,7 +694,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::refresh_rigid_body_proxy",
@@ -687,7 +721,8 @@
                     "portType": "array<Bullet::RBD::RigidBody>",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         }
     ]
 }

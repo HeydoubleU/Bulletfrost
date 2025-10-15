@@ -34,7 +34,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::activate_rigid_body",
@@ -60,7 +63,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::set_rigid_body_mass",
@@ -98,7 +102,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_friction",
@@ -130,7 +137,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_damping",
@@ -168,7 +178,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_physical_material",
@@ -206,7 +219,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_velocity",
@@ -244,7 +260,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_linear_velocity",
@@ -276,7 +295,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_angular_velocity",
@@ -308,7 +330,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_transform",
@@ -346,7 +371,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_position",
@@ -378,7 +406,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_orientation",
@@ -410,7 +441,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_activation",
@@ -448,7 +482,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_ignore_collision",
@@ -487,7 +524,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::set_rigid_body_mode",
@@ -519,7 +559,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::set_rigid_body_shape",
@@ -551,7 +592,8 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::get_rigid_body_transform",
@@ -583,7 +625,10 @@
                     "portType": "Math::float4",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_mode",
@@ -609,7 +654,8 @@
                     "portType": "Bullet::RBD::RigidBodyMode",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::get_rigid_body_position",
@@ -635,7 +681,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_orientation",
@@ -661,7 +710,10 @@
                     "portType": "Math::float4",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_velocity",
@@ -693,7 +745,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_linear_velocity",
@@ -719,7 +774,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_angular_velocity",
@@ -745,7 +803,10 @@
                     "portType": "Math::float3",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_physical_material",
@@ -771,7 +832,10 @@
                     "portType": "Bullet::RBD::PhysicalMaterial",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_data",
@@ -797,7 +861,10 @@
                     "portType": "Bullet::RBD::RigidBodyData",
                     "portConvention": "byReference"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::get_rigid_body_shape",
@@ -823,7 +890,8 @@
                     "portType": "Bullet::Collision::CollisionShape",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {}
         },
         {
             "name": "Bullet::RBD::apply_rigid_body_force_torque",
@@ -867,7 +935,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::apply_rigid_body_force",
@@ -911,7 +982,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::apply_rigid_body_central_force",
@@ -949,7 +1023,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         },
         {
             "name": "Bullet::RBD::apply_rigid_body_torque",
@@ -987,7 +1064,10 @@
                     "portType": "Bullet::RBD::RigidBody",
                     "portConvention": "byReferenceToPtr"
                 }
-            ]
+            ],
+            "libraryDependencies": {
+                "Amino": "2.15.0.11"
+            }
         }
     ]
 }
